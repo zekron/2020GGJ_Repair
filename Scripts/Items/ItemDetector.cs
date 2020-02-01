@@ -2,50 +2,78 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class ItemDetector : MonoBehaviour
 {
+    public ItemState _CurItemState = ItemState.eStateFour;
     private float m_StayTime;
+    private bool m_CanBeDetected = false;
+
     private void Awake()
     {
-        if (!GetComponent<BoxCollider>())
+        if (!GetComponent<BoxCollider2D>())
         {
-            gameObject.AddComponent<BoxCollider>();
-            GetComponent<BoxCollider>().size = Vector3.one;
+            gameObject.AddComponent<BoxCollider2D>();
+
+            BoxCollider2D collider2D = GetComponent<BoxCollider2D>();
+            collider2D.size = Vector3.one;
+            collider2D.isTrigger = true;
         }
-        if (!GetComponent<Rigidbody>())
+        if (!GetComponent<Rigidbody2D>())
         {
-            gameObject.AddComponent<Rigidbody>();
-            GetComponent<Rigidbody>().isKinematic = true;
+            gameObject.AddComponent<Rigidbody2D>();
+            GetComponent<Rigidbody2D>().isKinematic = true;
         }
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-
+        Debug.LogFormat("{0} enter here.", other.name);
+        if (other.tag == "Player")
+        {
+            m_CanBeDetected = true;
+            _OnDestroyDetectorTriggered.Invoke(ItemState.eStateFour);
+            Debug.LogFormat("{0} enter here.", other.name);
+        }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            transform.DOLocalRotate(new Vector3(90, 180, 0), 2)
-                .OnComplete(() => transform.DOLocalRotate(Vector3.zero, 0.2f));
+            if (!m_CanBeDetected) return;
+
+            m_StayTime -= Time.deltaTime;
+
+            if (m_StayTime <= 0f)
+            {
+                if (--_CurItemState < ItemState.eStateOne)
+                {
+                    _CurItemState = ItemState.eStateFour;
+                    m_CanBeDetected = false;
+                }
+                _OnDestroyDetectorTriggered.Invoke(_CurItemState);
+                m_StayTime = 1;
+            }
         }
     }
-
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            transform.DOComplete();
-            transform.DOLocalRotate(Vector3.zero, 0.3f);
+            _OnDestroyDetectorTriggered.Invoke(ItemState.eStateFour);
+            Debug.LogFormat("{0} exit here.", other.name);
         }
+    }
+
+    public static MyItemStateEvent _OnDestroyDetectorTriggered = new MyItemStateEvent();
+    public static void Add_OnDestroyDetectorTriggered(UnityAction<ItemState> action)
+    {
+        Remove_OnDestroyDetectorTriggered(action);
+        _OnDestroyDetectorTriggered.AddListener(action);
+    }
+    public static void Remove_OnDestroyDetectorTriggered(UnityAction<ItemState> action)
+    {
+        _OnDestroyDetectorTriggered.RemoveListener(action);
     }
 }

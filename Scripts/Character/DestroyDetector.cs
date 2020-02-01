@@ -18,23 +18,6 @@ public class DestroyDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Keypad6))
-        {
-            m_IsMoving = true;
-            _MainChatacter.Translate(new Vector3(0.01f * _MoveSpeed, 0, 0));
-            return;
-        }
-        if (Input.GetKey(KeyCode.Keypad4))
-        {
-            m_IsMoving = true;
-            _MainChatacter.Translate(new Vector3(-0.01f * _MoveSpeed, 0, 0));
-            return;
-        }
-        if (m_IsMoving)
-        {
-            m_IsMoving = false;
-            return;
-        }
     }
 
     //private void OnTriggerStay(Collider other)
