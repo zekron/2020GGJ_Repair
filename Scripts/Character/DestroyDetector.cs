@@ -31,7 +31,7 @@ public class DestroyDetector : MonoBehaviour
     {
         if (other.tag == "Item")
         {
-            //Debug.LogFormat("{0} stay here.", other.name);
+            Debug.LogFormat("{0} stay here.", other.name);
             other.GetComponent<ItemDetector>().StayDestroy = true;
             if (!_StayDestroys.Contains(other.gameObject))
             {
@@ -53,6 +53,15 @@ public class DestroyDetector : MonoBehaviour
                 _StayDestroys.Remove(other.gameObject);
                 Debug.LogError("Remains _StayDestroys.Count " + _StayDestroys.Count);
             }
+        }
+    }
+
+    public void RemoveStayDestroys(GameObject obj)
+    {
+        if (_StayDestroys.Contains(obj))
+        {
+            _StayDestroys.Remove(obj);
+            Debug.LogError("Remains _StayDestroys.Count " + _StayDestroys.Count);
         }
     }
 }

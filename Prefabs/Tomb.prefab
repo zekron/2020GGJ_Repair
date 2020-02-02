@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _CurItemState: 3
+  _ItemType: 3
 --- !u!114 &2161711026261900106
 MonoBehaviour:
   m_ObjectHideFlags: 0

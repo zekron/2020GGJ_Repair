@@ -6,7 +6,8 @@ using DG.Tweening;
 
 public class CharacterPackage : MonoBehaviour
 {
-    public Image[] _ItemImages;
+    public static CharacterPackage instance = null;
+    public SpriteRenderer[] _ItemImages;
 
     public Sprite[] _TulipSprites;
     public Sprite[] _RoseSprites;
@@ -18,6 +19,7 @@ public class CharacterPackage : MonoBehaviour
 
     void Start()
     {
+        instance = this;
         m_ItemSprite = new Sprite[5][] { _TulipSprites, _RoseSprites, _TreeSprites, _TombSprites, _CandleSprites };
     }
 
@@ -27,14 +29,17 @@ public class CharacterPackage : MonoBehaviour
 
     }
 
-    public void SaveItem(ItemType item, ItemState state)
+    public void SaveItem(ItemDetector detector, GameObject item)
     {
         for (int i = 0; i < _ItemImages.Length; i++)
         {
             if (_ItemImages[i].sprite != null) continue;
 
-            _ItemImages[i].sprite = m_ItemSprite[(int)item][(int)state];
-            _ItemImages[i].DOColor(StaticData.ColorFadeOut, 0.5f);
+            _ItemImages[i].sprite = m_ItemSprite[(int)detector._ItemType][(int)detector._CurItemState];
+            item.transform.DOLocalMove(_ItemImages[i].transform.localPosition, 1)
+                .OnComplete(() => CharacterAbilities.instance._HoldInHand = false);
+            _ItemImages[i].DOFade(1, 1)
+                .OnComplete(() => Destroy(item));
             break;
         }
     }

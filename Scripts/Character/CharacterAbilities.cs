@@ -9,12 +9,12 @@ public class CharacterAbilities : MonoBehaviour
     public KeyCode _KeyTimeWalkBack = KeyCode.Q;
     public KeyCode _KeyFetchGameObject = KeyCode.W;
 
+    public bool _HoldInHand = false;
     private bool m_HoldTimeFlag = false;
     private bool m_TimeWalkBackFlag = false;
     private bool m_FetchGameObjectFlag = false;
     private float m_HoldTime = 0f;
 
-    private GameObject _HoldInHand;
     private List<GameObject> m_TempStayDestroys;
     // Start is called before the first frame update
     void Start()
@@ -108,8 +108,8 @@ public class CharacterAbilities : MonoBehaviour
         if (_HoldInHand) return;
 
         Debug.LogError("FetchGameObject");
-        _HoldInHand = obj;
-        _HoldInHand.transform.SetParent(transform.parent);
-        _HoldInHand.transform.DOLocalMove(new Vector3(2, 1, 0), 0.3f);
+        _HoldInHand = true;
+        ItemDetector holdInHand = obj.GetComponent<ItemDetector>();
+        CharacterPackage.instance.SaveItem(holdInHand, obj);
     }
 }

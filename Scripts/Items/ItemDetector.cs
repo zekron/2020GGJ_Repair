@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class ItemDetector : MonoBehaviour
 {
     public ItemState _CurItemState = ItemState.eStateFour;
+    public ItemType _ItemType;
     #region 属性
     public bool EnterDestroy
     {
@@ -121,10 +122,12 @@ public class ItemDetector : MonoBehaviour
 
     private void OnMouseDown()
     {
+        Debug.LogErrorFormat("{0} state {1}", this.name, m_StayDestroy);
         if (m_StayDestroy)
         {
             Debug.LogError("OnMouseDown");
             CharacterAbilities.instance.FetchGameObject(this.gameObject);
+            DestroyDetector.instance.RemoveStayDestroys(gameObject);
         }
     }
 
