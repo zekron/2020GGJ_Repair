@@ -19,7 +19,7 @@ public class DestroyDetector : MonoBehaviour
         //Debug.LogFormat("{0} enter here.", other.name);
         if (other.tag == "Item")
         {
-            Debug.LogFormat("{0} enter here.", other.name);
+            //Debug.LogFormat("{0} enter here.", other.name);
             other.GetComponent<ItemDetector>().EnterDestroy = true;
         }
     }
@@ -28,7 +28,7 @@ public class DestroyDetector : MonoBehaviour
     {
         if (other.tag == "Item")
         {
-            Debug.LogFormat("{0} stay here.", other.name);
+            //Debug.LogFormat("{0} stay here.", other.name);
             other.GetComponent<ItemDetector>().StayDestroy = true;
         }
     }
@@ -37,7 +37,7 @@ public class DestroyDetector : MonoBehaviour
     {
         if (other.tag == "Item")
         {
-            Debug.LogFormat("{0} exit here.", other.name);
+            //Debug.LogFormat("{0} exit here.", other.name);
             other.GetComponent<ItemDetector>().ExitDestroy = true;
         }
     }

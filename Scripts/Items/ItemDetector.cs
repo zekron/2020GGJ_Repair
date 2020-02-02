@@ -71,7 +71,7 @@ public class ItemDetector : MonoBehaviour
         //Debug.LogFormat("{0} enter here.", other.name);
         if (other.tag == "Player")
         {
-            if (m_EnterDestroy)
+            if (m_EnterDestroy && !m_CanBeDetected)
             {
                 m_CanBeDetected = true;
             }
@@ -91,9 +91,9 @@ public class ItemDetector : MonoBehaviour
             {
                 if (--_CurItemState < ItemState.eStateOne)
                 {
-                    _CurItemState = ItemState.eStateFour;
                     m_CanBeDetected = false;
-                    GetComponent<Item>().ChangeSprite(_CurItemState);
+                    _CurItemState = ItemState.eStateOne;
+                    //GetComponent<Item>().ChangeSprite(_CurItemState);
                     //_OnDestroyDetectorTriggered.Invoke(_CurItemState);
                     m_StayTime = 0;
                     return;
@@ -114,7 +114,7 @@ public class ItemDetector : MonoBehaviour
                 m_StayTime = 0;
                 if (_CurItemState != ItemState.eStateFour)
                 {
-                    GetComponent<Item>().ChangeSprite(_CurItemState = ItemState.eStateFour);
+                    //GetComponent<Item>().ChangeSprite(_CurItemState = ItemState.eStateFour);
                     //_OnDestroyDetectorTriggered.Invoke(_CurItemState = ItemState.eStateFour);
                 }
             }

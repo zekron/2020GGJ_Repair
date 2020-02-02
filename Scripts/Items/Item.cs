@@ -24,13 +24,13 @@ public class Item : MonoBehaviour
 
         _NewSprite.sprite = _ItemSprites[(int)state];
 
-        _NewSprite.DOFade(1, 1)
+        _NewSprite.DOFade(1, StaticData.DestroyDuration)
             .OnComplete(
             () =>
             {
                 _NewSprite.color = StaticData.ColorFadeOut;
             });
-        _CurSprite.DOFade(0, 1)
+        _CurSprite.DOFade(0, StaticData.DestroyDuration)
             .OnComplete(
             () =>
             {
