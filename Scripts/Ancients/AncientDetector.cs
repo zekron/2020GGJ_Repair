@@ -5,6 +5,8 @@ using UnityEngine;
 public class AncientDetector : MonoBehaviour
 {
     public ItemState _CurAncientState;
+
+    [Header("Key")]
     public ItemState _AncientKeyState;
     public ItemState _ItemKeyState;
     public ItemType _ItemKeyType;
