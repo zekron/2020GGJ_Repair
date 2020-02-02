@@ -36,10 +36,9 @@ public class CharacterPackage : MonoBehaviour
             if (_ItemImages[i].sprite != null) continue;
 
             _ItemImages[i].sprite = m_ItemSprite[(int)detector._ItemType][(int)detector._CurItemState];
-            item.transform.DOLocalMove(_ItemImages[i].transform.localPosition, 1)
-                .OnComplete(() => CharacterAbilities.instance._HoldInHand = false);
             _ItemImages[i].DOFade(1, 1)
-                .OnComplete(() => Destroy(item));
+                .OnComplete(() => CharacterAbilities.instance._HoldInHand = false);
+            /*.OnComplete(() => Destroy(item))*/
             break;
         }
     }

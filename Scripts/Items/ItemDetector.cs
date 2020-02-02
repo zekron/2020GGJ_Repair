@@ -4,73 +4,23 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
 
-public class ItemDetector : MonoBehaviour
+public class ItemDetector : Detector
 {
     public ItemState _CurItemState = ItemState.eStateFour;
     public ItemType _ItemType;
-    #region 属性
-    public bool EnterDestroy
-    {
-        get { return m_EnterDestroy; }
-        set
-        {
-            m_EnterDestroy = value;
-            m_StayDestroy = !value;
-            m_ExitDestroy = !value;
-        }
-    }
-    public bool StayDestroy
-    {
-        get { return m_StayDestroy; }
-        set
-        {
-            m_EnterDestroy = !value;
-            m_StayDestroy = value;
-            m_ExitDestroy = !value;
-        }
-    }
-    public bool ExitDestroy
-    {
-        get { return m_ExitDestroy; }
-        set
-        {
-            m_EnterDestroy = !value;
-            m_StayDestroy = !value;
-            m_ExitDestroy = value;
-        }
-    }
-
-    #endregion
 
     private float m_StayTime = 0;
+    /// <summary>
+    /// 是否被瘟疫光环影响
+    /// </summary>
     private bool m_CanBeDetected = false;
-    private bool m_EnterDestroy;
-    private bool m_StayDestroy;
-    private bool m_ExitDestroy;
-
-    private void Awake()
-    {
-        //    if (!GetComponent<BoxCollider2D>())
-        //    {
-        //        gameObject.AddComponent<BoxCollider2D>();
-
-        //        BoxCollider2D collider2D = GetComponent<BoxCollider2D>();
-        //        collider2D.size = Vector3.one;
-        //        collider2D.isTrigger = true;
-        //    }
-        //    if (!GetComponent<Rigidbody2D>())
-        //    {
-        //        gameObject.AddComponent<Rigidbody2D>();
-        //        GetComponent<Rigidbody2D>().isKinematic = true;
-        //    }
-    }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         //Debug.LogFormat("{0} enter here.", other.name);
         if (other.tag == "Player")
         {
-            if (m_EnterDestroy && !m_CanBeDetected)
+            if (EnterDestroy && !m_CanBeDetected)
             {
                 m_CanBeDetected = true;
             }
@@ -82,7 +32,7 @@ public class ItemDetector : MonoBehaviour
         //Debug.LogFormat("{0} stay here.", other.name);
         if (other.tag == "Player")
         {
-            if (!m_CanBeDetected || !m_StayDestroy) return;
+            if (!m_CanBeDetected || !StayDestroy) return;
 
             m_StayTime -= Time.deltaTime;
 
@@ -108,7 +58,7 @@ public class ItemDetector : MonoBehaviour
         //Debug.LogFormat("{0} exit here.", other.name);
         if (other.tag == "Player")
         {
-            if (m_ExitDestroy)
+            if (ExitDestroy)
             {
                 m_StayTime = 0;
                 if (_CurItemState != ItemState.eStateFour)
@@ -122,12 +72,11 @@ public class ItemDetector : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.LogErrorFormat("{0} state {1}", this.name, m_StayDestroy);
-        if (m_StayDestroy)
+        Debug.LogErrorFormat("{0} state {1}", this.name, StayDestroy);
+        if (StayDestroy)
         {
             Debug.LogError("OnMouseDown");
             CharacterAbilities.instance.FetchGameObject(this.gameObject);
-            DestroyDetector.instance.RemoveStayDestroys(gameObject);
         }
     }
 

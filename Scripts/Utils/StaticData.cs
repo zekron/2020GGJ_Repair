@@ -34,6 +34,19 @@ public enum ItemType
     Tomb,
     Candle,
 }
+public enum AncientState
+{
+    eStateOne,
+    eStateTwo,
+    eStateThree,
+    eStateFour,
+    eStateFive,
+}
+public enum AncientType
+{
+    TulipAncient,
+    RoseAncient,
+}
 #endregion
 
 #region Event

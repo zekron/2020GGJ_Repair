@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _CurItemState: 3
+  _ItemType: 0
 --- !u!114 &2194086453724911171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +238,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7, y: 3, z: 1}
+  m_Size: {x: 7, y: 3, z: 22}
   m_Center: {x: -0.2, y: -1.25, z: 0}
 --- !u!54 &2194086453724911172
 Rigidbody:

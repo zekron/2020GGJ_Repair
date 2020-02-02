@@ -956,7 +956,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268503960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 397904260}
@@ -1005,7 +1005,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311659507}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 20}
+  m_LocalPosition: {x: 0, y: 0, z: 25}
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children: []
   m_Father: {fileID: 1109752634}
@@ -1068,7 +1068,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 335889632}
-  - component: {fileID: 335889633}
   m_Layer: 8
   m_Name: Abilities
   m_TagString: Untagged
@@ -1090,21 +1089,6 @@ Transform:
   m_Father: {fileID: 2896894}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &335889633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335889631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2115f947e38adca4ebbe17dcb8e62930, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _KeyTimeWalkBack: 113
-  _KeyFetchGameObject: 101
-  _HoldInHand: 0
 --- !u!1 &340599846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,7 +1517,7 @@ PrefabInstance:
     - target: {fileID: 2161711026261900107, guid: 631f8103aab3e8f45932ad268133e63c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.7
+      value: 19.1
       objectReference: {fileID: 0}
     - target: {fileID: 2161711026261900107, guid: 631f8103aab3e8f45932ad268133e63c,
         type: 3}
@@ -32514,7 +32498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109752629}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 4, z: -10}
+  m_LocalPosition: {x: -0.01, y: 4, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 311659508}
@@ -32535,9 +32519,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2896894}
-  smoothDampTime: 0.98
+  smoothDampTime: 0.02
   transform: {fileID: 0}
-  cameraOffset: {x: 0.16, y: 0, z: 10}
+  cameraOffset: {x: 0.16, y: 0, z: 15}
   useFixedUpdate: 0
 --- !u!1001 &1138333385
 PrefabInstance:
@@ -34806,6 +34790,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1974972529}
+  - component: {fileID: 1974972532}
   - component: {fileID: 1974972530}
   - component: {fileID: 1974972531}
   m_Layer: 0
@@ -34855,6 +34840,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1974972532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974972528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2115f947e38adca4ebbe17dcb8e62930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _KeyTimeWalkBack: 113
+  _KeyFetchGameObject: 101
+  _HoldInHand: 0
 --- !u!1 &1982023881
 GameObject:
   m_ObjectHideFlags: 0
@@ -35719,6 +35719,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6834414375259766435, guid: 7da84e45b0750d74ea9acabfd161694b,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7da84e45b0750d74ea9acabfd161694b, type: 3}
 --- !u!1001 &2520543065452612619
@@ -35741,7 +35746,7 @@ PrefabInstance:
     - target: {fileID: 2161711026261900107, guid: 631f8103aab3e8f45932ad268133e63c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.66
+      value: 9.8
       objectReference: {fileID: 0}
     - target: {fileID: 2161711026261900107, guid: 631f8103aab3e8f45932ad268133e63c,
         type: 3}

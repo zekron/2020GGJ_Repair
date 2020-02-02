@@ -55,13 +55,4 @@ public class DestroyDetector : MonoBehaviour
             }
         }
     }
-
-    public void RemoveStayDestroys(GameObject obj)
-    {
-        if (_StayDestroys.Contains(obj))
-        {
-            _StayDestroys.Remove(obj);
-            Debug.LogError("Remains _StayDestroys.Count " + _StayDestroys.Count);
-        }
-    }
 }
