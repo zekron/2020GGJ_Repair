@@ -7,6 +7,10 @@ public class Detector : MonoBehaviour
     private bool m_EnterDestroy;
     private bool m_StayDestroy;
     private bool m_ExitDestroy;
+    /// <summary>
+    /// 是否被瘟疫光环影响
+    /// </summary>
+    public bool _CanBeDetected = false;
 
     #region 属性
     /// <summary>

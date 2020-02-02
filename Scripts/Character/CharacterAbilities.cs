@@ -6,20 +6,23 @@ using DG.Tweening;
 public class CharacterAbilities : MonoBehaviour
 {
     public static CharacterAbilities instance = null;
+
     public KeyCode _KeyTimeWalkBack = KeyCode.Q;
     public KeyCode _KeyFetchGameObject = KeyCode.W;
-
     public bool _HoldInHand = false;
+
+    private Vector3 _CurRebitrhPoint;
+    private List<GameObject> m_TempStayDestroys = new List<GameObject>();
     private bool m_HoldTimeFlag = false;
     private bool m_TimeWalkBackLock = false;
     private bool m_FetchGameObjectFlag = false;
     private float m_HoldTime = 0f;
 
-    private List<GameObject> m_TempStayDestroys;
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
+        _CurRebitrhPoint = transform.position;
     }
 
     // Update is called once per frame
@@ -66,60 +69,119 @@ public class CharacterAbilities : MonoBehaviour
 
     void TimeWalkBack()
     {
-
         m_TempStayDestroys = DestroyDetector.instance._StayDestroys;
         if (m_TempStayDestroys.Count <= 0) return;
 
         for (int i = 0; i < m_TempStayDestroys.Count; i++)
         {
-            Item itemHoldInHand = m_TempStayDestroys[i].GetComponent<Item>();
-            ItemDetector detector = m_TempStayDestroys[i].GetComponent<ItemDetector>();
-            ItemState itemState = detector._CurItemState;
-            if (itemState < ItemState.eStateFour)
+            InteractiveObject tempObject = m_TempStayDestroys[i].GetComponent<InteractiveObject>();
+            ItemDetector itemDetector = m_TempStayDestroys[i].GetComponent<ItemDetector>();
+            AncientDetector ancientDetector = m_TempStayDestroys[i].GetComponent<AncientDetector>();
+            if (itemDetector)
             {
-                detector._CurItemState = itemState + 1;
-                itemHoldInHand.ChangeSprite(detector._CurItemState, 1f);
+                if (itemDetector._CurItemState < ItemState.eStateFour)
+                {
+                    itemDetector._CurItemState++;
+                    tempObject.ChangeSprite(itemDetector._CurItemState, 1f);
+                }
+                else
+                {
+                    m_TimeWalkBackLock = true;
+                    itemDetector._CurItemState = ItemState.eStateOne;
+                    tempObject.ChangeSprite(itemDetector._CurItemState, 1f);
+                }
             }
-            else
+            else if (ancientDetector)
             {
-                m_TimeWalkBackLock = true;
-                detector._CurItemState = ItemState.eStateOne;
-                itemHoldInHand.ChangeSprite(detector._CurItemState, 1f);
+                if (ancientDetector._CurAncientState < AncientState.eStateFour)
+                {
+                    ancientDetector._CurAncientState++;
+                    tempObject.ChangeSprite(ancientDetector._CurAncientState, 1f);
+                }
+                else if (ancientDetector._CurAncientState == AncientState.eStateFour)
+                {
+                    m_TimeWalkBackLock = true;
+                    ancientDetector._CurAncientState = AncientState.eStateOne;
+                    tempObject.ChangeSprite(ancientDetector._CurAncientState, 1f);
+                }
             }
         }
     }
 
     void TimeLock()
     {
-        Debug.Log("TimeLock");
         m_TimeWalkBackLock = true;
         if (m_TempStayDestroys.Count <= 0) return;
+
+        TryUnlockingAncient();
 
         DOTween.Sequence().AppendInterval(3).AppendCallback(() =>
         {
             for (int i = 0; i < m_TempStayDestroys.Count; i++)
             {
-                Item itemHoldInHand = m_TempStayDestroys[i].GetComponent<Item>();
-                ItemDetector detector = m_TempStayDestroys[i].GetComponent<ItemDetector>();
-                ItemState itemState = detector._CurItemState;
-                if (itemState > ItemState.eStateOne)
+                InteractiveObject tempObject = m_TempStayDestroys[i].GetComponent<InteractiveObject>();
+                ItemDetector itemDetector = m_TempStayDestroys[i].GetComponent<ItemDetector>();
+                AncientDetector ancientDetector = m_TempStayDestroys[i].GetComponent<AncientDetector>();
+                if (itemDetector)
                 {
-                    detector._CurItemState = ItemState.eStateOne;
-                    itemHoldInHand.ChangeSprite(detector._CurItemState, 1f);
+                    if (itemDetector._CurItemState > ItemState.eStateOne)
+                    {
+                        itemDetector._CurItemState = ItemState.eStateOne;
+                        tempObject.ChangeSprite(itemDetector._CurItemState, 1f);
+                    }
+                }
+                else if (ancientDetector)
+                {
+                    if (ancientDetector._CurAncientState > AncientState.eStateOne
+                    && ancientDetector._CurAncientState != AncientState.eStateFive)
+                    {
+                        ancientDetector._CurAncientState = AncientState.eStateOne;
+                        tempObject.ChangeSprite(ancientDetector._CurAncientState, 1f);
+                    }
                 }
             }
 
         });
     }
 
-    public void FetchGameObject(GameObject obj)
+    public void FetchItemObject(GameObject obj)
     {
         if (!m_FetchGameObjectFlag) return;
-        if (_HoldInHand) return;
 
-        Debug.LogError("FetchGameObject");
-        _HoldInHand = true;
         ItemDetector holdInHand = obj.GetComponent<ItemDetector>();
         CharacterPackage.instance.SaveItem(holdInHand, obj);
+    }
+
+    public void TryUnlockingAncient()
+    {
+        if (!CharacterPackage.instance._HoldingItem) return;
+        
+        for (int i = 0; i < m_TempStayDestroys.Count; i++)
+        {
+            AncientDetector ancientDetector = m_TempStayDestroys[i].GetComponent<AncientDetector>();
+            if (ancientDetector != null)
+            {
+                Debug.LogError(ancientDetector.name);
+                PackageItem holdInHand = CharacterPackage.instance._HoldingItem;
+                if (ancientDetector._CurAncientState == ancientDetector._AncientKeyState
+                    && ancientDetector._ItemKeyState == holdInHand._PackageItemState
+                    && ancientDetector._ItemKeyType == holdInHand._PackageItemType)
+                {
+                    ancientDetector.UnLockDoor();
+                }
+                break;
+            }
+        }
+
+    }
+
+    public void RebirthCharacter()
+    {
+        transform.parent.position = _CurRebitrhPoint;
+    }
+
+    public void RefreshRebirthPoint(Vector3 newPoint)
+    {
+        _CurRebitrhPoint = newPoint;
     }
 }

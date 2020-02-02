@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd723edf29cb044e885bbe891531c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _CanBeDetected: 0
   _CurItemState: 3
   _ItemType: 0
 --- !u!114 &2194086453724911171
@@ -220,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd02ac2fcdecf149ac20c0820a13acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ItemSprites:
+  _ObjectSprites:
   - {fileID: 21300000, guid: aebda7134ba1dbd4aaada11ce548615e, type: 3}
   - {fileID: 21300000, guid: cb3c691168446e84c876110e1fea284b, type: 3}
   - {fileID: 21300000, guid: 33563f5dde281914599905d952db0e72, type: 3}

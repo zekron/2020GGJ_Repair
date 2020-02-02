@@ -20,19 +20,23 @@ public class DestroyDetector : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Debug.LogFormat("{0} enter here.", other.name);
-        if (other.tag == "Item")
+        if (other.tag == "Item" || other.tag == "Ancient")
         {
             //Debug.LogFormat("{0} enter here.", other.name);
-            other.GetComponent<ItemDetector>().EnterDestroy = true;
+            other.GetComponent<Detector>().EnterDestroy = true;
+        }
+        if (other.tag == "Border")
+        {
+            Debug.LogFormat("{0} enter here.", other.name);
+            CharacterAbilities.instance.RebirthCharacter();
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Item")
+        if (other.tag == "Item" || other.tag == "Ancient")
         {
-            Debug.LogFormat("{0} stay here.", other.name);
-            other.GetComponent<ItemDetector>().StayDestroy = true;
+            other.GetComponent<Detector>().StayDestroy = true;
             if (!_StayDestroys.Contains(other.gameObject))
             {
                 _StayDestroys.Add(other.gameObject);
@@ -43,10 +47,10 @@ public class DestroyDetector : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Item")
+        if (other.tag == "Item" || other.tag == "Ancient")
         {
             //Debug.LogFormat("{0} exit here.", other.name);
-            other.GetComponent<ItemDetector>().ExitDestroy = true;
+            other.GetComponent<Detector>().ExitDestroy = true;
 
             if (_StayDestroys.Contains(other.gameObject))
             {

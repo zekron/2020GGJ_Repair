@@ -10,19 +10,15 @@ public class ItemDetector : Detector
     public ItemType _ItemType;
 
     private float m_StayTime = 0;
-    /// <summary>
-    /// 是否被瘟疫光环影响
-    /// </summary>
-    private bool m_CanBeDetected = false;
     
     private void OnTriggerEnter(Collider other)
     {
         //Debug.LogFormat("{0} enter here.", other.name);
         if (other.tag == "Player")
         {
-            if (EnterDestroy && !m_CanBeDetected)
+            if (EnterDestroy && !_CanBeDetected)
             {
-                m_CanBeDetected = true;
+                _CanBeDetected = true;
             }
             //Debug.LogFormat("{0} enter here.", other.name);
         }
@@ -32,7 +28,7 @@ public class ItemDetector : Detector
         //Debug.LogFormat("{0} stay here.", other.name);
         if (other.tag == "Player")
         {
-            if (!m_CanBeDetected || !StayDestroy) return;
+            if (!_CanBeDetected || !StayDestroy) return;
 
             m_StayTime -= Time.deltaTime;
 
@@ -40,7 +36,7 @@ public class ItemDetector : Detector
             {
                 if (--_CurItemState < ItemState.eStateOne)
                 {
-                    m_CanBeDetected = false;
+                    _CanBeDetected = false;
                     _CurItemState = ItemState.eStateOne;
                     //GetComponent<Item>().ChangeSprite(_CurItemState);
                     //_OnDestroyDetectorTriggered.Invoke(_CurItemState);
@@ -76,18 +72,7 @@ public class ItemDetector : Detector
         if (StayDestroy)
         {
             Debug.LogError("OnMouseDown");
-            CharacterAbilities.instance.FetchGameObject(this.gameObject);
+            CharacterAbilities.instance.FetchItemObject(this.gameObject);
         }
-    }
-
-    public static MyItemStateEvent _OnDestroyDetectorTriggered = new MyItemStateEvent();
-    public void Add_OnDestroyDetectorTriggered(UnityAction<ItemState> action)
-    {
-        Remove_OnDestroyDetectorTriggered(action);
-        _OnDestroyDetectorTriggered.AddListener(action);
-    }
-    public void Remove_OnDestroyDetectorTriggered(UnityAction<ItemState> action)
-    {
-        _OnDestroyDetectorTriggered.RemoveListener(action);
     }
 }

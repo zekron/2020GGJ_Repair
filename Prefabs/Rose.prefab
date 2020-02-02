@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd723edf29cb044e885bbe891531c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _CanBeDetected: 0
   _CurItemState: 3
   _ItemType: 1
 --- !u!114 &1832427224984707099
@@ -62,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5993dd448015c0b46abfa5330cc1fc84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ItemSprites:
+  _ObjectSprites:
   - {fileID: 21300000, guid: df213290388ee33438f3326b7f0ed55a, type: 3}
   - {fileID: 21300000, guid: bb574d1c63b4eb34a96f0319b831a2e4, type: 3}
   - {fileID: 21300000, guid: fb77964f4bc514946a1ae08eb907b748, type: 3}
