@@ -12,7 +12,6 @@ public class Item : MonoBehaviour
 
     private void Start()
     {
-        ItemDetector.instance.Add_OnDestroyDetectorTriggered(ChangeSprite);
         _CurSprite.sprite = _ItemSprites[_ItemSprites.Length - 1];
         _NewSprite.sprite = _ItemSprites[_ItemSprites.Length - 2];
     }

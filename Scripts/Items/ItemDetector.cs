@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 public class ItemDetector : MonoBehaviour
 {
-    public static ItemDetector instance = null;
     public ItemState _CurItemState = ItemState.eStateFour;
     #region 属性
     public bool EnterDestroy
@@ -50,7 +49,6 @@ public class ItemDetector : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
         //    if (!GetComponent<BoxCollider2D>())
         //    {
         //        gameObject.AddComponent<BoxCollider2D>();
