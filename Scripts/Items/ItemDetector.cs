@@ -119,6 +119,15 @@ public class ItemDetector : MonoBehaviour
         }
     }
 
+    private void OnMouseDown()
+    {
+        if (m_StayDestroy)
+        {
+            Debug.LogError("OnMouseDown");
+            CharacterAbilities.instance.FetchGameObject(this.gameObject);
+        }
+    }
+
     public static MyItemStateEvent _OnDestroyDetectorTriggered = new MyItemStateEvent();
     public void Add_OnDestroyDetectorTriggered(UnityAction<ItemState> action)
     {

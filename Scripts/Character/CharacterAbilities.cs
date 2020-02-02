@@ -1,18 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CharacterAbilities : MonoBehaviour
 {
+    public static CharacterAbilities instance = null;
     public KeyCode _KeyTimeWalkBack = KeyCode.Q;
+    public KeyCode _KeyFetchGameObject = KeyCode.W;
 
     private bool m_HoldTimeFlag = false;
+    private bool m_FetchGameObjectFlag = false;
     private float m_HoldTime = 0f;
+
     private GameObject _HoldInHand;
     // Start is called before the first frame update
     void Start()
     {
-
+        instance = this;
     }
 
     // Update is called once per frame
@@ -40,6 +45,17 @@ public class CharacterAbilities : MonoBehaviour
             m_HoldTime = 0;
         }
         #endregion
+
+        #region FetchGameObject
+        if (Input.GetKey(_KeyFetchGameObject))
+        {
+            m_FetchGameObjectFlag = true;
+        }
+        if (Input.GetKeyUp(_KeyFetchGameObject))
+        {
+            m_FetchGameObjectFlag = false;
+        }
+        #endregion
     }
 
     void TimeWalkBack(int index)
@@ -57,10 +73,14 @@ public class CharacterAbilities : MonoBehaviour
         }
     }
 
-    void FetchGameObject()
+    public void FetchGameObject(GameObject obj)
     {
+        if (!m_FetchGameObjectFlag) return;
         if (_HoldInHand) return;
 
-
+        Debug.LogError("FetchGameObject");
+        _HoldInHand = obj;
+        _HoldInHand.transform.SetParent(transform.parent);
+        _HoldInHand.transform.DOLocalMove(new Vector3(2, 1, 0), 0.3f);
     }
 }
