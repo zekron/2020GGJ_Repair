@@ -1,13 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class StaticData : MonoBehaviour
+public static class StaticData
 {
     public static Color ColorFadeOut = new Color(1, 1, 1, 0);
     public static Color ColorFull = new Color(1, 1, 1, 1);
-    public static float DestroyDuration = 0.2f;
+    public const float DestroyDuration = 0.2f;
+
+
+    public static IList<T> Clone<T>(this IList<T> listToClone) where T : ICloneable
+    {
+        return listToClone.Select(item => (T)item.Clone()).ToList();
+    }
 }
 
 #region Enum
@@ -16,7 +24,15 @@ public enum ItemState
     eStateOne,
     eStateTwo,
     eStateThree,
-    eStateFour
+    eStateFour,
+}
+public enum ItemType
+{
+    Tulip,
+    Rose,
+    Tree,
+    Tomb,
+    Candle,
 }
 #endregion
 

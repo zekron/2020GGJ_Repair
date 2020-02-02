@@ -16,20 +16,20 @@ public class Item : MonoBehaviour
         _NewSprite.sprite = _ItemSprites[_ItemSprites.Length - 2];
     }
 
-    public void ChangeSprite(ItemState state)
+    public void ChangeSprite(ItemState state,float duration = StaticData.DestroyDuration)
     {
         _CurSprite.DOComplete();
         _NewSprite.DOComplete();
 
         _NewSprite.sprite = _ItemSprites[(int)state];
 
-        _NewSprite.DOFade(1, StaticData.DestroyDuration)
+        _NewSprite.DOFade(1, duration)
             .OnComplete(
             () =>
             {
                 _NewSprite.color = StaticData.ColorFadeOut;
             });
-        _CurSprite.DOFade(0, StaticData.DestroyDuration)
+        _CurSprite.DOFade(0, duration)
             .OnComplete(
             () =>
             {

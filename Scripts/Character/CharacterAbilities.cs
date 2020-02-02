@@ -10,10 +10,12 @@ public class CharacterAbilities : MonoBehaviour
     public KeyCode _KeyFetchGameObject = KeyCode.W;
 
     private bool m_HoldTimeFlag = false;
+    private bool m_TimeWalkBackFlag = false;
     private bool m_FetchGameObjectFlag = false;
     private float m_HoldTime = 0f;
 
     private GameObject _HoldInHand;
+    private List<GameObject> m_TempStayDestroys;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,10 @@ public class CharacterAbilities : MonoBehaviour
         if (m_HoldTimeFlag)
         {
             m_HoldTime += Time.deltaTime;
+        }
+        if (Input.GetKeyDown(_KeyTimeWalkBack))
+        {
+            DOTween.Sequence().AppendInterval(5).AppendCallback(TimeLock);
         }
         if (Input.GetKey(_KeyTimeWalkBack))
         {
@@ -42,7 +48,7 @@ public class CharacterAbilities : MonoBehaviour
         if (Input.GetKeyUp(_KeyTimeWalkBack))
         {
             m_HoldTimeFlag = false;
-            m_HoldTime = 0;
+            DOTween.Sequence().AppendInterval(3).AppendCallback(TimeLock);
         }
         #endregion
 
@@ -61,15 +67,38 @@ public class CharacterAbilities : MonoBehaviour
     void TimeWalkBack(int index)
     {
         Debug.Log("TimeWalkBack" + index);
-        if (!_HoldInHand) return;
 
-        Item itemHoldInHand = _HoldInHand.GetComponent<Item>();
-        ItemDetector detector = _HoldInHand.GetComponent<ItemDetector>();
-        ItemState itemState = detector._CurItemState;
-        if (itemState < ItemState.eStateFour)
+        m_TempStayDestroys = DestroyDetector.instance._StayDestroys;
+        if (m_TempStayDestroys.Count <= 0) return;
+
+        for (int i = 0; i < m_TempStayDestroys.Count; i++)
         {
-            detector._CurItemState = itemState + index;
-            itemHoldInHand.ChangeSprite(detector._CurItemState);
+            Item itemHoldInHand = m_TempStayDestroys[i].GetComponent<Item>();
+            ItemDetector detector = m_TempStayDestroys[i].GetComponent<ItemDetector>();
+            ItemState itemState = detector._CurItemState;
+            if (itemState < ItemState.eStateFour)
+            {
+                detector._CurItemState = itemState + 1;
+                itemHoldInHand.ChangeSprite(detector._CurItemState, 1f);
+            }
+        }
+    }
+
+    void TimeLock()
+    {
+        Debug.Log("TimeLock");
+        if (m_TempStayDestroys.Count <= 0) return;
+
+        for (int i = 0; i < m_TempStayDestroys.Count; i++)
+        {
+            Item itemHoldInHand = m_TempStayDestroys[i].GetComponent<Item>();
+            ItemDetector detector = m_TempStayDestroys[i].GetComponent<ItemDetector>();
+            ItemState itemState = detector._CurItemState;
+            if (itemState > ItemState.eStateOne)
+            {
+                detector._CurItemState = ItemState.eStateOne;
+                itemHoldInHand.ChangeSprite(detector._CurItemState, 1f);
+            }
         }
     }
 
