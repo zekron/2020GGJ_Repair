@@ -5,22 +5,22 @@ using UnityEngine;
 public class AncientDetector : Detector
 {
     public AncientState _CurAncientState;
+    public GameObject _ShieldDoor;
 
     [Header("Key")]
-    public AncientState _AncientKeyState;
+    public List<AncientState> _AncientKeyState;
 
-    public ItemState _ItemKeyState;
-    public ItemType _ItemKeyType;
-
-    public GameObject _ShieldDoor;
+    public List<ItemState> _ItemKeyState;
+    public List<ItemType> _ItemKeyType;
     private Vector3 _RebirthPoint;
     private Ancient m_MyAncient;
 
-    private int m_LockNum = 1;
+    private int m_LockNum;
     private float m_StayTime = 0;
 
     private void Start()
     {
+        m_LockNum = _AncientKeyState.Count;
         _RebirthPoint = transform.position;
         m_MyAncient = GetComponent<Ancient>();
 
@@ -77,10 +77,30 @@ public class AncientDetector : Detector
         }
     }
 
-    public void UnLockDoor()
+    public void UnLockDoor(PackageItem item)
     {
-        m_LockNum--;
-        m_MyAncient.ChangeAncientSprite(m_LockNum, 1);
+        int keyIndex = 0;
+        for (int i = 0; i < _AncientKeyState.Count; i++)
+        {
+            if (_AncientKeyState[i] == _CurAncientState)
+            {
+                keyIndex = i;
+                break;
+            }
+        }
+        if (_AncientKeyState[keyIndex] == _CurAncientState
+            && _ItemKeyState[keyIndex] == item._PackageItemState
+            && _ItemKeyType[keyIndex] == item._PackageItemType)
+        {
+            //_AncientKeyState.Remove(_CurAncientState);
+            //_ItemKeyState.Remove(item._PackageItemState);
+            //_ItemKeyType.Remove(item._PackageItemType);
+            m_MyAncient.ChangeAncientSprite(keyIndex, 1);
+
+            m_LockNum--;
+        }
+        else return;
+
         if (m_LockNum > 0) return;
 
         _CurAncientState = AncientState.eStateFive;

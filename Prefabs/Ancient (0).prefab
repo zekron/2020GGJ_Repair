@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165228865}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -5.920002, y: -0.4000001, z: 2}
+  m_LocalPosition: {x: -10, y: -4, z: 2}
   m_LocalScale: {x: 8, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6834414375259766439}
@@ -172,7 +172,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3e74f7b921ecdf341b9b3bfc04764a9e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0de228756006c5842a0a21e4207e6b5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -251,7 +251,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 08a1f472acb6f7b41a34036426b95bd8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 759cdee2d356a25439fe21f66847e545, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
@@ -312,14 +312,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ObjectSprites:
-  - {fileID: 21300000, guid: ed0e1925c2519d644a2c101f4bac8c76, type: 3}
-  - {fileID: 21300000, guid: b81a912f6b60f8c4585489bbe3dccda5, type: 3}
-  - {fileID: 21300000, guid: 08a1f472acb6f7b41a34036426b95bd8, type: 3}
-  - {fileID: 21300000, guid: 3e74f7b921ecdf341b9b3bfc04764a9e, type: 3}
+  - {fileID: 21300000, guid: 479f09887fc497e4c95decdc375b9834, type: 3}
+  - {fileID: 21300000, guid: fd67e30741b5b8a4ab0d4d5d48bd7a64, type: 3}
+  - {fileID: 21300000, guid: 759cdee2d356a25439fe21f66847e545, type: 3}
+  - {fileID: 21300000, guid: 0de228756006c5842a0a21e4207e6b5b, type: 3}
   _CurSprite: {fileID: 6834414373301867649}
   _NewSprite: {fileID: 6834414373984348489}
-  _FullAncientSprite:
-  - {fileID: 21300000, guid: 8eef6cf6fff9074468d07e5094f78642, type: 3}
+  _FinalAncientSprites:
+  - {fileID: 21300000, guid: 24861dc45fad4df4e8697f6474dee9fb, type: 3}
+  - {fileID: 21300000, guid: 1acd27a2a9c141c468d9b049233d6a9a, type: 3}
+  - {fileID: 21300000, guid: 0fe4b1b1cc2ea9043b387cf6d49c4491, type: 3}
+  - {fileID: 21300000, guid: a4f48ff100346c842956fd08d4d90aab, type: 3}
 --- !u!114 &6459267136744694499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,10 +338,10 @@ MonoBehaviour:
   _CanBeDetected: 0
   _InTimeWalkBack: 0
   _CurAncientState: 3
-  _AncientKeyState: 3
-  _ItemKeyState: 2
-  _ItemKeyType: 0
   _ShieldDoor: {fileID: 165228865}
+  _AncientKeyState: 020000000200000002000000
+  _ItemKeyState: 000000000200000003000000
+  _ItemKeyType: 020000000300000004000000
 --- !u!65 &6834414375259766435
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -350,8 +353,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.6, y: 9, z: 11}
-  m_Center: {x: 0, y: 0.1, z: 0}
+  m_Size: {x: 19, y: 15, z: 11}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6834414375259766433
 Rigidbody:
   m_ObjectHideFlags: 0

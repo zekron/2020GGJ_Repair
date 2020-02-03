@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class Ancient : InteractiveObject
 {
-    public Sprite[] _FullAncientSprite;
+    [SerializeField]
+    public Sprite[][] _KeysAncientSprites;
+    public Sprite[] _FinalAncientSprites;
 
-    public void ChangeAncientSprite(int index, float duration = StaticData.DestroyDuration)
+    public void ChangeAncientSprite(int keyIndex, float duration = StaticData.DestroyDuration)
     {
         _CurSprite.DOComplete();
         _NewSprite.DOComplete();
 
-        _NewSprite.sprite = _FullAncientSprite[index];
+        _NewSprite.sprite = _FinalAncientSprites[keyIndex];
 
         _NewSprite.DOFade(1, duration)
             .OnComplete(

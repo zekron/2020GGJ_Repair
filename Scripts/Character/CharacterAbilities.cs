@@ -144,13 +144,7 @@ public class CharacterAbilities : MonoBehaviour
             if (ancientDetector != null)
             {
                 Debug.LogError(ancientDetector._CurAncientState);
-                if (ancientDetector._CurAncientState
-                    == ancientDetector._AncientKeyState
-                    && ancientDetector._ItemKeyState == holdInHand._PackageItemState
-                    && ancientDetector._ItemKeyType == holdInHand._PackageItemType)
-                {
-                    ancientDetector.UnLockDoor();
-                }
+                    ancientDetector.UnLockDoor(holdInHand);
                 break;
             }
         }
