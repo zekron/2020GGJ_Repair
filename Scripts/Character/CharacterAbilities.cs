@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class CharacterAbilities : MonoBehaviour
 {
@@ -79,6 +80,7 @@ public class CharacterAbilities : MonoBehaviour
             AncientDetector ancientDetector = m_TempStayDestroys[i].GetComponent<AncientDetector>();
             if (itemDetector)
             {
+                itemDetector._InTimeWalkBack = true;
                 if (itemDetector._CurItemState < ItemState.eStateFour)
                 {
                     itemDetector._CurItemState++;
@@ -93,6 +95,7 @@ public class CharacterAbilities : MonoBehaviour
             }
             else if (ancientDetector)
             {
+                ancientDetector._InTimeWalkBack = true;
                 if (ancientDetector._CurAncientState < AncientState.eStateFour)
                 {
                     ancientDetector._CurAncientState++;
@@ -117,30 +120,7 @@ public class CharacterAbilities : MonoBehaviour
 
         DOTween.Sequence().AppendInterval(3).AppendCallback(() =>
         {
-            for (int i = 0; i < m_TempStayDestroys.Count; i++)
-            {
-                InteractiveObject tempObject = m_TempStayDestroys[i].GetComponent<InteractiveObject>();
-                ItemDetector itemDetector = m_TempStayDestroys[i].GetComponent<ItemDetector>();
-                AncientDetector ancientDetector = m_TempStayDestroys[i].GetComponent<AncientDetector>();
-                if (itemDetector)
-                {
-                    if (itemDetector._CurItemState > ItemState.eStateOne)
-                    {
-                        itemDetector._CurItemState = ItemState.eStateOne;
-                        tempObject.ChangeSprite(itemDetector._CurItemState, 1f);
-                    }
-                }
-                else if (ancientDetector)
-                {
-                    if (ancientDetector._CurAncientState > AncientState.eStateOne
-                    && ancientDetector._CurAncientState != AncientState.eStateFive)
-                    {
-                        ancientDetector._CurAncientState = AncientState.eStateOne;
-                        tempObject.ChangeSprite(ancientDetector._CurAncientState, 1f);
-                    }
-                }
-            }
-
+            _OnTimeLock.Invoke();
         });
     }
 
@@ -186,4 +166,17 @@ public class CharacterAbilities : MonoBehaviour
     {
         _CurRebitrhPoint = newPoint;
     }
+
+    #region UnityEvent
+    public static UnityEvent _OnTimeLock = new UnityEvent();
+    public static void Remove_OnTimeLock(UnityAction action)
+    {
+        _OnTimeLock.RemoveListener(action);
+    }
+    public static void Add_OnTimeLock(UnityAction action)
+    {
+        Remove_OnTimeLock(action);
+        _OnTimeLock.AddListener(action);
+    }
+    #endregion
 }

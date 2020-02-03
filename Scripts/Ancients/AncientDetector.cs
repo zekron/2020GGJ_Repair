@@ -14,6 +14,7 @@ public class AncientDetector : Detector
 
     public GameObject _ShieldDoor;
     private Vector3 _RebirthPoint;
+    private Ancient m_MyAncient;
 
     private int m_LockNum = 1;
     private float m_StayTime = 0;
@@ -21,6 +22,9 @@ public class AncientDetector : Detector
     private void Start()
     {
         _RebirthPoint = transform.position;
+        m_MyAncient = GetComponent<Ancient>();
+
+        CharacterAbilities.Add_OnTimeLock(ResetAncientState);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -51,7 +55,7 @@ public class AncientDetector : Detector
                     m_StayTime = 0;
                     return;
                 }
-                GetComponent<Ancient>().ChangeSprite(_CurAncientState);
+                m_MyAncient.ChangeSprite(_CurAncientState);
                 m_StayTime = StaticData.DestroyDuration;
             }
         }
@@ -76,11 +80,21 @@ public class AncientDetector : Detector
     public void UnLockDoor()
     {
         m_LockNum--;
-        GetComponent<Ancient>().ChangeAncientSprite(m_LockNum, 1);
+        m_MyAncient.ChangeAncientSprite(m_LockNum, 1);
         if (m_LockNum > 0) return;
 
         _CurAncientState = AncientState.eStateFive;
         _ShieldDoor.SetActive(false);
         CharacterAbilities.instance.RefreshRebirthPoint(_RebirthPoint);
+    }
+
+    public void ResetAncientState()
+    {
+        if (_CurAncientState == AncientState.eStateFive) return;
+        if (!_InTimeWalkBack) return;
+
+        _CurAncientState = AncientState.eStateOne;
+        m_MyAncient.ChangeSprite(_CurAncientState);
+        _InTimeWalkBack = false;
     }
 }

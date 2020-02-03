@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _CanBeDetected: 0
+  _InTimeWalkBack: 0
   _CurItemState: 3
   _ItemType: 0
 --- !u!114 &7872119138408446704

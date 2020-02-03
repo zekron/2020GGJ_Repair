@@ -10,7 +10,14 @@ public class ItemDetector : Detector
     public ItemType _ItemType;
 
     private float m_StayTime = 0;
-    
+    private Item m_MyItem;
+
+    private void Start()
+    {
+        m_MyItem = GetComponent<Item>();
+        CharacterAbilities.Add_OnTimeLock(ResetItemState);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //Debug.LogFormat("{0} enter here.", other.name);
@@ -38,13 +45,10 @@ public class ItemDetector : Detector
                 {
                     _CanBeDetected = false;
                     _CurItemState = ItemState.eStateOne;
-                    //GetComponent<Item>().ChangeSprite(_CurItemState);
-                    //_OnDestroyDetectorTriggered.Invoke(_CurItemState);
                     m_StayTime = 0;
                     return;
                 }
-                GetComponent<Item>().ChangeSprite(_CurItemState);
-                //_OnDestroyDetectorTriggered.Invoke(_CurItemState);
+                m_MyItem.ChangeSprite(_CurItemState);
                 m_StayTime = StaticData.DestroyDuration;
             }
         }
@@ -74,5 +78,25 @@ public class ItemDetector : Detector
             Debug.LogError("OnMouseDown");
             CharacterAbilities.instance.FetchItemObject(this.gameObject);
         }
+    }
+
+    public void ResetItemState()
+    {
+        if (!_InTimeWalkBack) return;
+
+        _CurItemState = ItemState.eStateOne;
+        m_MyItem.ChangeSprite(_CurItemState);
+        _InTimeWalkBack = false;
+    }
+
+    public static MyItemStateEvent _OnItemStateChanged = new MyItemStateEvent();
+    public static void Remove_OnItemStateChanged(UnityAction<ItemState> action)
+    {
+        _OnItemStateChanged.RemoveListener(action);
+    }
+    public static void Add_OnItemStateChanged(UnityAction<ItemState> action)
+    {
+        Remove_OnItemStateChanged(action);
+        _OnItemStateChanged.AddListener(action);
     }
 }

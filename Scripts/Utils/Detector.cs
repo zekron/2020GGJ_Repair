@@ -11,6 +11,10 @@ public class Detector : MonoBehaviour
     /// 是否被瘟疫光环影响
     /// </summary>
     public bool _CanBeDetected = false;
+    /// <summary>
+    /// 是否被回到过去影响
+    /// </summary>
+    public bool _InTimeWalkBack = false;
 
     #region 属性
     /// <summary>

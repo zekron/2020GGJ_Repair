@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _CanBeDetected: 0
-  _CurItemState: 3
+  _InTimeWalkBack: 0
   _ItemType: 2
 --- !u!114 &3451036824160421563
 MonoBehaviour:
@@ -70,6 +70,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 42ed32264a9c06c46a430fbaf5db9ca6, type: 3}
   _CurSprite: {fileID: 3451036826117794972}
   _NewSprite: {fileID: 3451036825166582100}
+  m_Animator: {fileID: 0}
 --- !u!65 &3451036824160421566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -188,6 +189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3451036826117794971}
   - component: {fileID: 3451036826117794972}
+  - component: {fileID: 4203026153541785380}
   m_Layer: 0
   m_Name: CurSprite
   m_TagString: Untagged
@@ -257,3 +259,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4203026153541785380
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3451036826117794970}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

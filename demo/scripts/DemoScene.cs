@@ -46,6 +46,7 @@ public class DemoScene : MonoBehaviour
     // the Update loop contains a very simple example of moving the character around and controlling the animation
     void Update()
     {
+        if (WelcomeScene._InWelcome) return;
         if (_controller.isGrounded)
             _velocity.y = 0;
 

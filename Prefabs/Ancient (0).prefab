@@ -333,6 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _CanBeDetected: 0
+  _InTimeWalkBack: 0
   _CurAncientState: 3
   _AncientKeyState: 3
   _ItemKeyState: 2
