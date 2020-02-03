@@ -77,7 +77,6 @@ public class AncientDetector : Detector
     {
         m_LockNum--;
         GetComponent<Ancient>().ChangeAncientSprite(m_LockNum, 1);
-        CharacterPackage.instance.UseItem();
         if (m_LockNum > 0) return;
 
         _CurAncientState = AncientState.eStateFive;

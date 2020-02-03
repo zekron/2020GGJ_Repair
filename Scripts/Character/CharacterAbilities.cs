@@ -155,15 +155,17 @@ public class CharacterAbilities : MonoBehaviour
     public void TryUnlockingAncient()
     {
         if (!CharacterPackage.instance._HoldingItem) return;
-        
+
+        PackageItem holdInHand = CharacterPackage.instance._HoldingItem;
+        CharacterPackage.instance.UseItem();
         for (int i = 0; i < m_TempStayDestroys.Count; i++)
         {
             AncientDetector ancientDetector = m_TempStayDestroys[i].GetComponent<AncientDetector>();
             if (ancientDetector != null)
             {
-                Debug.LogError(ancientDetector.name);
-                PackageItem holdInHand = CharacterPackage.instance._HoldingItem;
-                if (ancientDetector._CurAncientState == ancientDetector._AncientKeyState
+                Debug.LogError(ancientDetector._CurAncientState);
+                if (ancientDetector._CurAncientState
+                    == ancientDetector._AncientKeyState
                     && ancientDetector._ItemKeyState == holdInHand._PackageItemState
                     && ancientDetector._ItemKeyType == holdInHand._PackageItemType)
                 {
