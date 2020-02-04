@@ -36,7 +36,6 @@ public class PackageItem : MonoBehaviour
 
     void OnMouseDown()
     {
-        Debug.LogError("OnMouseDown");
         if (_IsEmpty) return;
         if (CharacterPackage.instance._HoldingItem && !_IsHolding) return;
 

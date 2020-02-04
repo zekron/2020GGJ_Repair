@@ -76,9 +76,13 @@ MonoBehaviour:
   _InTimeWalkBack: 0
   _CurAncientState: 3
   _ShieldDoor: {fileID: 8184603485137228985}
-  _AncientKeyState: 0100000002000000
-  _ItemKeyState: 0000000001000000
-  _ItemKeyType: 0000000001000000
+  _Keys:
+  - _AncientKeyState: 1
+    _ItemKeyState: 0
+    _ItemKeyType: 0
+  - _AncientKeyState: 2
+    _ItemKeyState: 1
+    _ItemKeyType: 1
 --- !u!65 &3408444438810205019
 BoxCollider:
   m_ObjectHideFlags: 0

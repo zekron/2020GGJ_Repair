@@ -5,16 +5,32 @@ using UnityEngine;
 
 public class Ancient : InteractiveObject
 {
-    [SerializeField]
-    public Sprite[][] _KeysAncientSprites;
-    public Sprite[] _FinalAncientSprites;
+    public List<BrokenAncientSprite> _BrokenSprites;
+    public Sprite[] _UnLockedAncientSprites;
+    public Sprite _FinalAncientSprite;
 
-    public void ChangeAncientSprite(int keyIndex, float duration = StaticData.DestroyDuration)
+    private int m_KeyCount;
+
+    public override void OnStart()
+    {
+        m_KeyCount = GetComponent<AncientDetector>()._Keys.Count;
+    }
+
+    public void ChangeAncientSprite(int keyIndex, bool setFinal, float duration = StaticData.DestroyDuration)
     {
         _CurSprite.DOComplete();
         _NewSprite.DOComplete();
 
-        _NewSprite.sprite = _FinalAncientSprites[keyIndex];
+        if (setFinal)
+        {
+            _NewSprite.sprite = _FinalAncientSprite;
+        }
+        else
+        {
+            m_KeyCount--;
+            _NewSprite.sprite = _UnLockedAncientSprites[m_KeyCount == 0 ? _UnLockedAncientSprites.Length - 1 : keyIndex];
+            _ObjectSprites = _BrokenSprites[keyIndex]._Sprites;
+        }
 
         _NewSprite.DOFade(1, duration)
             .OnComplete(

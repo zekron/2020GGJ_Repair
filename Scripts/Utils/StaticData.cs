@@ -7,6 +7,10 @@ using UnityEngine.Events;
 
 public static class StaticData
 {
+    public static string PackageName = "Calamoto";
+    public static string PackageTime = "20/0205/01 01:00";
+    public static string PackageVer = "TestVer";
+
     public static Color ColorFadeOut = new Color(1, 1, 1, 0);
     public static Color ColorFull = new Color(1, 1, 1, 1);
     public const float DestroyDuration = 0.2f;
@@ -16,6 +20,20 @@ public static class StaticData
     {
         return listToClone.Select(item => (T)item.Clone()).ToList();
     }
+}
+
+[Serializable]
+public class AncientKey
+{
+    public AncientState _AncientKeyState;
+    public ItemState _ItemKeyState;
+    public ItemType _ItemKeyType;
+}
+
+[Serializable]
+public class BrokenAncientSprite
+{
+    public Sprite[] _Sprites;
 }
 
 #region Enum

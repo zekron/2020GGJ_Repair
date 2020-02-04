@@ -8,13 +8,24 @@ public class WelcomeScene : MonoBehaviour
     public MyButton _StartBtn;
     public MyButton _ExitBtn;
 
+    public TextMesh _VerMessage;
     public SpriteRenderer _Background;
     public SpriteRenderer _Title;
     public static bool _InWelcome = true;
+
+    private void Awake()
+    {
+        _VerMessage.text = PrintPackageMessage();
+    }
     void Start()
     {
         _StartBtn.AddListener(StartGame);
         _ExitBtn.AddListener(QuitGame);
+
+        SoundMgr.instance.PlayBGM(
+            SoundMgr.instance.
+            _BGM.
+            _MainBGM);
     }
 
     void StartGame()
@@ -40,5 +51,10 @@ public class WelcomeScene : MonoBehaviour
     {
         _StartBtn.RemoveListener(StartGame);
         _ExitBtn.RemoveListener(QuitGame);
+    }
+
+    string PrintPackageMessage()
+    {
+        return string.Format("{0} - {1} - {2}", StaticData.PackageName, StaticData.PackageVer, StaticData.PackageTime);
     }
 }

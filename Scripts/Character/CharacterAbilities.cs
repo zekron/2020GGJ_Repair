@@ -39,6 +39,8 @@ public class CharacterAbilities : MonoBehaviour
             if (m_TimeWalkBackLock) return;
 
             m_HoldTimeFlag = true;
+            if (!SoundMgr.instance.IsPlaying(1, 2))
+                SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._SkillTimeWalkBack, 2);
 
             if (m_HoldTime > 1f)
             {
@@ -49,6 +51,8 @@ public class CharacterAbilities : MonoBehaviour
         }
         if (Input.GetKeyUp(_KeyTimeWalkBack))
         {
+            if (!m_HoldTimeFlag) return;
+
             m_HoldTimeFlag = false;
             TimeLock();
 
@@ -116,6 +120,7 @@ public class CharacterAbilities : MonoBehaviour
         m_TimeWalkBackLock = true;
         if (m_TempStayDestroys.Count <= 0) return;
 
+        SoundMgr.instance.StopEff(2);
         TryUnlockingAncient();
 
         DOTween.Sequence().AppendInterval(3).AppendCallback(() =>
@@ -143,8 +148,7 @@ public class CharacterAbilities : MonoBehaviour
             AncientDetector ancientDetector = m_TempStayDestroys[i].GetComponent<AncientDetector>();
             if (ancientDetector != null)
             {
-                Debug.LogError(ancientDetector._CurAncientState);
-                    ancientDetector.UnLockDoor(holdInHand);
+                ancientDetector.UnLockDoor(holdInHand);
                 break;
             }
         }
@@ -153,7 +157,7 @@ public class CharacterAbilities : MonoBehaviour
 
     public void RebirthCharacter()
     {
-        transform.parent.position = _CurRebitrhPoint;
+        transform.parent.localPosition = _CurRebitrhPoint;
     }
 
     public void RefreshRebirthPoint(Vector3 newPoint)

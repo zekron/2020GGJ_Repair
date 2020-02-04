@@ -40,7 +40,6 @@ public class DestroyDetector : MonoBehaviour
             if (!_StayDestroys.Contains(other.gameObject))
             {
                 _StayDestroys.Add(other.gameObject);
-                Debug.LogError("_StayDestroys  " + _StayDestroys.Count);
             }
         }
     }
@@ -55,7 +54,6 @@ public class DestroyDetector : MonoBehaviour
             if (_StayDestroys.Contains(other.gameObject))
             {
                 _StayDestroys.Remove(other.gameObject);
-                Debug.LogError("Remains _StayDestroys.Count " + _StayDestroys.Count);
             }
         }
     }

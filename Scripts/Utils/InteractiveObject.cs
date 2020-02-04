@@ -14,7 +14,11 @@ public class InteractiveObject : MonoBehaviour
     {
         _CurSprite.sprite = _ObjectSprites[_ObjectSprites.Length - 1];
         _NewSprite.sprite = _ObjectSprites[_ObjectSprites.Length - 2];
+        OnStart();
     }
+
+    public virtual void OnStart() { }
+
     public void ChangeSprite(ItemState state, float duration = StaticData.DestroyDuration)
     {
         _CurSprite.DOComplete();

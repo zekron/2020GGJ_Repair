@@ -7,21 +7,17 @@ public class AncientDetector : Detector
     public AncientState _CurAncientState;
     public GameObject _ShieldDoor;
 
-    [Header("Key")]
-    public List<AncientState> _AncientKeyState;
-
-    public List<ItemState> _ItemKeyState;
-    public List<ItemType> _ItemKeyType;
+    public List<AncientKey> _Keys;
     private Vector3 _RebirthPoint;
     private Ancient m_MyAncient;
 
-    private int m_LockNum;
+    private int m_KeyNum;
     private float m_StayTime = 0;
 
     private void Start()
     {
-        m_LockNum = _AncientKeyState.Count;
-        _RebirthPoint = transform.position;
+        m_KeyNum = _Keys.Count;
+        _RebirthPoint = new Vector3(transform.position.x, transform.position.y, 1);
         m_MyAncient = GetComponent<Ancient>();
 
         CharacterAbilities.Add_OnTimeLock(ResetAncientState);
@@ -79,30 +75,30 @@ public class AncientDetector : Detector
 
     public void UnLockDoor(PackageItem item)
     {
-        int keyIndex = 0;
-        for (int i = 0; i < _AncientKeyState.Count; i++)
+        for (int i = 0; i < _Keys.Count; i++)
         {
-            if (_AncientKeyState[i] == _CurAncientState)
+            if (_Keys[i]._AncientKeyState == _CurAncientState
+                && _Keys[i]._ItemKeyState == item._PackageItemState
+                && _Keys[i]._ItemKeyType == item._PackageItemType)
             {
-                keyIndex = i;
+                //_AncientKeyState.Remove(_CurAncientState);
+                //_ItemKeyState.Remove(item._PackageItemState);
+                //_ItemKeyType.Remove(item._PackageItemType);
+                //_Keys.RemoveAt(i);
+                m_MyAncient.ChangeAncientSprite(i, false, 1);
+                m_KeyNum--;
+                SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Correct, 4);
                 break;
             }
+            else if (i == _Keys.Count - 1)
+            {
+                SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Incorrect, 4);
+            }
         }
-        if (_AncientKeyState[keyIndex] == _CurAncientState
-            && _ItemKeyState[keyIndex] == item._PackageItemState
-            && _ItemKeyType[keyIndex] == item._PackageItemType)
-        {
-            //_AncientKeyState.Remove(_CurAncientState);
-            //_ItemKeyState.Remove(item._PackageItemState);
-            //_ItemKeyType.Remove(item._PackageItemType);
-            m_MyAncient.ChangeAncientSprite(keyIndex, 1);
 
-            m_LockNum--;
-        }
-        else return;
+        if (m_KeyNum > 0) return;
 
-        if (m_LockNum > 0) return;
-
+        m_MyAncient.ChangeAncientSprite(_Keys.Count, true, 2);
         _CurAncientState = AncientState.eStateFive;
         _ShieldDoor.SetActive(false);
         CharacterAbilities.instance.RefreshRebirthPoint(_RebirthPoint);
