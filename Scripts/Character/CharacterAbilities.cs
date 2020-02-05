@@ -93,6 +93,7 @@ public class CharacterAbilities : MonoBehaviour
                 else
                 {
                     m_TimeWalkBackLock = true;
+                    DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_TimeWalkBackLock = false);
                     itemDetector._CurItemState = ItemState.eStateOne;
                     tempObject.ChangeSprite(itemDetector._CurItemState, 1f);
                 }
@@ -108,6 +109,7 @@ public class CharacterAbilities : MonoBehaviour
                 else if (ancientDetector._CurAncientState == AncientState.eStateFour)
                 {
                     m_TimeWalkBackLock = true;
+                    DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_TimeWalkBackLock = false);
                     ancientDetector._CurAncientState = AncientState.eStateOne;
                     tempObject.ChangeSprite(ancientDetector._CurAncientState, 1f);
                 }

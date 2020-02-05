@@ -6,6 +6,7 @@ public class AncientDetector : Detector
 {
     public AncientState _CurAncientState;
     public GameObject _ShieldDoor;
+    public ParticleSystem[] _CorrectParticles;
 
     public List<AncientKey> _Keys;
     private Vector3 _RebirthPoint;
@@ -87,6 +88,7 @@ public class AncientDetector : Detector
                 //_Keys.RemoveAt(i);
                 m_MyAncient.ChangeAncientSprite(i, false, 1);
                 m_KeyNum--;
+                _CorrectParticles[i].Play();
                 SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Correct, 4);
                 break;
             }

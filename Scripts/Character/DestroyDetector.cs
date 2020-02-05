@@ -20,21 +20,20 @@ public class DestroyDetector : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Debug.LogFormat("{0} enter here.", other.name);
-        if (other.tag == "Item" || other.tag == "Ancient")
+        if (other.tag == "Item" || other.tag == "Ancient" || other.tag == "Unavailable")
         {
             //Debug.LogFormat("{0} enter here.", other.name);
             other.GetComponent<Detector>().EnterDestroy = true;
         }
         if (other.tag == "Border")
         {
-            Debug.LogFormat("{0} enter here.", other.name);
             CharacterAbilities.instance.RebirthCharacter();
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Item" || other.tag == "Ancient")
+        if (other.tag == "Item" || other.tag == "Ancient" || other.tag == "Unavailable")
         {
             other.GetComponent<Detector>().StayDestroy = true;
             if (!_StayDestroys.Contains(other.gameObject))
@@ -46,7 +45,7 @@ public class DestroyDetector : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Item" || other.tag == "Ancient")
+        if (other.tag == "Item" || other.tag == "Ancient" || other.tag == "Unavailable")
         {
             //Debug.LogFormat("{0} exit here.", other.name);
             other.GetComponent<Detector>().ExitDestroy = true;

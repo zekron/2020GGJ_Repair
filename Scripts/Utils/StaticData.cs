@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public static class StaticData
 {
     public static string PackageName = "Calamoto";
-    public static string PackageTime = "20/0205/01 01:00";
+    public static string PackageTime = "20/0205/02 22:20";
     public static string PackageVer = "TestVer";
 
     public static Color ColorFadeOut = new Color(1, 1, 1, 0);
@@ -51,6 +51,8 @@ public enum ItemType
     Tree,
     Tomb,
     Candle,
+    PoisonousPool,
+    Tile,
 }
 public enum AncientState
 {
