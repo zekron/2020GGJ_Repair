@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public static class StaticData
 {
     public static string PackageName = "Calamoto";
-    public static string PackageTime = "20/0205/02 22:20";
+    public static string PackageTime = "20/0206/01 17:20";
     public static string PackageVer = "TestVer";
 
     public static Color ColorFadeOut = new Color(1, 1, 1, 0);

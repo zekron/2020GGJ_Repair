@@ -1146,7 +1146,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.21898362, g: 0.3490566, b: 0.2534859, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -6802,7 +6802,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!156049354 &351203445
 Grid:
   m_ObjectHideFlags: 0
@@ -6827,7 +6827,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1048646654}
-  - {fileID: 391737668}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7184,14 +7183,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391737667}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1201513118}
   - {fileID: 1336201563}
-  m_Father: {fileID: 351203446}
-  m_RootOrder: 1
+  m_Father: {fileID: 559537498}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &396930191
 PrefabInstance:
@@ -8546,6 +8545,7 @@ Transform:
   - {fileID: 268503961}
   - {fileID: 2896894}
   - {fileID: 1965188133}
+  - {fileID: 391737668}
   - {fileID: 1091619415}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -11599,7 +11599,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1048646654
 Transform:
   m_ObjectHideFlags: 0
@@ -36294,7 +36294,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 559537498}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1091619417
 MonoBehaviour:
@@ -36403,7 +36403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1109752630
 AudioListener:
   m_ObjectHideFlags: 0
@@ -37521,7 +37521,7 @@ PrefabInstance:
     - target: {fileID: 2194086453724911170, guid: efa193cf6b6b8fa49887a079dc8f7632,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.25
+      value: 2.22
       objectReference: {fileID: 0}
     - target: {fileID: 2194086453724911170, guid: efa193cf6b6b8fa49887a079dc8f7632,
         type: 3}
@@ -42758,7 +42758,7 @@ PrefabInstance:
     - target: {fileID: 2194086453724911170, guid: efa193cf6b6b8fa49887a079dc8f7632,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.25
+      value: 2.22
       objectReference: {fileID: 0}
     - target: {fileID: 2194086453724911170, guid: efa193cf6b6b8fa49887a079dc8f7632,
         type: 3}
