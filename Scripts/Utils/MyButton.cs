@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider), typeof(SpriteRenderer))]
 public class MyButton : MonoBehaviour
 {
     Action m_ButtonAction;

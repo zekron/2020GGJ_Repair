@@ -18,7 +18,7 @@ public class AncientDetector : Detector
     private void Start()
     {
         m_KeyNum = _Keys.Count;
-        _RebirthPoint = new Vector3(transform.position.x, transform.position.y, 1);
+        _RebirthPoint = new Vector3(transform.position.x, transform.position.y + 10, 1);
         m_MyAncient = GetComponent<Ancient>();
 
         CharacterAbilities.Add_OnTimeLock(ResetAncientState);

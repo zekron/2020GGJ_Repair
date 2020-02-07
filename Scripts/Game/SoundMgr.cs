@@ -159,6 +159,35 @@ public class SoundMgr : MonoBehaviour
             throw new UnityException(string.Format("Fatal sourceType {0}!!!", sourceType));
         }
     }
+    public void SetBGMVolume(float volume)
+    {
+        if (volume > 1 || volume < 0) return;
+
+        for (int i = 0; i < m_BGMSources.Count; i++)
+            m_BGMSources[i].volume = volume;
+    }
+    public void SetBGMMute(bool value)
+    {
+        for (int i = 0; i < m_BGMSources.Count; i++)
+            m_BGMSources[i].mute = value;
+    }
+    public int GetBGMVolume()
+    { return (int)(m_BGMSources[0].volume * 100); }
+
+    public void SetFXVolume(float volume)
+    {
+        if (volume > 1 || volume < 0) return;
+
+        for (int i = 0; i < m_EffSources.Count; i++)
+            m_EffSources[i].volume = volume;
+    }
+    public void SetFXMute(bool value)
+    {
+        for (int i = 0; i < m_EffSources.Count; i++)
+            m_EffSources[i].mute = value;
+    }
+    public int GetFXVolume()
+    { return (int)(m_EffSources[0].volume * 100); }
     #endregion
 
     private void InitBGMSource(int i)

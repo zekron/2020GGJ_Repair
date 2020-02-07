@@ -26,25 +26,25 @@ public class InteractiveObject : MonoBehaviour
 
         _NewSprite.sprite = _ObjectSprites[(int)state];
 
-        _CurSprite.sprite = _NewSprite.sprite;
-        if (state > ItemState.eStateOne)
-            _NewSprite.sprite = _ObjectSprites[(int)state - 1];
+        //_CurSprite.sprite = _NewSprite.sprite;
+        //if (state > ItemState.eStateOne)
+        //    _NewSprite.sprite = _ObjectSprites[(int)state - 1];
 
-        //_NewSprite.DOFade(1, duration)
-        //    .OnComplete(
-        //    () =>
-        //    {
-        //        _NewSprite.color = StaticData.ColorFadeOut;
-        //    });
-        //_CurSprite.DOFade(0, duration)
-        //    .OnComplete(
-        //    () =>
-        //    {
-        //        _CurSprite.sprite = _NewSprite.sprite;
-        //        if (state > ItemState.eStateOne)
-        //            _NewSprite.sprite = _ObjectSprites[(int)state - 1];
-        //        _CurSprite.color = StaticData.ColorFull;
-        //    });
+        _NewSprite.DOFade(1, duration)
+            .OnComplete(
+            () =>
+            {
+                _NewSprite.color = StaticData.ColorFadeOut;
+            });
+        _CurSprite.DOFade(0, duration)
+            .OnComplete(
+            () =>
+            {
+                _CurSprite.sprite = _NewSprite.sprite;
+                if (state > ItemState.eStateOne)
+                    _NewSprite.sprite = _ObjectSprites[(int)state - 1];
+                _CurSprite.color = StaticData.ColorFull;
+            });
     }
     public void ChangeSprite(AncientState state, float duration = StaticData.DestroyDuration)
     {

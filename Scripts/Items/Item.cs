@@ -8,11 +8,14 @@ public class Item : InteractiveObject
     public ItemState[] _AnimatedStates;
     public SpriteRenderer _AnimatorSprite;
 
+    private Animator m_Animator;
     private ItemDetector m_Detector;
     public override void OnStart()
     {
         base.OnStart();
         m_Detector = GetComponent<ItemDetector>();
+        if (_AnimatedStates.Length != 0)
+            m_Animator = _AnimatorSprite.GetComponent<Animator>();
     }
 
     public void Update()
@@ -31,8 +34,10 @@ public class Item : InteractiveObject
             {
                 if (m_Detector._CurItemState == states[i])
                 {
-                    _AnimatorSprite.GetComponent<Animator>().SetInteger("State", (int)m_Detector._CurItemState);
+                    m_Animator.SetInteger("State", (int)m_Detector._CurItemState);
+                    _AnimatorSprite.sprite = _CurSprite.sprite;
                     _AnimatorSprite.enabled = true;
+                    _CurSprite.enabled = false;
                     return;
                 }
             }
@@ -41,7 +46,8 @@ public class Item : InteractiveObject
         {
             if (m_Detector._CurItemState != states[0])
             {
-                _AnimatorSprite.GetComponent<Animator>().SetInteger("State", (int)m_Detector._CurItemState);
+                _CurSprite.enabled = true;
+                m_Animator.SetInteger("State", (int)m_Detector._CurItemState);
                 _AnimatorSprite.enabled = false;
                 return;
             }
