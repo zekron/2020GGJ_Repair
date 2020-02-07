@@ -9,8 +9,8 @@ public class WelcomeScene : MonoBehaviour
     public TextMesh _VerMessage;
     public Text _BGMVolume;
     public Text _FXVolume;
-    public SpriteRenderer _Background;
-    public SpriteRenderer _Title;
+    public Image _Background;
+    public Image _Title;
     public GameObject _Setting;
     public static bool _InWelcome = true;
 
@@ -30,9 +30,12 @@ public class WelcomeScene : MonoBehaviour
     void StartGame()
     {
         _Background.DOFade(0, 1).OnComplete(() => _Background.enabled = false);
-        _Title.DOFade(0, 1).OnComplete(() => _Title.enabled = false);
+        _Title.DOFade(0, 1).OnComplete(() =>
+        {
+            _Title.enabled = false;
+            GetComponent<Canvas>().enabled = false;
+        });
 
-        transform.DOLocalMoveY(50f, 2);
         RemoveWelcomeListener();
 
         _InWelcome = false;
