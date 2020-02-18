@@ -129,6 +129,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1a70b97c10314d14c983b26a38283213, type: 3}
   _CurSprite: {fileID: 4912936673570914855}
   _NewSprite: {fileID: 4912936672921747439}
+  _AnimatedStates: 
+  _AnimatorSprite: {fileID: 0}
 --- !u!65 &4912936671780677637
 BoxCollider:
   m_ObjectHideFlags: 0

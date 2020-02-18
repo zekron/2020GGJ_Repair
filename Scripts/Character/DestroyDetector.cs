@@ -6,8 +6,11 @@ public class DestroyDetector : MonoBehaviour
 {
     public static DestroyDetector instance = null;
     public List<GameObject> _StayDestroys;
+
+    public SphereCollider _DestroyCollider;
+    public ParticleSystem _DestroyParticle;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         instance = this;
     }
@@ -55,5 +58,13 @@ public class DestroyDetector : MonoBehaviour
                 _StayDestroys.Remove(other.gameObject);
             }
         }
+    }
+
+    public void SetDestroyDetectorScale(Vector3 scale)
+    {
+        _DestroyCollider.radius *= scale.x;
+
+        ParticleSystem.ShapeModule shape = _DestroyParticle.shape;
+        shape.radius *= scale.x;
     }
 }

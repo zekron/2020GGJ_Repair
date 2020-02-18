@@ -126,7 +126,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8d1974dcaadd22c42a1ca18862b48a0a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -225,7 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7663745606168415884}
   - component: {fileID: 7663745606168415883}
-  - component: {fileID: 7663745606168415885}
+  - component: {fileID: 1934661742633508794}
   - component: {fileID: 7663745606168415880}
   - component: {fileID: 7663745606168415882}
   m_Layer: 0
@@ -268,7 +268,7 @@ MonoBehaviour:
   _InTimeWalkBack: 0
   _CurItemState: 3
   _ItemType: 6
---- !u!114 &7663745606168415885
+--- !u!114 &1934661742633508794
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7663745606168415887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdd02ac2fcdecf149ac20c0820a13acc, type: 3}
+  m_Script: {fileID: 11500000, guid: 05cecdbbf187bee489d1fa570dd7cf46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _ObjectSprites:
@@ -287,6 +287,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 31f3f6e8f9ad27a4cb03f84d72ee2492, type: 3}
   _CurSprite: {fileID: 7663745605989311658}
   _NewSprite: {fileID: 7663745605027912034}
+  _AnimatedStates: 
+  _AnimatorSprite: {fileID: 0}
 --- !u!65 &7663745606168415880
 BoxCollider:
   m_ObjectHideFlags: 0

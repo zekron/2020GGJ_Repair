@@ -13,6 +13,11 @@ public class TouchMgr : MonoBehaviour
     public Button _EnterSettingBtn;
     public Button _ExitSettingBtn;
 
+    public Button _Item01;
+    public Button _Item02;
+    public Button _Item03;
+    public Button[] _Items;
+
     public Slider _BGMSlider;
     public Slider _FXSlider;
     public Toggle _BGMToggle;

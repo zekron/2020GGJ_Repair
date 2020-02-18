@@ -85,7 +85,7 @@ public class CharacterAbilities : MonoBehaviour
             if (itemDetector)
             {
                 itemDetector._InTimeWalkBack = true;
-                if (itemDetector._CurItemState < ItemState.eStateFour)
+                if (itemDetector._CurItemState < eItemState.eStateFour)
                 {
                     itemDetector._CurItemState++;
                     tempObject.ChangeSprite(itemDetector._CurItemState, 1f);
@@ -94,23 +94,23 @@ public class CharacterAbilities : MonoBehaviour
                 {
                     m_TimeWalkBackLock = true;
                     DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_TimeWalkBackLock = false);
-                    itemDetector._CurItemState = ItemState.eStateOne;
+                    itemDetector._CurItemState = eItemState.eStateOne;
                     tempObject.ChangeSprite(itemDetector._CurItemState, 1f);
                 }
             }
             else if (ancientDetector)
             {
                 ancientDetector._InTimeWalkBack = true;
-                if (ancientDetector._CurAncientState < AncientState.eStateFour)
+                if (ancientDetector._CurAncientState < eAncientState.eStateFour)
                 {
                     ancientDetector._CurAncientState++;
                     tempObject.ChangeSprite(ancientDetector._CurAncientState, 1f);
                 }
-                else if (ancientDetector._CurAncientState == AncientState.eStateFour)
+                else if (ancientDetector._CurAncientState == eAncientState.eStateFour)
                 {
                     m_TimeWalkBackLock = true;
                     DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_TimeWalkBackLock = false);
-                    ancientDetector._CurAncientState = AncientState.eStateOne;
+                    ancientDetector._CurAncientState = eAncientState.eStateOne;
                     tempObject.ChangeSprite(ancientDetector._CurAncientState, 1f);
                 }
             }
@@ -159,7 +159,7 @@ public class CharacterAbilities : MonoBehaviour
 
     public void RebirthCharacter()
     {
-        transform.parent.localPosition = _CurRebitrhPoint;
+        transform.parent.position = _CurRebitrhPoint;
     }
 
     public void RefreshRebirthPoint(Vector3 newPoint)

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Item : InteractiveObject
 {
-    public ItemState[] _AnimatedStates;
+    public eItemState[] _AnimatedStates;
     public SpriteRenderer _AnimatorSprite;
 
     private Animator m_Animator;
@@ -24,7 +24,7 @@ public class Item : InteractiveObject
         PlayItemAnimator(_AnimatedStates);
     }
 
-    void PlayItemAnimator(ItemState[] states)
+    void PlayItemAnimator(eItemState[] states)
     {
         if (states.Length == 0) return;
 

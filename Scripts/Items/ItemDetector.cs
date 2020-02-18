@@ -6,8 +6,8 @@ using UnityEngine.Events;
 
 public class ItemDetector : Detector
 {
-    public ItemState _CurItemState = ItemState.eStateFour;
-    public ItemType _ItemType;
+    public eItemState _CurItemState = eItemState.eStateFour;
+    public eItemType _ItemType;
 
     private float m_StayTime = 0;
     private Item m_MyItem;
@@ -41,10 +41,10 @@ public class ItemDetector : Detector
 
             if (m_StayTime <= 0f)
             {
-                if (--_CurItemState < ItemState.eStateOne)
+                if (--_CurItemState < eItemState.eStateOne)
                 {
                     _CanBeDetected = false;
-                    _CurItemState = ItemState.eStateOne;
+                    _CurItemState = eItemState.eStateOne;
                     m_StayTime = 0;
                     return;
                 }
@@ -61,7 +61,7 @@ public class ItemDetector : Detector
             if (ExitDestroy)
             {
                 m_StayTime = 0;
-                if (_CurItemState != ItemState.eStateFour)
+                if (_CurItemState != eItemState.eStateFour)
                 {
                     //GetComponent<Item>().ChangeSprite(_CurItemState = ItemState.eStateFour);
                     //_OnDestroyDetectorTriggered.Invoke(_CurItemState = ItemState.eStateFour);
@@ -82,17 +82,17 @@ public class ItemDetector : Detector
     {
         if (!_InTimeWalkBack) return;
 
-        _CurItemState = ItemState.eStateOne;
+        _CurItemState = eItemState.eStateOne;
         m_MyItem.ChangeSprite(_CurItemState);
         _InTimeWalkBack = false;
     }
 
     public static MyItemStateEvent _OnItemStateChanged = new MyItemStateEvent();
-    public static void Remove_OnItemStateChanged(UnityAction<ItemState> action)
+    public static void Remove_OnItemStateChanged(UnityAction<eItemState> action)
     {
         _OnItemStateChanged.RemoveListener(action);
     }
-    public static void Add_OnItemStateChanged(UnityAction<ItemState> action)
+    public static void Add_OnItemStateChanged(UnityAction<eItemState> action)
     {
         Remove_OnItemStateChanged(action);
         _OnItemStateChanged.AddListener(action);

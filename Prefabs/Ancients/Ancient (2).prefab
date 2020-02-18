@@ -4725,7 +4725,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2625758597092414004}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -10, y: -4, z: 2}
+  m_LocalPosition: {x: -11, y: -4, z: 2}
   m_LocalScale: {x: 8, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8838356195269434834}
@@ -9569,7 +9569,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 759cdee2d356a25439fe21f66847e545, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9762,13 +9762,13 @@ MonoBehaviour:
   - {fileID: 9161914383283071513}
   _Keys:
   - _AncientKeyState: 2
-    _ItemKeyState: 0
+    _ItemKeyState: 3
     _ItemKeyType: 2
   - _AncientKeyState: 2
-    _ItemKeyState: 2
+    _ItemKeyState: 3
     _ItemKeyType: 3
   - _AncientKeyState: 2
-    _ItemKeyState: 3
+    _ItemKeyState: 2
     _ItemKeyType: 4
 --- !u!65 &8838356195269434838
 BoxCollider:

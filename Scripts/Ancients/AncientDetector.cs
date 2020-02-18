@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AncientDetector : Detector
 {
-    public AncientState _CurAncientState;
+    public eAncientState _CurAncientState;
     public GameObject _ShieldDoor;
     public ParticleSystem[] _CorrectParticles;
 
@@ -39,16 +39,16 @@ public class AncientDetector : Detector
         if (other.tag == "Player")
         {
             if (!_CanBeDetected || !StayDestroy) return;
-            if (_CurAncientState == AncientState.eStateFive) return;
+            if (_CurAncientState == eAncientState.eStateFive) return;
 
             m_StayTime -= Time.deltaTime;
 
             if (m_StayTime <= 0f)
             {
-                if (--_CurAncientState < AncientState.eStateOne)
+                if (--_CurAncientState < eAncientState.eStateOne)
                 {
                     _CanBeDetected = false;
-                    _CurAncientState = AncientState.eStateOne;
+                    _CurAncientState = eAncientState.eStateOne;
                     m_StayTime = 0;
                     return;
                 }
@@ -65,7 +65,7 @@ public class AncientDetector : Detector
             if (ExitDestroy)
             {
                 m_StayTime = 0;
-                if (_CurAncientState != AncientState.eStateFour)
+                if (_CurAncientState != eAncientState.eStateFour)
                 {
                     //GetComponent<Item>().ChangeSprite(_CurItemState = ItemState.eStateFour);
                     //_OnDestroyDetectorTriggered.Invoke(_CurItemState = ItemState.eStateFour);
@@ -101,17 +101,17 @@ public class AncientDetector : Detector
         if (m_KeyNum > 0) return;
 
         m_MyAncient.ChangeAncientSprite(_Keys.Count, true, 2);
-        _CurAncientState = AncientState.eStateFive;
+        _CurAncientState = eAncientState.eStateFive;
         _ShieldDoor.SetActive(false);
         CharacterAbilities.instance.RefreshRebirthPoint(_RebirthPoint);
     }
 
     public void ResetAncientState()
     {
-        if (_CurAncientState == AncientState.eStateFive) return;
+        if (_CurAncientState == eAncientState.eStateFive) return;
         if (!_InTimeWalkBack) return;
 
-        _CurAncientState = AncientState.eStateOne;
+        _CurAncientState = eAncientState.eStateOne;
         m_MyAncient.ChangeSprite(_CurAncientState);
         _InTimeWalkBack = false;
     }

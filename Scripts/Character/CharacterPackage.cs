@@ -49,7 +49,7 @@ public class CharacterPackage : MonoBehaviour
         _HoldingItem = item;
         if (_HoldingItem)
         {
-            _HoldingItemSprite.sprite = item._PackageItemSprite.sprite;
+            _HoldingItemSprite.sprite = item._PackageItemImage.sprite;
         }
         else
         {

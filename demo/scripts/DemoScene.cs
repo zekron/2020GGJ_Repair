@@ -5,6 +5,7 @@ using Prime31;
 
 public class DemoScene : MonoBehaviour
 {
+    public static DemoScene instance = null;
     // movement config
     public float gravity = -25f;
     public float runSpeed = 8f;
@@ -23,6 +24,7 @@ public class DemoScene : MonoBehaviour
 
     void Awake()
     {
+        instance = this;
         _animator = GetComponent<Animator>();
         _controller = GetComponent<CharacterController2D>();
     }
@@ -46,7 +48,7 @@ public class DemoScene : MonoBehaviour
     // the Update loop contains a very simple example of moving the character around and controlling the animation
     void Update()
     {
-        if (WelcomeScene._InWelcome) return;
+        if (FindObjectOfType<GameMgr>() && GameMgr.instance.GameState != eGameState.InGame) return;
         if (_controller.isGrounded)
             _velocity.y = 0;
 
@@ -59,8 +61,8 @@ public class DemoScene : MonoBehaviour
             if (_controller.isGrounded)
             {
                 _animator.Play(Animator.StringToHash("Run"));
-                if (!SoundMgr.instance.IsPlaying(1, 0))
-                    SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Walk, 0);
+                //if (!SoundMgr.instance.IsPlaying(1, 0))
+                //    SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Walk, 0);
             }
         }
         else if (Input.GetKey(KeyCode.A))
@@ -72,8 +74,8 @@ public class DemoScene : MonoBehaviour
             if (_controller.isGrounded)
             {
                 _animator.Play(Animator.StringToHash("Run"));
-                if (!SoundMgr.instance.IsPlaying(1, 0))
-                    SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Walk, 0);
+                //if (!SoundMgr.instance.IsPlaying(1, 0))
+                //    SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Walk, 0);
             }
         }
         else
@@ -83,7 +85,7 @@ public class DemoScene : MonoBehaviour
             if (_controller.isGrounded)
             {
                 _animator.Play(Animator.StringToHash("Idle"));
-                SoundMgr.instance.StopEff(0);
+                //SoundMgr.instance.StopEff(0);
             }
         }
 
@@ -93,7 +95,7 @@ public class DemoScene : MonoBehaviour
         {
             _velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
             _animator.Play(Animator.StringToHash("Jump"));
-            SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Jump, 0);
+            //SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Jump, 0);
         }
 
 
@@ -118,4 +120,9 @@ public class DemoScene : MonoBehaviour
         _velocity = _controller.velocity;
     }
 
+    public void SetCharacterConfigScale(Vector3 scale)
+    {
+        runSpeed *= scale.x;
+        jumpHeight *= scale.x;
+    }
 }

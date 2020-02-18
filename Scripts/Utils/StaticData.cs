@@ -8,11 +8,12 @@ using UnityEngine.Events;
 public static class StaticData
 {
     public static string PackageName = "Calamoto";
-    public static string PackageTime = "20/0207/02 22:30";
+    public static string PackageTime = "2020/0219/43801 00:10";
     public static string PackageVer = "TestVer";
 
     public static Color ColorFadeOut = new Color(1, 1, 1, 0);
     public static Color ColorFull = new Color(1, 1, 1, 1);
+    public static Vector3 HalfScale = new Vector3(0.5f, 0.5f, 1);
     public const float DestroyDuration = 0.2f;
 
 
@@ -25,9 +26,9 @@ public static class StaticData
 [Serializable]
 public class AncientKey
 {
-    public AncientState _AncientKeyState;
-    public ItemState _ItemKeyState;
-    public ItemType _ItemKeyType;
+    public eAncientState _AncientKeyState;
+    public eItemState _ItemKeyState;
+    public eItemType _ItemKeyType;
 }
 
 [Serializable]
@@ -37,14 +38,14 @@ public class BrokenAncientSprite
 }
 
 #region Enum
-public enum ItemState
+public enum eItemState
 {
     eStateOne,
     eStateTwo,
     eStateThree,
     eStateFour,
 }
-public enum ItemType
+public enum eItemType
 {
     Tulip,
     Rose,
@@ -54,7 +55,7 @@ public enum ItemType
     PoisonousPool,
     Tile,
 }
-public enum AncientState
+public enum eAncientState
 {
     eStateOne,
     eStateTwo,
@@ -62,14 +63,21 @@ public enum AncientState
     eStateFour,
     eStateFive,
 }
-public enum AncientType
+public enum eAncientType
 {
     TulipAncient,
     RoseAncient,
+}
+public enum eGameState
+{
+    InWelcome,
+    InGame,
+    InSetting,
 }
 #endregion
 
 #region Event
 public class MyIntEvent : UnityEvent<int> { }
-public class MyItemStateEvent : UnityEvent<ItemState> { }
+public class MyItemStateEvent : UnityEvent<eItemState> { }
+public class MyGameStateEvent : UnityEvent<eGameState> { }
 #endregion
