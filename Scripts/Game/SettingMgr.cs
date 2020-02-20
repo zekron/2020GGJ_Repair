@@ -13,6 +13,8 @@ public class SettingMgr : MonoBehaviour
     public Text _BGMVolume;
     public Text _FXVolume;
 
+    private Tween m_ReturnTween;
+
     private void Awake()
     {
         instance = this;
@@ -37,9 +39,14 @@ public class SettingMgr : MonoBehaviour
             _SettingSprite.transform.localScale = Vector3.zero;
             _SettingSprite.enabled = true;
             _SettingSprite.transform.DOScale(1, 1);
+            m_ReturnTween = DOTween.Sequence().AppendInterval(3).AppendCallback(() =>
+            {
+                _SettingSprite.transform.DOScale(0, 1).OnComplete(() => _SettingSprite.enabled = false);
+            });
             return;
         }
 
+        m_ReturnTween.Complete(false);
         _SettingSprite.transform.DOScale(0, 1).OnComplete(() => _SettingSprite.enabled = false);
         GameMgr.instance.GameState = eGameState.InSetting;
         _Setting.enabled = true;

@@ -59,7 +59,7 @@ public class SmoothFollow : MonoBehaviour
 
     void updateCameraPosition(bool force = false)
     {
-        if (_playerController.velocity.x == 0 && !force) return;
+        //if (_playerController.velocity.x == 0 && !force) return;
 
         if (_ForcedView)
         {

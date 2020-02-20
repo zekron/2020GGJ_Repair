@@ -110,8 +110,8 @@ public class DemoScene : MonoBehaviour
         // this lets us jump down through one way platforms
         if (_controller.isGrounded && Input.GetKey(KeyCode.S))
         {
-            _velocity.y *= 3f;
-            _controller.ignoreOneWayPlatformsThisFrame = true;
+            //_velocity.y *= 3f;
+            //_controller.ignoreOneWayPlatformsThisFrame = true;
         }
 
         _controller.move(_velocity * Time.deltaTime);
@@ -122,7 +122,10 @@ public class DemoScene : MonoBehaviour
 
     public void SetCharacterConfigScale(Vector3 scale)
     {
+        gravity *= scale.x;
         runSpeed *= scale.x;
+        groundDamping *= scale.x;
+        inAirDamping *= scale.x;
         jumpHeight *= scale.x;
     }
 }

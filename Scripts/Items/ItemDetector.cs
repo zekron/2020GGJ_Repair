@@ -6,12 +6,21 @@ using UnityEngine.Events;
 
 public class ItemDetector : Detector
 {
-    public eItemState _CurItemState = eItemState.eStateFour;
     public eItemType _ItemType;
 
+    private eItemState m_CurItemState = eItemState.eStateFour;
     private float m_StayTime = 0;
     private Item m_MyItem;
 
+    public eItemState CurItemState
+    {
+        get => m_CurItemState;
+        set
+        {
+            m_CurItemState = value;
+            _OnItemStateChanged.Invoke(m_CurItemState);
+        }
+    }
     private void Start()
     {
         m_MyItem = GetComponent<Item>();
@@ -41,14 +50,14 @@ public class ItemDetector : Detector
 
             if (m_StayTime <= 0f)
             {
-                if (--_CurItemState < eItemState.eStateOne)
+                if (--CurItemState < eItemState.eStateOne)
                 {
                     _CanBeDetected = false;
-                    _CurItemState = eItemState.eStateOne;
+                    CurItemState = eItemState.eStateOne;
                     m_StayTime = 0;
                     return;
                 }
-                m_MyItem.ChangeSprite(_CurItemState);
+                m_MyItem.ChangeSprite(CurItemState);
                 m_StayTime = StaticData.DestroyDuration;
             }
         }
@@ -61,7 +70,7 @@ public class ItemDetector : Detector
             if (ExitDestroy)
             {
                 m_StayTime = 0;
-                if (_CurItemState != eItemState.eStateFour)
+                if (CurItemState != eItemState.eStateFour)
                 {
                     //GetComponent<Item>().ChangeSprite(_CurItemState = ItemState.eStateFour);
                     //_OnDestroyDetectorTriggered.Invoke(_CurItemState = ItemState.eStateFour);
@@ -82,17 +91,18 @@ public class ItemDetector : Detector
     {
         if (!_InTimeWalkBack) return;
 
-        _CurItemState = eItemState.eStateOne;
-        m_MyItem.ChangeSprite(_CurItemState);
+        CurItemState = eItemState.eStateOne;
+        m_MyItem.ChangeSprite(CurItemState);
         _InTimeWalkBack = false;
     }
 
-    public static MyItemStateEvent _OnItemStateChanged = new MyItemStateEvent();
-    public static void Remove_OnItemStateChanged(UnityAction<eItemState> action)
+    public MyItemStateEvent _OnItemStateChanged = new MyItemStateEvent();
+
+    public void Remove_OnItemStateChanged(UnityAction<eItemState> action)
     {
         _OnItemStateChanged.RemoveListener(action);
     }
-    public static void Add_OnItemStateChanged(UnityAction<eItemState> action)
+    public void Add_OnItemStateChanged(UnityAction<eItemState> action)
     {
         Remove_OnItemStateChanged(action);
         _OnItemStateChanged.AddListener(action);

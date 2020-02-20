@@ -85,17 +85,17 @@ public class CharacterAbilities : MonoBehaviour
             if (itemDetector)
             {
                 itemDetector._InTimeWalkBack = true;
-                if (itemDetector._CurItemState < eItemState.eStateFour)
+                if (itemDetector.CurItemState < eItemState.eStateFour)
                 {
-                    itemDetector._CurItemState++;
-                    tempObject.ChangeSprite(itemDetector._CurItemState, 1f);
+                    itemDetector.CurItemState++;
+                    tempObject.ChangeSprite(itemDetector.CurItemState, 1f);
                 }
                 else
                 {
                     m_TimeWalkBackLock = true;
                     DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_TimeWalkBackLock = false);
-                    itemDetector._CurItemState = eItemState.eStateOne;
-                    tempObject.ChangeSprite(itemDetector._CurItemState, 1f);
+                    itemDetector.CurItemState = eItemState.eStateOne;
+                    tempObject.ChangeSprite(itemDetector.CurItemState, 1f);
                 }
             }
             else if (ancientDetector)

@@ -19,7 +19,7 @@ public class PackageItem : MonoBehaviour
     }
     public void SetPackageItemSprite(ItemDetector detector)
     {
-        _PackageItemState = detector._CurItemState;
+        _PackageItemState = detector.CurItemState;
         _PackageItemType = detector._ItemType;
         _PackageItemImage.sprite = CharacterPackage.instance
             ._ItemSprite[(int)_PackageItemType][(int)_PackageItemState];

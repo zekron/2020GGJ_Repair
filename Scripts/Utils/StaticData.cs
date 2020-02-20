@@ -8,8 +8,19 @@ using UnityEngine.Events;
 public static class StaticData
 {
     public static string PackageName = "Calamoto";
-    public static string PackageTime = "2020/0219/43801 00:10";
     public static string PackageVer = "TestVer";
+    public static string PackageTime = string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}",
+        Convert.ToString(2020,  16),
+        Convert.ToString('/',   16),
+        Convert.ToString(0220,  16),
+        Convert.ToString('/',   16),
+        Convert.ToString(1080,  16),
+        Convert.ToString(02,    16),
+        Convert.ToString('/',   16),
+        Convert.ToString(' ',   16),
+        Convert.ToString(23,    16),
+        Convert.ToString(':',   16),
+        Convert.ToString(51,    16));
 
     public static Color ColorFadeOut = new Color(1, 1, 1, 0);
     public static Color ColorFull = new Color(1, 1, 1, 1);
