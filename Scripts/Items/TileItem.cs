@@ -7,6 +7,8 @@ public class TileItem : Item
 {
     public override void ChangeSprite(eItemState state, float duration = 0.2F)
     {
+        if (_ObjectSprites.Length <= 0) return;
+
         _CurSprite.DOComplete();
         _NewSprite.DOComplete();
 

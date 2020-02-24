@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PackageItem : MonoBehaviour
 {
@@ -11,11 +10,10 @@ public class PackageItem : MonoBehaviour
     public bool _IsHolding = false;
     public bool _IsEmpty = true;
 
-    public Image _PackageItemImage;
+    public SpriteRenderer _PackageItemImage;
 
     private void Start()
     {
-        _PackageItemImage = GetComponent<Image>();
     }
     public void SetPackageItemSprite(ItemDetector detector)
     {

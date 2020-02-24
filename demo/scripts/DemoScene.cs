@@ -61,8 +61,8 @@ public class DemoScene : MonoBehaviour
             if (_controller.isGrounded)
             {
                 _animator.Play(Animator.StringToHash("Run"));
-                //if (!SoundMgr.instance.IsPlaying(1, 0))
-                //    SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Walk, 0);
+                if (!SoundMgr.instance.IsPlaying(1, 0))
+                    SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Walk, 0);
             }
         }
         else if (Input.GetKey(KeyCode.A))
@@ -74,8 +74,8 @@ public class DemoScene : MonoBehaviour
             if (_controller.isGrounded)
             {
                 _animator.Play(Animator.StringToHash("Run"));
-                //if (!SoundMgr.instance.IsPlaying(1, 0))
-                //    SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Walk, 0);
+                if (!SoundMgr.instance.IsPlaying(1, 0))
+                    SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Walk, 0);
             }
         }
         else
@@ -85,7 +85,7 @@ public class DemoScene : MonoBehaviour
             if (_controller.isGrounded)
             {
                 _animator.Play(Animator.StringToHash("Idle"));
-                //SoundMgr.instance.StopEff(0);
+                SoundMgr.instance.StopEff(0);
             }
         }
 
@@ -95,7 +95,7 @@ public class DemoScene : MonoBehaviour
         {
             _velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
             _animator.Play(Animator.StringToHash("Jump"));
-            //SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Jump, 0);
+            SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Jump, 0);
         }
 
 

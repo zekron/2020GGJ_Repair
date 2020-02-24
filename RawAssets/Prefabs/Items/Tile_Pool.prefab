@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 4912936671780677632}
   - component: {fileID: 4912936671780677637}
   - component: {fileID: 4912936671780677639}
+  - component: {fileID: 508487371019922126}
   m_Layer: 0
   m_Name: Tile_Pool
   m_TagString: Unavailable
@@ -108,7 +109,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CanBeDetected: 0
   _InTimeWalkBack: 0
-  _CurItemState: 3
   _ItemType: 6
 --- !u!114 &4912936671780677632
 MonoBehaviour:
@@ -160,6 +160,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &508487371019922126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4912936671780677634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05cecdbbf187bee489d1fa570dd7cf46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ObjectSprites: []
+  _CurSprite: {fileID: 4912936673570914855}
+  _NewSprite: {fileID: 4912936672921747439}
+  _AnimatedStates: 
+  _AnimatorSprite: {fileID: 0}
 --- !u!1 &4912936672921747433
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +246,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1a70b97c10314d14c983b26a38283213, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
