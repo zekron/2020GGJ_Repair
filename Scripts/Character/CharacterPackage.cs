@@ -32,7 +32,13 @@ public class CharacterPackage : MonoBehaviour
     {
 
     }
-
+    public void ClearItems()
+    {
+        for (int i = 0; i < _ItemImages.Length; i++)
+        {
+            _ItemImages[i].SetEmpty();
+        }
+    }
     public void SaveItem(ItemDetector detector, GameObject item)
     {
         for (int i = 0; i < _ItemImages.Length; i++)
@@ -47,16 +53,23 @@ public class CharacterPackage : MonoBehaviour
     public void HoldItem(PackageItem item)
     {
         _HoldingItem = item;
+        _HoldingItemSprite.DOComplete();
         if (_HoldingItem)
         {
-            _HoldingItemSprite.sprite = item._PackageItemImage.sprite;
+            _HoldingItemSprite.DOFade(1, 1).OnStart(() =>
+            {
+                _Hands.SetActive(_HoldingItem);
+                _HoldingItemSprite.sprite = item._PackageItemImage.sprite;
+            });
         }
         else
         {
-            _HoldingItemSprite.sprite = null;
+            _HoldingItemSprite.DOFade(0, 1).OnComplete(() =>
+            {
+                _Hands.SetActive(_HoldingItem);
+                _HoldingItemSprite.sprite = null;
+            });
         }
-        _HoldingItemSprite.DOComplete();
-        _HoldingItemSprite.DOFade(_HoldingItem ? 1 : 0, 1).OnComplete(() => _Hands.SetActive(_HoldingItem));
     }
 
     public void UseItem()

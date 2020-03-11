@@ -28,11 +28,11 @@ public class SoundMgr : MonoBehaviour
         instance = this;
         for (int i = 0; i < m_BGMSourceCount; i++)
         {
-            InitBGMSource(i);
+            InstantiateBGMSource(i);
         }
         for (int i = 0; i < m_EffectSourceCount; i++)
         {
-            InitEffSource(i);
+            InstantiateEffSource(i);
         }
         Instantiate(_BGM, transform);
         Instantiate(_Effect, transform);
@@ -53,7 +53,7 @@ public class SoundMgr : MonoBehaviour
                 }
                 else if (i == m_BGMSources.Count - 1)
                 {
-                    InitBGMSource(++i);
+                    InstantiateBGMSource(++i);
                     m_BGMSources[i].clip = clip;
                     m_BGMSources[i].Play();
                 }
@@ -105,7 +105,7 @@ public class SoundMgr : MonoBehaviour
                 }
                 else if (i == m_EffSources.Count - 1)
                 {
-                    InitEffSource(++i);
+                    InstantiateEffSource(++i);
                     m_EffSources[i].clip = clip;
                     m_EffSources[i].Play();
                 }
@@ -190,14 +190,14 @@ public class SoundMgr : MonoBehaviour
     { return (int)(m_EffSources[0].volume * 100); }
     #endregion
 
-    private void InitBGMSource(int i)
+    private void InstantiateBGMSource(int i)
     {
         m_BGMSources.Add(gameObject.AddComponent<AudioSource>());
         m_BGMSources[i].outputAudioMixerGroup = _BGMMixer;
         m_BGMSources[i].loop = true;
     }
 
-    private void InitEffSource(int i)
+    private void InstantiateEffSource(int i)
     {
         m_EffSources.Add(gameObject.AddComponent<AudioSource>());
         m_EffSources[i].outputAudioMixerGroup = _EffMixer;

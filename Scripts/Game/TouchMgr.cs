@@ -12,6 +12,7 @@ public class TouchMgr : MonoBehaviour
     public Button _ExitBtn;
     public Button _EnterSettingBtn;
     public Button _ExitSettingBtn;
+    public Button _ExitGameBtn;
 
     public Button _Item01;
     public Button _Item02;

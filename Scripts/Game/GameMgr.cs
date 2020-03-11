@@ -50,12 +50,12 @@ public class GameMgr : MonoBehaviour
         SetScale();
         AddListener();
 
+        GameState = eGameState.InWelcome;
         _VerMessage.text = PrintPackageMessage();
     }
 
     private void AddListener()
     {
-        WelcomeMgr.instance.AddListener();
         Add_OnGameStateChanged(InGame);
     }
     private void SetScale()
@@ -91,6 +91,7 @@ public class GameMgr : MonoBehaviour
         switch (state)
         {
             case eGameState.InWelcome:
+                WelcomeMgr.instance.Init();
                 break;
             case eGameState.InGame:
                 SettingMgr.instance.AddEnter_SettingListener();

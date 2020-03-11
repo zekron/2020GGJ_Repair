@@ -10,8 +10,6 @@ public class SettingMgr : MonoBehaviour
 
     public SpriteRenderer _SettingSprite;
     public Canvas _Setting;
-    public Text _BGMVolume;
-    public Text _FXVolume;
 
     private Tween m_ReturnTween;
 
@@ -24,10 +22,12 @@ public class SettingMgr : MonoBehaviour
     {
         TouchMgr.instance.AddListener(TouchMgr.instance._EnterSettingBtn, EnterSetting);
         TouchMgr.instance.RemoveListener(TouchMgr.instance._ExitSettingBtn, ExitSetting);
+        TouchMgr.instance.RemoveListener(TouchMgr.instance._ExitGameBtn, ExitGame);
     }
     public void AddExit_SettingListener()
     {
         TouchMgr.instance.AddListener(TouchMgr.instance._ExitSettingBtn, ExitSetting);
+        TouchMgr.instance.AddListener(TouchMgr.instance._ExitGameBtn, ExitGame);
         TouchMgr.instance.RemoveListener(TouchMgr.instance._EnterSettingBtn, EnterSetting);
     }
 
@@ -58,14 +58,24 @@ public class SettingMgr : MonoBehaviour
 
         TouchMgr.instance._BGMSlider.value = SoundMgr.instance.GetBGMVolume();
         TouchMgr.instance._FXSlider.value = SoundMgr.instance.GetFXVolume();
-        _BGMVolume.text = SoundMgr.instance.GetBGMVolume().ToString();
-        _FXVolume.text = SoundMgr.instance.GetFXVolume().ToString();
     }
 
     void ExitSetting()
     {
-        GameMgr.instance.GameState = eGameState.InGame;
         _Setting.enabled = false;
+        GameMgr.instance.GameState = eGameState.InGame;
+
+        TouchMgr.instance._BGMSlider.onValueChanged.RemoveListener(SetBGMVolume);
+        TouchMgr.instance._FXSlider.onValueChanged.RemoveListener(SetFXVolume);
+        TouchMgr.instance._BGMToggle.onValueChanged.RemoveListener(SetBGMMute);
+        TouchMgr.instance._FXToggle.onValueChanged.RemoveListener(SetFXMute);
+    }
+    void ExitGame()
+    {
+        _Setting.enabled = false;
+        GameMgr.instance.GameState = eGameState.InWelcome;
+        CharacterAbilities.instance.RebirthCharacter();
+        CharacterPackage.instance.ClearItems();
 
         TouchMgr.instance._BGMSlider.onValueChanged.RemoveListener(SetBGMVolume);
         TouchMgr.instance._FXSlider.onValueChanged.RemoveListener(SetFXVolume);
@@ -75,7 +85,6 @@ public class SettingMgr : MonoBehaviour
     void SetBGMVolume(float value)
     {
         SoundMgr.instance.SetBGMVolume(value / 100);
-        _BGMVolume.text = SoundMgr.instance.GetBGMVolume().ToString();
     }
     void SetBGMMute(bool value)
     {
@@ -84,7 +93,6 @@ public class SettingMgr : MonoBehaviour
     void SetFXVolume(float value)
     {
         SoundMgr.instance.SetBGMVolume(value / 100);
-        _FXVolume.text = SoundMgr.instance.GetFXVolume().ToString();
     }
     void SetFXMute(bool value)
     {

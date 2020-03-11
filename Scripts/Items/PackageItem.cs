@@ -38,6 +38,13 @@ public class PackageItem : MonoBehaviour
         _PackageItemImage.DOFade(_IsHolding ? 0 : 1, 1);
     }
 
+    public void SetEmpty()
+    {
+        _IsEmpty = true;
+        _PackageItemImage.DOComplete();
+        _PackageItemImage.DOFade(0, 0);
+    }
+
     void OnMouseDown()
     {
         HoldPackageItem();
