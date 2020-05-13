@@ -1,4 +1,4 @@
-.Library
-.Logs
-.Packages
-.ProjectSettings
+Library/
+Logs/
+Packages/
+ProjectSettings/
