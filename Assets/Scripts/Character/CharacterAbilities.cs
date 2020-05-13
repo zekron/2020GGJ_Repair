@@ -12,7 +12,7 @@ public class CharacterAbilities : MonoBehaviour
     public KeyCode _KeyFetchGameObject = KeyCode.W;
     public bool _HoldInHand = false;
 
-    private Vector3 _CurRebitrhPoint;
+    private Vector3 m_CurRebitrhPoint;
     private List<GameObject> m_TempStayDestroys = new List<GameObject>();
     private bool m_HoldTimeFlag = false;
     private bool m_TimeWalkBackLock = false;
@@ -23,7 +23,7 @@ public class CharacterAbilities : MonoBehaviour
     void Start()
     {
         instance = this;
-        _CurRebitrhPoint = transform.position;
+        m_CurRebitrhPoint = transform.position;
     }
 
     // Update is called once per frame
@@ -159,12 +159,12 @@ public class CharacterAbilities : MonoBehaviour
 
     public void RebirthCharacter()
     {
-        transform.parent.position = _CurRebitrhPoint;
+        transform.parent.position = m_CurRebitrhPoint;
     }
 
     public void RefreshRebirthPoint(Vector3 newPoint)
     {
-        _CurRebitrhPoint = newPoint;
+        m_CurRebitrhPoint = newPoint;
     }
 
     #region UnityEvent

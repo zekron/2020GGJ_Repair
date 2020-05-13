@@ -37,6 +37,12 @@ public class BrokenAncientSprite
     public Sprite[] _Sprites;
 }
 
+[Serializable]
+public class Heart
+{
+    public SpriteRenderer _Heart;
+    public eHeartState _State;
+}
 #region Enum
 public enum eItemState
 {
@@ -47,13 +53,13 @@ public enum eItemState
 }
 public enum eItemType
 {
-    Tulip,
-    Rose,
-    Tree,
-    Tomb,
-    Candle,
-    PoisonousPool,
-    Tile,
+    eTulip,
+    eRose,
+    eTree,
+    eTomb,
+    eCandle,
+    ePoisonousPool,
+    eTile,
 }
 public enum eAncientState
 {
@@ -70,9 +76,14 @@ public enum eAncientType
 }
 public enum eGameState
 {
-    InWelcome,
-    InGame,
-    InSetting,
+    eInWelcome,
+    eInGame,
+    eInSetting,
+}
+public enum eHeartState
+{
+    eFull,
+    eEmpty,
 }
 #endregion
 

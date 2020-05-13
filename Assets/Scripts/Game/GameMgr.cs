@@ -32,7 +32,7 @@ public class GameMgr : MonoBehaviour
     public Vector3 _MainTransScale = Vector3.one;
     public static Vector3 _GameMgrScale = new Vector3(0.4f, 0.4f, 0.4f);
 
-    private eGameState m_GameState = eGameState.InWelcome;
+    private eGameState m_GameState = eGameState.eInWelcome;
 
     private void Awake()
     {
@@ -50,7 +50,7 @@ public class GameMgr : MonoBehaviour
         SetScale();
         AddListener();
 
-        GameState = eGameState.InWelcome;
+        GameState = eGameState.eInWelcome;
         _VerMessage.text = PrintPackageMessage();
     }
 
@@ -90,13 +90,13 @@ public class GameMgr : MonoBehaviour
     {
         switch (state)
         {
-            case eGameState.InWelcome:
+            case eGameState.eInWelcome:
                 WelcomeMgr.instance.Init();
                 break;
-            case eGameState.InGame:
+            case eGameState.eInGame:
                 SettingMgr.instance.AddEnter_SettingListener();
                 break;
-            case eGameState.InSetting:
+            case eGameState.eInSetting:
                 SettingMgr.instance.AddExit_SettingListener();
                 break;
             default:

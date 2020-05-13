@@ -8,6 +8,7 @@ public class WelcomeMgr : MonoBehaviour
 {
     public static WelcomeMgr instance = null;
 
+    public GameObject _Layer;
     public SpriteRenderer _Background;
     public SpriteRenderer _Title;
     public SpriteRenderer _Start, _Exit;
@@ -38,7 +39,7 @@ public class WelcomeMgr : MonoBehaviour
     #region Button Events
     void EnterWelcomeDialog()
     {
-        gameObject.SetActive(true);
+        _Layer.SetActive(true);
         _Start.DOFade(1, 0).OnStart(() => _Start.enabled = true);
         _Exit.DOFade(1, 0).OnStart(() => _Exit.enabled = true);
         _Background.DOFade(1, 0).OnStart(() => _Background.enabled = true);
@@ -57,12 +58,12 @@ public class WelcomeMgr : MonoBehaviour
         _Title.DOFade(0, 1).OnComplete(() =>
         {
             _Title.enabled = false;
-            gameObject.SetActive(false);
+            _Layer.SetActive(false);
         });
 
         RemoveWelcomeListener();
 
-        GameMgr.instance.GameState = eGameState.InGame;
+            GameMgr.instance.GameState = eGameState.eInGame;
     }
 
     void QuitGame()

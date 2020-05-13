@@ -48,7 +48,7 @@ public class SettingMgr : MonoBehaviour
 
         m_ReturnTween.Complete(false);
         _SettingSprite.transform.DOScale(0, 1).OnComplete(() => _SettingSprite.enabled = false);
-        GameMgr.instance.GameState = eGameState.InSetting;
+        GameMgr.instance.GameState = eGameState.eInSetting;
         _Setting.enabled = true;
 
         TouchMgr.instance._BGMSlider.onValueChanged.AddListener(SetBGMVolume);
@@ -63,7 +63,7 @@ public class SettingMgr : MonoBehaviour
     void ExitSetting()
     {
         _Setting.enabled = false;
-        GameMgr.instance.GameState = eGameState.InGame;
+        GameMgr.instance.GameState = eGameState.eInGame;
 
         TouchMgr.instance._BGMSlider.onValueChanged.RemoveListener(SetBGMVolume);
         TouchMgr.instance._FXSlider.onValueChanged.RemoveListener(SetFXVolume);
@@ -73,7 +73,7 @@ public class SettingMgr : MonoBehaviour
     void ExitGame()
     {
         _Setting.enabled = false;
-        GameMgr.instance.GameState = eGameState.InWelcome;
+        GameMgr.instance.GameState = eGameState.eInWelcome;
         CharacterAbilities.instance.RebirthCharacter();
         CharacterPackage.instance.ClearItems();
 

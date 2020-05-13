@@ -48,7 +48,7 @@ public class DemoScene : MonoBehaviour
     // the Update loop contains a very simple example of moving the character around and controlling the animation
     void Update()
     {
-        if (FindObjectOfType<GameMgr>() && GameMgr.instance.GameState != eGameState.InGame) return;
+        if (FindObjectOfType<GameMgr>() && GameMgr.instance.GameState != eGameState.eInGame) return;
         if (_controller.isGrounded)
             _velocity.y = 0;
 
@@ -91,7 +91,7 @@ public class DemoScene : MonoBehaviour
 
 
         // we can only jump whilst grounded
-        if (_controller.isGrounded && Input.GetKeyDown(KeyCode.Space))
+        if (_controller.isGrounded && Input.GetKeyDown(KeyCode.W))
         {
             _velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
             _animator.Play(Animator.StringToHash("Jump"));

@@ -163,9 +163,9 @@ namespace Prime31
 
         public void RecalculateDistanceBetweenRays()
         {
-            var colliderUseableHeight = boxCollider.size.y * Mathf.Abs(transform.localScale.y) - (2f * _skinWidth);
+            var colliderUseableHeight = boxCollider.size.y * Mathf.Abs(transform.localScale.y) - (4f * _skinWidth);
             _verticalDistanceBetweenRays = colliderUseableHeight * GameMgr._GameMgrScale.x / (totalHorizontalRays - 1);
-            var colliderUseableWidth = boxCollider.size.x * Mathf.Abs(transform.localScale.x) - (2f * _skinWidth);
+            var colliderUseableWidth = boxCollider.size.x * Mathf.Abs(transform.localScale.x) - (4f * _skinWidth);
             _horizontalDistanceBetweenRays = colliderUseableWidth * GameMgr._GameMgrScale.x / (totalVerticalRays - 1);
         }
 
