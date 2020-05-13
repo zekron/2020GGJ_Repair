@@ -1,4 +1,9 @@
+.vs/
 Library/
 Logs/
 Packages/
 ProjectSettings/
+obj/
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
+2020GGJ_Repair.sln
