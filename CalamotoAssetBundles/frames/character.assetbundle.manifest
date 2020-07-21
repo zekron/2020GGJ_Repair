@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 2226677353
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 69011f91863b07d1e19eda8572171da0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ea5a42e0fd8ea905efa7aa926a3b8944
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/RawAssets/SingleFrame/character/walk/3.png
+- Assets/RawAssets/SingleFrame/character/walk/1.png
+- Assets/RawAssets/SingleFrame/character/Idle/stand.png
+- Assets/RawAssets/SingleFrame/character/jump/3.png
+- Assets/RawAssets/SingleFrame/character/walk/2.png
+- Assets/RawAssets/SingleFrame/character/jump/5.png
+- Assets/RawAssets/SingleFrame/character/hand/handfront.png
+- Assets/RawAssets/SingleFrame/character/jump/6.png
+- Assets/RawAssets/SingleFrame/character/jump/1.png
+- Assets/RawAssets/SingleFrame/character/jump/7.png
+- Assets/RawAssets/SingleFrame/character/jump/4.png
+- Assets/RawAssets/SingleFrame/character/jump/2.png
+- Assets/RawAssets/SingleFrame/character/hand/handback.png
+Dependencies: []

@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 3705032212
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: frames/ancients.assetbundle
+      Dependencies: {}
+    Info_1:
+      Name: frames/character.assetbundle
+      Dependencies: {}
+    Info_2:
+      Name: frames/chips.assetbundle
+      Dependencies: {}
+    Info_3:
+      Name: frames/terrain.assetbundle
+      Dependencies: {}
+    Info_4:
+      Name: frames/materials.assetbundle
+      Dependencies: {}
+    Info_5:
+      Name: ui/ui.assetbundle
+      Dependencies: {}
