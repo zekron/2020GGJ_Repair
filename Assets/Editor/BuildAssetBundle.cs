@@ -12,6 +12,6 @@ public class ChinarAssetBundle
     {
         string folder = "CalamotoAssetBundles";                                                               //定义文件夹名字
         if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);                                     //文件夹不存在，则创建
-        BuildPipeline.BuildAssetBundles(folder, BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows); //创建AssetBundle
+        BuildPipeline.BuildAssetBundles(folder, BuildAssetBundleOptions.ChunkBasedCompression, BuildTarget.StandaloneWindows); //创建AssetBundle
     }
 }
