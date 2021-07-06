@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingMgr : MonoBehaviour
+public class UISettingMgr : MonoBehaviour
 {
-    public static SettingMgr instance = null;
+    public static UISettingMgr instance = null;
 
     public SpriteRenderer _SettingSprite;
     public Canvas _Setting;

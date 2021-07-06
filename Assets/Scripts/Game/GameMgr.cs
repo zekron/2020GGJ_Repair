@@ -91,13 +91,13 @@ public class GameMgr : MonoBehaviour
         switch (state)
         {
             case eGameState.eInWelcome:
-                WelcomeMgr.instance.Init();
+                UIWelcomeMgr.instance.Init();
                 break;
             case eGameState.eInGame:
-                SettingMgr.instance.AddEnter_SettingListener();
+                UISettingMgr.instance.AddEnter_SettingListener();
                 break;
             case eGameState.eInSetting:
-                SettingMgr.instance.AddExit_SettingListener();
+                UISettingMgr.instance.AddExit_SettingListener();
                 break;
             default:
                 break;

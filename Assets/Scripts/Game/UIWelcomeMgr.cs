@@ -4,9 +4,9 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class WelcomeMgr : MonoBehaviour
+public class UIWelcomeMgr : MonoBehaviour
 {
-    public static WelcomeMgr instance = null;
+    public static UIWelcomeMgr instance = null;
 
     public GameObject _Layer;
     public SpriteRenderer _Background;
