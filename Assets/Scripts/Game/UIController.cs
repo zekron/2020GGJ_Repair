@@ -19,15 +19,14 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public UISettingMgr UISettingManager { get => _settingManager; }
-    public UIWelcomeMgr UIWelcomeManager { get => _welcomeManager; }
-
-    // Start is called before the first frame update
-    void Start()
+    public void OpenUIWelcome()
     {
-
+        _welcomeManager.gameObject.SetActive(true);
     }
-
+    public void CloseUIWelcome()
+    {
+        _welcomeManager.gameObject.SetActive(false);
+    }
     public void OpenUISetting()
     {
         _settingManager.gameObject.SetActive(true);
