@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class TulipItem : Item
+﻿public class TulipItem : Item
 {
 
 }

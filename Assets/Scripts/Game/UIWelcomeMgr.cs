@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using DG.Tweening;
 using UnityEngine;
-using DG.Tweening;
 using UnityEngine.UI;
 
 public class UIWelcomeMgr : MonoBehaviour

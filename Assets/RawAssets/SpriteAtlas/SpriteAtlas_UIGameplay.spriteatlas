@@ -48,7 +48,6 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 4014c944143b780488dbed4aab47b1af, type: 3}
     - {fileID: 2800000, guid: bc444bcc077e4434eab75eb084c4d187, type: 3}
     - {fileID: 2800000, guid: 714f26d87b9f17442813dabc8cf524d7, type: 3}
-    - {fileID: 2800000, guid: e3ca945d39eb70a4bbe0d7e0191894f4, type: 3}
     totalSpriteSurfaceArea: 4668566
     bindAsDefault: 1
     isAtlasV2: 0
@@ -78,7 +77,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d1282beca354da04cb322aa4bf473d92, type: 3}
   - {fileID: 21300000, guid: 8488b6fc4a04b1b4da8789589b7479e9, type: 3}
   - {fileID: 21300000, guid: c24c9b2d10608e34184c1086330b6719, type: 3}
-  - {fileID: 21300000, guid: e3ca945d39eb70a4bbe0d7e0191894f4, type: 3}
   - {fileID: 21300000, guid: ac0d1c0e73984614da01c484e7dcee70, type: 3}
   - {fileID: 21300000, guid: 3268eecea879b534ca5cd52a03ccfb92, type: 3}
   - {fileID: 21300000, guid: 8f81f29f5df0fc44aaff39e7d12b0a3b, type: 3}
@@ -108,7 +106,6 @@ SpriteAtlas:
   - "\u2461-3"
   - "\u2461-2"
   - "\u2463-3"
-  - Background
   - "\u2460-3"
   - "\u2464-2"
   - "\u2460-2"

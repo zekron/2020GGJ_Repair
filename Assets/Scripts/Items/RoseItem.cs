@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class RoseItem : Item
+﻿public class RoseItem : Item
 {
 
 }

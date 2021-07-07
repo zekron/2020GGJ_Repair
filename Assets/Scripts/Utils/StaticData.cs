@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,7 +8,7 @@ public static class StaticData
 {
     public static string PackageName = "Calamoto";
     public static string PackageVer = "TestVer";
-    public static string PackageTime = "2021/0708/01/0210";
+    public static string PackageTime = "2021/0708/02/0334";
 
     public static Color ColorFadeOut = new Color(1, 1, 1, 0);
     public static Color ColorFull = new Color(1, 1, 1, 1);
