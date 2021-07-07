@@ -34,25 +34,26 @@ public class UISettingMgr : MonoBehaviour
 
         TouchMgr.instance._BGMSlider.value = SoundMgr.instance.GetBGMVolume();
         TouchMgr.instance._FXSlider.value = SoundMgr.instance.GetFXVolume();
-        transform.DOScale(1, 1);
     }
 
     void ExitToGame()
     {
-        transform.DOScale(0, 1).OnComplete(() => GameMgr.instance.SetGameState(eGameState.eInGameplay));
-        //GameMgr.instance.SetGameState(eGameState.eInGameplay);
+        //transform.DOScale(0, 1)
+        //    .OnComplete(() => GameMgr.instance.SetGameState(eGameState.eInGameplay));
+        GameMgr.instance.SetGameState(eGameState.eInGameplay);
 
         RemoveSettingListener();
     }
 
     void ExitToMenu()
     {
-        transform.DOScale(0, 1).OnComplete(() =>
-        {
-            GameMgr.instance.SetGameState(eGameState.eInWelcome);
-            CharacterAbilities.instance.RebirthCharacter();
-            CharacterPackage.instance.ClearItems();
-        });
+        transform.DOScale(0, 1)
+            .OnComplete(() =>
+            {
+                GameMgr.instance.SetGameState(eGameState.eInWelcome);
+                CharacterAbilities.instance.RebirthCharacter();
+                CharacterPackage.instance.ClearItems();
+            });
 
         RemoveSettingListener();
     }

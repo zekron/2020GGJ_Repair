@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,17 +32,22 @@ public class UIController : MonoBehaviour
     public void OpenUIGameplay()
     {
         _gameplayManager.gameObject.SetActive(true);
+        _gameplayManager.transform.DOScale(1, 1);
     }
     public void CloseUIGameplay()
     {
-        _gameplayManager.gameObject.SetActive(false);
+        _gameplayManager.transform.DOScale(0, 1)
+            .OnComplete(() => _gameplayManager.gameObject.SetActive(false));
     }
     public void OpenUISetting()
     {
         _settingManager.gameObject.SetActive(true);
+        _settingManager.transform.DOScale(1, 1);
     }
     public void CloseUISetting()
     {
+        //_settingManager.transform.DOScale(0, 1)
+        //    .OnComplete(() => _settingManager.gameObject.SetActive(false));
         _settingManager.gameObject.SetActive(false);
     }
 }
