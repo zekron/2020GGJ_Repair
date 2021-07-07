@@ -81,8 +81,10 @@ public class ItemDetector : Detector
 
     private void OnMouseDown()
     {
+        //Debug.LogFormat("{0} OnMouseDown.", name);
         if (StayDestroy && tag == "Item")
         {
+            //Debug.LogFormat("{0} StayDestroy.", name);
             CharacterAbilities.instance.FetchItemObject(this.gameObject);
         }
     }

@@ -62,10 +62,15 @@ namespace Prime31
                 RecalculateDistanceBetweenRays();
             }
         }
-        public LayerMask platformMask = 0;
-        public LayerMask triggerMask = 0;
-        [SerializeField]
-        LayerMask oneWayPlatformMask = 0;
+        /// <summary>
+        /// 普通平台层级
+        /// </summary>
+        [SerializeField] private LayerMask platformMask = 0;
+        [SerializeField] private LayerMask triggerMask = 0;
+        /// <summary>
+        /// 单向通过平台层级
+        /// </summary>
+        [SerializeField]private LayerMask oneWayPlatformMask = 0;
         [Range(0f, 90f)]
         public float slopeLimit = 30f;
         public float jumpingThreshold = 0.07f;

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PackageItem : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class PackageItem : MonoBehaviour
     public bool _IsHolding = false;
     public bool _IsEmpty = true;
 
-    public SpriteRenderer _PackageItemImage;
+    [SerializeField]public Image _ImagePackageItem;
 
     private void Start()
     {
@@ -19,9 +20,9 @@ public class PackageItem : MonoBehaviour
     {
         _PackageItemState = detector.CurItemState;
         _PackageItemType = detector._ItemType;
-        _PackageItemImage.sprite = CharacterPackage.instance
+        _ImagePackageItem.sprite = CharacterPackage.instance
             ._ItemSprite[(int)_PackageItemType][(int)_PackageItemState];
-        _PackageItemImage.DOFade(1, 1)
+        _ImagePackageItem.DOFade(1, 1)
                 .OnComplete(() => CharacterAbilities.instance._HoldInHand = false);
         _IsEmpty = false;
     }
@@ -34,15 +35,15 @@ public class PackageItem : MonoBehaviour
         _IsHolding = !_IsHolding;
 
         CharacterPackage.instance.HoldItem(_IsHolding ? this : null);
-        _PackageItemImage.DOComplete();
-        _PackageItemImage.DOFade(_IsHolding ? 0 : 1, 1);
+        _ImagePackageItem.DOComplete();
+        _ImagePackageItem.DOFade(_IsHolding ? 0 : 1, 1);
     }
 
     public void SetEmpty()
     {
         _IsEmpty = true;
-        _PackageItemImage.DOComplete();
-        _PackageItemImage.DOFade(0, 0);
+        _ImagePackageItem.DOComplete();
+        _ImagePackageItem.DOFade(0, 0);
     }
 
     void OnMouseDown()
