@@ -20,7 +20,19 @@ SpriteAtlas:
       readable: 0
       crunchedCompression: 0
       sRGB: 1
-    platformSettings: []
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
       padding: 4
@@ -32,18 +44,23 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: a3cd2e06853e99f45a96dc333afb40b1, type: 3}
-    totalSpriteSurfaceArea: 7063080
+    - {fileID: 102900000, guid: 3b3cf79f17f15fa4cb82701c226ef478, type: 3}
+    totalSpriteSurfaceArea: 9831716
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 76ab50400f4e8f5458defe595806790f, type: 3}
+  - {fileID: 21300000, guid: 08537340aaa2d834bb085f83217dcda0, type: 3}
   - {fileID: 21300000, guid: cb3c691168446e84c876110e1fea284b, type: 3}
   - {fileID: 21300000, guid: f66e6151594af0a48b2efacfbf8fb134, type: 3}
   - {fileID: 21300000, guid: 0f5cbce142eceb14fb97c2c2f80ff87b, type: 3}
   - {fileID: 21300000, guid: aebda7134ba1dbd4aaada11ce548615e, type: 3}
+  - {fileID: 21300000, guid: 1ebde46493f23be4794bdd1c642ce1a3, type: 3}
   - {fileID: 21300000, guid: aa845c847aa75294b8710413b4be9f40, type: 3}
   - {fileID: 21300000, guid: 9753be161690c1942a498fc6e630b891, type: 3}
+  - {fileID: 21300000, guid: b1ff71f6d9b807144a51fcc4b723d2fd, type: 3}
   - {fileID: 21300000, guid: 31f3f6e8f9ad27a4cb03f84d72ee2492, type: 3}
   - {fileID: 21300000, guid: 12de555931319a34489c3be23ea8befe, type: 3}
   - {fileID: 21300000, guid: 56b2962a13b761a44892d6ab5a2796c6, type: 3}
@@ -54,12 +71,16 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 33563f5dde281914599905d952db0e72, type: 3}
   - {fileID: 21300000, guid: f46e81af4c8fa434095ac6219cf2521c, type: 3}
   m_PackedSpriteNamesToIndex:
+  - 3
+  - 1
   - 2
   - 1
   - Slope_4
   - 1-1
   - 4
+  - 4
   - Slope_3
+  - 2
   - 4
   - Slope_1
   - 2
