@@ -9,7 +9,7 @@ public static class StaticData
 {
     public static string PackageName = "Calamoto";
     public static string PackageVer = "TestVer";
-    public static string PackageTime = "2020/0311/01/2316";
+    public static string PackageTime = "2021/0707/01/1437";
 
     public static Color ColorFadeOut = new Color(1, 1, 1, 0);
     public static Color ColorFull = new Color(1, 1, 1, 1);
@@ -77,7 +77,7 @@ public enum eAncientType
 public enum eGameState
 {
     eInWelcome,
-    eInGame,
+    eInGameplay,
     eInSetting,
 }
 public enum eHeartState

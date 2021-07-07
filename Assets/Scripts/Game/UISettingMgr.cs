@@ -8,48 +8,24 @@ public class UISettingMgr : MonoBehaviour
 {
     public static UISettingMgr instance = null;
 
-    public SpriteRenderer _SettingSprite;
-    public Canvas _Setting;
-
-    private Tween m_ReturnTween;
 
     private void Awake()
     {
         instance = this;
     }
-
-    public void AddEnter_SettingListener()
+    private void OnEnable()
     {
-        TouchMgr.instance.AddListener(TouchMgr.instance._EnterSettingBtn, EnterSetting);
-        TouchMgr.instance.RemoveListener(TouchMgr.instance._ExitSettingBtn, ExitSetting);
-        TouchMgr.instance.RemoveListener(TouchMgr.instance._ExitGameBtn, ExitGame);
+        EnterSetting();
     }
-    public void AddExit_SettingListener()
+    private void OnDisable()
     {
-        TouchMgr.instance.AddListener(TouchMgr.instance._ExitSettingBtn, ExitSetting);
-        TouchMgr.instance.AddListener(TouchMgr.instance._ExitGameBtn, ExitGame);
-        TouchMgr.instance.RemoveListener(TouchMgr.instance._EnterSettingBtn, EnterSetting);
     }
 
     #region ButtonEvent
     void EnterSetting()
     {
-        if (!_SettingSprite.enabled)
-        {
-            _SettingSprite.transform.localScale = Vector3.zero;
-            _SettingSprite.enabled = true;
-            _SettingSprite.transform.DOScale(1, 1);
-            m_ReturnTween = DOTween.Sequence().AppendInterval(3).AppendCallback(() =>
-            {
-                _SettingSprite.transform.DOScale(0, 1).OnComplete(() => _SettingSprite.enabled = false);
-            });
-            return;
-        }
-
-        m_ReturnTween.Complete(false);
-        _SettingSprite.transform.DOScale(0, 1).OnComplete(() => _SettingSprite.enabled = false);
-        GameMgr.instance.GameState = eGameState.eInSetting;
-        _Setting.enabled = true;
+        TouchMgr.instance.AddListener(TouchMgr.instance._ExitSettingBtn, ExitToGame);
+        TouchMgr.instance.AddListener(TouchMgr.instance._ExitGameBtn, ExitToMenu);
 
         TouchMgr.instance._BGMSlider.onValueChanged.AddListener(SetBGMVolume);
         TouchMgr.instance._FXSlider.onValueChanged.AddListener(SetFXVolume);
@@ -58,24 +34,33 @@ public class UISettingMgr : MonoBehaviour
 
         TouchMgr.instance._BGMSlider.value = SoundMgr.instance.GetBGMVolume();
         TouchMgr.instance._FXSlider.value = SoundMgr.instance.GetFXVolume();
+        transform.DOScale(1, 1);
     }
 
-    void ExitSetting()
+    void ExitToGame()
     {
-        _Setting.enabled = false;
-        GameMgr.instance.GameState = eGameState.eInGame;
+        transform.DOScale(0, 1).OnComplete(() => GameMgr.instance.SetGameState(eGameState.eInGameplay));
+        //GameMgr.instance.SetGameState(eGameState.eInGameplay);
 
-        TouchMgr.instance._BGMSlider.onValueChanged.RemoveListener(SetBGMVolume);
-        TouchMgr.instance._FXSlider.onValueChanged.RemoveListener(SetFXVolume);
-        TouchMgr.instance._BGMToggle.onValueChanged.RemoveListener(SetBGMMute);
-        TouchMgr.instance._FXToggle.onValueChanged.RemoveListener(SetFXMute);
+        RemoveSettingListener();
     }
-    void ExitGame()
+
+    void ExitToMenu()
     {
-        _Setting.enabled = false;
-        GameMgr.instance.GameState = eGameState.eInWelcome;
-        CharacterAbilities.instance.RebirthCharacter();
-        CharacterPackage.instance.ClearItems();
+        transform.DOScale(0, 1).OnComplete(() =>
+        {
+            GameMgr.instance.SetGameState(eGameState.eInWelcome);
+            CharacterAbilities.instance.RebirthCharacter();
+            CharacterPackage.instance.ClearItems();
+        });
+
+        RemoveSettingListener();
+    }
+
+    private void RemoveSettingListener()
+    {
+        TouchMgr.instance.RemoveListener(TouchMgr.instance._ExitSettingBtn, ExitToGame);
+        TouchMgr.instance.RemoveListener(TouchMgr.instance._ExitGameBtn, ExitToMenu);
 
         TouchMgr.instance._BGMSlider.onValueChanged.RemoveListener(SetBGMVolume);
         TouchMgr.instance._FXSlider.onValueChanged.RemoveListener(SetFXVolume);

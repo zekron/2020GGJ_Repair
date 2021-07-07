@@ -8,23 +8,22 @@ public class UIWelcomeMgr : MonoBehaviour
 {
     public static UIWelcomeMgr instance = null;
 
-    public GameObject _Layer;
-    public SpriteRenderer _Background;
-    public SpriteRenderer _Title;
-    public SpriteRenderer _Start, _Exit;
+    [SerializeField] private Image _imageBackground, _imageTitle, _imageStart, _imageExit;
 
     private void Awake()
     {
         instance = this;
     }
-
-    public void Init()
+    private void OnEnable()
     {
         EnterWelcomeDialog();
-        AddListener();
+        AddWelcomeListener();
+    }
+    private void OnDisable()
+    {
     }
 
-    void AddListener()
+    void AddWelcomeListener()
     {
         TouchMgr.instance.AddListener(TouchMgr.instance._StartBtn, StartGame);
         TouchMgr.instance.AddListener(TouchMgr.instance._ExitBtn, QuitGame);
@@ -39,31 +38,26 @@ public class UIWelcomeMgr : MonoBehaviour
     #region Button Events
     void EnterWelcomeDialog()
     {
-        _Layer.SetActive(true);
-        _Start.DOFade(1, 0).OnStart(() => _Start.enabled = true);
-        _Exit.DOFade(1, 0).OnStart(() => _Exit.enabled = true);
-        _Background.DOFade(1, 0).OnStart(() => _Background.enabled = true);
-        _Title.DOFade(1, 0).OnStart(() => _Title.enabled = true);
-        TouchMgr.instance._StartBtn.targetGraphic.DOColor(Color.white, 0);
-        TouchMgr.instance._ExitBtn.targetGraphic.DOColor(Color.white, 0);
+        _imageStart.DOFade(1, 0).OnStart(() => _imageStart.enabled = true);
+        _imageExit.DOFade(1, 0).OnStart(() => _imageExit.enabled = true);
+        _imageBackground.DOFade(1, 0).OnStart(() => _imageBackground.enabled = true);
+        _imageTitle.DOFade(1, 0).OnStart(() => _imageTitle.enabled = true);
 
         if (!SoundMgr.instance.IsPlaying(0, 0))
             SoundMgr.instance.PlayBGM(SoundMgr.instance._BGM._MainBGM, 0);
     }
     void StartGame()
     {
-        _Start.DOFade(0, 1).OnComplete(() => _Start.enabled = false);
-        _Exit.DOFade(0, 1).OnComplete(() => _Exit.enabled = false);
-        _Background.DOFade(0, 1).OnComplete(() => _Background.enabled = false);
-        _Title.DOFade(0, 1).OnComplete(() =>
-        {
-            _Title.enabled = false;
-            _Layer.SetActive(false);
-        });
-
         RemoveWelcomeListener();
 
-            GameMgr.instance.GameState = eGameState.eInGame;
+        _imageStart.DOFade(0, 1).OnComplete(() => _imageStart.enabled = false);
+        _imageExit.DOFade(0, 1).OnComplete(() => _imageExit.enabled = false);
+        _imageBackground.DOFade(0, 1).OnComplete(() => _imageBackground.enabled = false);
+        _imageTitle.DOFade(0, 1).OnComplete(() =>
+        {
+            _imageTitle.enabled = false;
+            GameMgr.instance.SetGameState(eGameState.eInGameplay);
+        });
     }
 
     void QuitGame()

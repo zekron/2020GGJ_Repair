@@ -14,15 +14,7 @@ public class GameMgr : MonoBehaviour
     private const float m_CameraSize = 5.4f;
     #endregion
 
-    public eGameState GameState
-    {
-        get => m_GameState;
-        set
-        {
-            m_GameState = value;
-            _OnGameStateChanged.Invoke(m_GameState);
-        }
-    }
+    public eGameState GameState { get => m_GameState; }
 
     public Camera _MainCamera;
     public Transform _MainTrans;
@@ -50,7 +42,7 @@ public class GameMgr : MonoBehaviour
         SetScale();
         AddListener();
 
-        GameState = eGameState.eInWelcome;
+        SetGameState(eGameState.eInWelcome);
         _VerMessage.text = PrintPackageMessage();
     }
 
@@ -85,19 +77,30 @@ public class GameMgr : MonoBehaviour
         return string.Format("{0} - {1} - {2}", StaticData.PackageName, StaticData.PackageVer, StaticData.PackageTime);
     }
 
+    public void SetGameState(eGameState state)
+    {
+        m_GameState = state;
+        _OnGameStateChanged.Invoke(m_GameState);
+    }
     #region Event
     void InGame(eGameState state)
     {
         switch (state)
         {
             case eGameState.eInWelcome:
-                UIWelcomeMgr.instance.Init();
+                UIController.Instance.OpenUIWelcome();
+                UIController.Instance.CloseUISetting();
+                UIController.Instance.CloseUIGameplay();
                 break;
-            case eGameState.eInGame:
-                UISettingMgr.instance.AddEnter_SettingListener();
+            case eGameState.eInGameplay:
+                UIController.Instance.OpenUIGameplay();
+                UIController.Instance.CloseUIWelcome();
+                UIController.Instance.CloseUISetting();
                 break;
             case eGameState.eInSetting:
-                UISettingMgr.instance.AddExit_SettingListener();
+                UIController.Instance.OpenUISetting();
+                UIController.Instance.CloseUIWelcome();
+                UIController.Instance.CloseUIGameplay();
                 break;
             default:
                 break;

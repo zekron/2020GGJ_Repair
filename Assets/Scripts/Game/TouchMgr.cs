@@ -31,12 +31,12 @@ public class TouchMgr : MonoBehaviour
     public void AddListener(Button button, UnityAction action)
     {
         button.onClick.AddListener(action);
-        button.targetGraphic.enabled = true;
+        //button.targetGraphic.enabled = true;
     }
 
     public void RemoveListener(Button button, UnityAction action)
     {
         button.onClick.RemoveListener(action);
-        button.targetGraphic.enabled = false;
+        //button.targetGraphic.enabled = false;
     }
 }

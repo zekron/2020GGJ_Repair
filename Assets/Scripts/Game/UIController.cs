@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     private static UIController _instance = null;
+    [SerializeField] private UIInGameMgr _gameplayManager;
     [SerializeField] private UISettingMgr _settingManager;
     [SerializeField] private UIWelcomeMgr _welcomeManager;
     public static UIController Instance
@@ -26,6 +27,14 @@ public class UIController : MonoBehaviour
     public void CloseUIWelcome()
     {
         _welcomeManager.gameObject.SetActive(false);
+    }
+    public void OpenUIGameplay()
+    {
+        _gameplayManager.gameObject.SetActive(true);
+    }
+    public void CloseUIGameplay()
+    {
+        _gameplayManager.gameObject.SetActive(false);
     }
     public void OpenUISetting()
     {
