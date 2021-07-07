@@ -59,7 +59,7 @@ public class CharacterPackage : MonoBehaviour
             _HoldingItemSprite.DOFade(1, 1).OnStart(() =>
             {
                 _Hands.SetActive(_HoldingItem);
-                _HoldingItemSprite.sprite = item._PackageItemImage.sprite;
+                _HoldingItemSprite.sprite = item._ImagePackageItem.sprite;
             });
         }
         else

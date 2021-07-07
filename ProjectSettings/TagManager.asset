@@ -7,6 +7,7 @@ TagManager:
   - Ancient
   - Item
   - Unavailable
+  - Border
   layers:
   - Default
   - TransparentFX
@@ -14,9 +15,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Environment
+  - Border
   - 
   - 
   - 
@@ -41,6 +42,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 4269869193
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Item
+    uniqueID: 3133640145
+    locked: 0
+  - name: Environment
+    uniqueID: 3190874665
+    locked: 0
+  - name: UI
+    uniqueID: 101100555
     locked: 0

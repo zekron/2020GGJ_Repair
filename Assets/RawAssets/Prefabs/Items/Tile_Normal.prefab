@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3866990356595143903}
   - component: {fileID: 8727790313786756011}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7663745605027912037}
   - component: {fileID: 7663745605027912034}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NewSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,6 +102,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -113,6 +115,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -122,9 +125,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1104092631
+  m_SortingLayer: 1
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 8d1974dcaadd22c42a1ca18862b48a0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -146,7 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7663745605989311661}
   - component: {fileID: 7663745605989311658}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CurSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,6 +184,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -192,6 +197,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -201,8 +207,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1104092631
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 31f3f6e8f9ad27a4cb03f84d72ee2492, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -228,7 +234,7 @@ GameObject:
   - component: {fileID: 1934661742633508794}
   - component: {fileID: 7663745606168415880}
   - component: {fileID: 7663745606168415882}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tile_Normal
   m_TagString: Unavailable
   m_Icon: {fileID: 0}
@@ -244,7 +250,7 @@ Transform:
   m_GameObject: {fileID: 7663745606168415887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 132.6, y: 11.55, z: 1}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7663745605989311661}
   - {fileID: 7663745605027912037}
@@ -266,7 +272,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CanBeDetected: 0
   _InTimeWalkBack: 0
-  _CurItemState: 3
   _ItemType: 6
 --- !u!114 &1934661742633508794
 MonoBehaviour:

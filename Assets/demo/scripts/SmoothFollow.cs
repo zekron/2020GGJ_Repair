@@ -8,7 +8,7 @@ public class SmoothFollow : MonoBehaviour
     public static SmoothFollow instance = null;
 
     public Transform target;
-    public Image _Background;
+    [SerializeField] private Material _Background;
 
     public float smoothDampTime = 0.2f;
     [HideInInspector]
@@ -54,7 +54,7 @@ public class SmoothFollow : MonoBehaviour
 
     private void OnDestroy()
     {
-        _Background.material.SetTextureOffset("_MainTex", Vector2.zero);
+        _Background.SetTextureOffset("_MainTex", Vector2.zero);
     }
 
     void updateCameraPosition(bool force = false)
@@ -91,7 +91,7 @@ public class SmoothFollow : MonoBehaviour
     void LoopBackground()
     {
         Vector2 tempVec = new Vector2(((transform.position.x - m_DefaultTrans.x) / m_CameraThreshold) % 1, 0);
-        _Background?.material.SetTextureOffset("_MainTex", tempVec);
+        _Background?.SetTextureOffset("_MainTex", tempVec);
     }
 
     public void SetCameraOffset(Vector3 scale)
