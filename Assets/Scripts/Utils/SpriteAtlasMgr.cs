@@ -14,9 +14,9 @@ public class SpriteAtlasMgr : ScriptableObject
             UnityEditor.U2D.SpriteAtlasExtensions.SetIncludeInBuild(atlas, false);
 #elif UNITY_WEBGL
         foreach (var atlas in _winSpriteAtlas)
-            SpriteAtlasExtensions.SetIncludeInBuild(atlas, true);
+            UnityEditor.U2D.SpriteAtlasExtensions.SetIncludeInBuild(atlas, true);
         foreach (var atlas in _webGLSpriteAtlas)
-            SpriteAtlasExtensions.SetIncludeInBuild(atlas, false);
+            UnityEditor.U2D.SpriteAtlasExtensions.SetIncludeInBuild(atlas, false);
 #endif
     }
 #endif
