@@ -12,5 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a2db9ce7884e54ba63fb5e468e9ae2, type: 3}
   m_Name: SpriteAtlas Manager SO
   m_EditorClassIdentifier: 
-  _winSpriteAtlas: []
-  _webGLSpriteAtlas: []
+  _winSpriteAtlas:
+  - {fileID: 4343727234628468602, guid: 7cb457fc3981f4849b649c8e2a781eb1, type: 2}
+  - {fileID: 4343727234628468602, guid: 7930bc270d202d64f850c20e4c8455aa, type: 2}
+  - {fileID: 4343727234628468602, guid: 67572ce3aa521ab4e92473a68831d793, type: 2}
+  - {fileID: 4343727234628468602, guid: e8fba956f20e5db4ab33f13bb882d386, type: 2}
+  - {fileID: 4343727234628468602, guid: 48cc4efb7b034304ab643d8e635c0343, type: 2}
+  _webGLSpriteAtlas:
+  - {fileID: 4343727234628468602, guid: c27ad3ef6005dfe49a5a1904365d048c, type: 2}
+  - {fileID: 4343727234628468602, guid: afecbaf4ef003b049b01d3dc803302ad, type: 2}
+  - {fileID: 4343727234628468602, guid: 274f52e68b14bda4183b71dfc6bdde3b, type: 2}
+  - {fileID: 4343727234628468602, guid: f3c779fa02884544481d7fc58a227047, type: 2}
+  - {fileID: 4343727234628468602, guid: f1f1ea2ab38b58a4b9c98e4457e80a6d, type: 2}
