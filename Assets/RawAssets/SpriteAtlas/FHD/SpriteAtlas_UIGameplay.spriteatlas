@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SpriteAtlas_UIGameplay
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: addf44e80d91e3240aef9b6020d57cb8, type: 3}
+    - {fileID: 2800000, guid: 68911a83af3986d4ebd20855f7fe82c5, type: 3}
+    - {fileID: 2800000, guid: 4014c944143b780488dbed4aab47b1af, type: 3}
+    - {fileID: 2800000, guid: bc444bcc077e4434eab75eb084c4d187, type: 3}
+    - {fileID: 2800000, guid: 714f26d87b9f17442813dabc8cf524d7, type: 3}
+    totalSpriteSurfaceArea: 2309270
+    bindAsDefault: 0
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: c6a17571aaf118f43b115ad4dd301922, type: 3}
+  - {fileID: 21300000, guid: c6a4818200b934e44a2c7313d468db51, type: 3}
+  - {fileID: 21300000, guid: 93d3eb33b89aa1844bbcb4f974ad0b72, type: 3}
+  - {fileID: 21300000, guid: 36879f73b5ead6f4c9c83832fda24ce6, type: 3}
+  - {fileID: 21300000, guid: 68911a83af3986d4ebd20855f7fe82c5, type: 3}
+  - {fileID: 21300000, guid: 4014c944143b780488dbed4aab47b1af, type: 3}
+  - {fileID: 21300000, guid: fd3d73d4466848c4c9189ba5222cb662, type: 3}
+  - {fileID: 21300000, guid: fc469cd42e190bf488ac161b8559d672, type: 3}
+  - {fileID: 21300000, guid: ab19d5158515fac43ad8e9a5c47fa13f, type: 3}
+  - {fileID: 21300000, guid: b1fc0d263ab637d48968ab295e7f0683, type: 3}
+  - {fileID: 21300000, guid: 4816e1765e68cd34daefcf2da673c275, type: 3}
+  - {fileID: 21300000, guid: f6371658ba47b22459d4d1c78836bbd9, type: 3}
+  - {fileID: 21300000, guid: 714f26d87b9f17442813dabc8cf524d7, type: 3}
+  - {fileID: 21300000, guid: 14fc0ff88b3e3a34e892a1a51af7ba44, type: 3}
+  - {fileID: 21300000, guid: 94a1002945654b64b98524330196d4cc, type: 3}
+  - {fileID: 21300000, guid: 69b691db06a03d440ba47277365b2f63, type: 3}
+  - {fileID: 21300000, guid: 1667bbfb49d983b448783700f6d320f4, type: 3}
+  - {fileID: 21300000, guid: e6aa7c2cf2dc950459cd820745620092, type: 3}
+  - {fileID: 21300000, guid: e449cc9cd0e9d004faa2811edcf705ce, type: 3}
+  - {fileID: 21300000, guid: bc444bcc077e4434eab75eb084c4d187, type: 3}
+  - {fileID: 21300000, guid: d1282beca354da04cb322aa4bf473d92, type: 3}
+  - {fileID: 21300000, guid: 8488b6fc4a04b1b4da8789589b7479e9, type: 3}
+  - {fileID: 21300000, guid: c24c9b2d10608e34184c1086330b6719, type: 3}
+  - {fileID: 21300000, guid: ac0d1c0e73984614da01c484e7dcee70, type: 3}
+  - {fileID: 21300000, guid: 3268eecea879b534ca5cd52a03ccfb92, type: 3}
+  - {fileID: 21300000, guid: 8f81f29f5df0fc44aaff39e7d12b0a3b, type: 3}
+  - {fileID: 21300000, guid: d03cb5cfce8b8444bb850c9eed18e2f4, type: 3}
+  - {fileID: 21300000, guid: 2dd120ffb4f1ca24dbc9b5194b4fa258, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - "\u2462-1"
+  - "\u2464-4-3"
+  - "\u2464-3-2"
+  - "\u2464-4-2"
+  - setting
+  - ItemFrame
+  - "\u2462-4"
+  - "\u2462-3"
+  - "\u2461-1"
+  - "\u2462-2"
+  - "\u2463-1"
+  - "\u2464-3-1"
+  - Heart - Empty
+  - "\u2463-4"
+  - "\u2463-2"
+  - "\u2464-1"
+  - "\u2464-4-1"
+  - "\u2461-4"
+  - "\u2460-4"
+  - Heart - Full
+  - "\u2461-3"
+  - "\u2461-2"
+  - "\u2463-3"
+  - "\u2460-3"
+  - "\u2464-2"
+  - "\u2460-2"
+  - "\u2464-3-3"
+  - "\u2460-1"
+  m_RenderDataMap: {}
+  m_Tag: SpriteAtlas_UIGameplay
+  m_IsVariant: 0

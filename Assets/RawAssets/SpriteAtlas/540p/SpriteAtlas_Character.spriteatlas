@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SpriteAtlas_Character
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 0.5
+    packables:
+    - {fileID: 102900000, guid: ee6d0d5b688e1f14b9ad21e18a1bb90c, type: 3}
+    totalSpriteSurfaceArea: 4700280
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 4343727234628468602, guid: afecbaf4ef003b049b01d3dc803302ad,
+    type: 2}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 24b633005ae220b40a82f271f7f9d55e, type: 3}
+  - {fileID: 21300000, guid: ac3832101fc7ded4b83d16ff03d03c79, type: 3}
+  - {fileID: 21300000, guid: 07693180f468c1448b61058f970427a9, type: 3}
+  - {fileID: 21300000, guid: 1491cf11c8f630a41bc11597ccf19627, type: 3}
+  - {fileID: 21300000, guid: a125a741e080b2941acdf021a625e21a, type: 3}
+  - {fileID: 21300000, guid: 7ce6a6332472a8946bbf8745819b7ab7, type: 3}
+  - {fileID: 21300000, guid: df81e637e1a2b694fa17874683ee3b88, type: 3}
+  - {fileID: 21300000, guid: 4de91e587f5a909499636e7ac831747e, type: 3}
+  - {fileID: 21300000, guid: 789dfbfa397626e418b14dff0ed615a6, type: 3}
+  - {fileID: 21300000, guid: 550d1b2d24e2cdf46ae52fbacaa329a2, type: 3}
+  - {fileID: 21300000, guid: ccd2982eb386bd34fb36cda9fa1f02f1, type: 3}
+  - {fileID: 21300000, guid: 4679369e2c0448a4bb76b122eee6ddf5, type: 3}
+  - {fileID: 21300000, guid: f4dab1bea093e3f40a6ab9aaaa8f3892, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - 3
+  - 1
+  - stand
+  - 3
+  - 2
+  - 5
+  - handfront
+  - 6
+  - 1
+  - 7
+  - 4
+  - 2
+  - handback
+  m_RenderDataMap: {}
+  m_Tag: SpriteAtlas_Character
+  m_IsVariant: 1

@@ -49,12 +49,10 @@ public class GameMgr : MonoBehaviour
     }
     private void SetScale()
     {
-        //SetMainTransScale();
         SmoothFollow.instance.SetCameraOffset(_MainTransScale);
         DestroyDetector.instance.SetDestroyDetectorScale(_GameMgrScale);
         DemoScene.instance.SetCharacterConfigScale(_MainTransScale);
     }
-
     void SetMainTransScale()
     {
         Vector2 mainDisplayRendering = new Vector2(Display.main.renderingWidth, Display.main.renderingHeight);

@@ -41,7 +41,7 @@ SpriteAtlas:
       enableRotation: 0
       enableTightPacking: 0
     secondaryTextureSettings: {}
-    variantMultiplier: 1
+    variantMultiplier: 0.5
     packables:
     - {fileID: 102900000, guid: addf44e80d91e3240aef9b6020d57cb8, type: 3}
     - {fileID: 2800000, guid: 68911a83af3986d4ebd20855f7fe82c5, type: 3}
@@ -52,7 +52,8 @@ SpriteAtlas:
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
-  m_MasterAtlas: {fileID: 0}
+  m_MasterAtlas: {fileID: 4343727234628468602, guid: f3c779fa02884544481d7fc58a227047,
+    type: 2}
   m_PackedSprites:
   - {fileID: 21300000, guid: c6a17571aaf118f43b115ad4dd301922, type: 3}
   - {fileID: 21300000, guid: c6a4818200b934e44a2c7313d468db51, type: 3}
@@ -113,4 +114,4 @@ SpriteAtlas:
   - "\u2460-1"
   m_RenderDataMap: {}
   m_Tag: SpriteAtlas_UIGameplay
-  m_IsVariant: 0
+  m_IsVariant: 1
