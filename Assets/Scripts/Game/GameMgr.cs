@@ -7,9 +7,9 @@ public class GameMgr : MonoBehaviour
     public static GameMgr instance = null;
 
     #region Const
-    public const int _DefaultWidth = 1920;
-    private const int m_DefaultHeight = 1080;
-    private const float m_CameraSize = 5.4f;
+    public const int DEFAULT_WIDTH = 1920;
+    private const int DEFAULT_HEIGHT = 1080;
+    private const float DEFAULT_CAMERA_SIZE = 5.4f;
     #endregion
 
     public eGameState GameState { get => m_GameState; }
@@ -18,8 +18,7 @@ public class GameMgr : MonoBehaviour
     public Transform _MainTrans;
     public Text _VerMessage;
 
-    [HideInInspector]
-    public Vector3 _MainTransScale = Vector3.one;
+    private Vector3 _MainTransScale = Vector3.one;
     public static Vector3 _GameMgrScale = new Vector3(0.4f, 0.4f, 0.4f);
 
     private eGameState m_GameState = eGameState.eInWelcome;
@@ -59,7 +58,7 @@ public class GameMgr : MonoBehaviour
     void SetMainTransScale()
     {
         Vector2 mainDisplayRendering = new Vector2(Display.main.renderingWidth, Display.main.renderingHeight);
-        _MainTransScale = new Vector3(mainDisplayRendering.x / _DefaultWidth, mainDisplayRendering.y / m_DefaultHeight, 1);
+        _MainTransScale = new Vector3(mainDisplayRendering.x / DEFAULT_WIDTH, mainDisplayRendering.y / DEFAULT_HEIGHT, 1);
         _MainCamera.orthographicSize = mainDisplayRendering.y * 0.5f * 0.01f;
 
         _MainTrans.localScale = _MainTransScale;

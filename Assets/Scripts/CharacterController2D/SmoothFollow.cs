@@ -30,9 +30,6 @@ public class SmoothFollow : MonoBehaviour
 
     private void Start()
     {
-        if (_Background)
-            m_CameraThreshold = GameMgr._DefaultWidth * GameMgr.instance._MainTransScale.x * 0.01f;
-
         updateCameraPosition(true);
     }
 
@@ -98,5 +95,8 @@ public class SmoothFollow : MonoBehaviour
             cameraOffset.x * scale.x,
             cameraOffset.y * scale.y,
             cameraOffset.z * scale.z);
+
+        if (_Background)
+            m_CameraThreshold = GameMgr.DEFAULT_WIDTH * scale.x * 0.01f;
     }
 }
