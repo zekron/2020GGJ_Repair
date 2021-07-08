@@ -143,5 +143,5 @@ SpriteAtlas:
   - 4
   - 3
   m_RenderDataMap: {}
-  m_Tag: SpriteAtlas_Items
+  m_Tag: SpriteAtlas_Environment
   m_IsVariant: 0
