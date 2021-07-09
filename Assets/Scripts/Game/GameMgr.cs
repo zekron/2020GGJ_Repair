@@ -4,28 +4,36 @@ using UnityEngine.UI;
 
 public class GameMgr : MonoBehaviour
 {
-    public static GameMgr instance = null;
+    private static GameMgr _instance = null;
+    public static GameMgr Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<GameMgr>();
+            }
+            return _instance;
+        }
+    }
 
-    #region Const
-    public const int DEFAULT_WIDTH = 1920;
-    private const int DEFAULT_HEIGHT = 1080;
-    private const float DEFAULT_CAMERA_SIZE = 5.4f;
-    #endregion
+    [Header("Attachment")]
+    [SerializeField] private Camera _MainCamera;
+    [SerializeField] private Transform _MainTrans;
+    [SerializeField] private Text _VerMessage;
 
-    public eGameState GameState { get => m_GameState; }
+    [Header("Event")]
+    [SerializeField] private GameStateEventChannelSO _gameStateEvent;
 
-    public Camera _MainCamera;
-    public Transform _MainTrans;
-    public Text _VerMessage;
+    [Header("Manager")]
+    [SerializeField] private GameStateMgr _gameStateMgr;
+    [SerializeField] private UIController _UIController;
 
     private Vector3 _MainTransScale = Vector3.one;
     public static Vector3 _GameMgrScale = new Vector3(0.4f, 0.4f, 0.4f);
 
-    private eGameState m_GameState = eGameState.eInWelcome;
-
     private void Awake()
     {
-        instance = this;
         _GameMgrScale = transform.localScale;
     }
     // Start is called before the first frame update
@@ -36,16 +44,16 @@ public class GameMgr : MonoBehaviour
 
     private void Init()
     {
+        SetPackageMessage();
         SetScale();
         AddListener();
 
-        SetGameState(eGameState.eInWelcome);
-        _VerMessage.text = PrintPackageMessage();
+        _gameStateMgr.SetGameState(eGameState.eInWelcome);
     }
 
     private void AddListener()
     {
-        Add_OnGameStateChanged(InGame);
+        _gameStateEvent.OnEventRaised += InGame;
     }
     private void SetScale()
     {
@@ -53,10 +61,14 @@ public class GameMgr : MonoBehaviour
         DestroyDetector.instance.SetDestroyDetectorScale(_GameMgrScale);
         DemoScene.instance.SetCharacterConfigScale(_MainTransScale);
     }
+
     void SetMainTransScale()
     {
         Vector2 mainDisplayRendering = new Vector2(Display.main.renderingWidth, Display.main.renderingHeight);
-        _MainTransScale = new Vector3(mainDisplayRendering.x / DEFAULT_WIDTH, mainDisplayRendering.y / DEFAULT_HEIGHT, 1);
+        _MainTransScale = new Vector3(
+            mainDisplayRendering.x / StaticData.DEFAULT_WIDTH,
+            mainDisplayRendering.y / StaticData.DEFAULT_HEIGHT,
+            1);
         _MainCamera.orthographicSize = mainDisplayRendering.y * 0.5f * 0.01f;
 
         _MainTrans.localScale = _MainTransScale;
@@ -67,53 +79,35 @@ public class GameMgr : MonoBehaviour
             );
     }
 
-    string PrintPackageMessage()
+    void SetPackageMessage()
     {
-        return string.Format("{0} - {1} - {2}", StaticData.PackageName, StaticData.PackageVer, StaticData.PackageTime);
+        _VerMessage.text = string.Format("{0} - {1} - {2}", StaticData.PackageName, StaticData.PackageVer, StaticData.PackageTime);
     }
 
-    public void SetGameState(eGameState state)
-    {
-        m_GameState = state;
-        _OnGameStateChanged.Invoke(m_GameState);
-    }
-    #region Event
+    public GameStateMgr GetGameStateMgr() { return _gameStateMgr; }
+
     void InGame(eGameState state)
     {
         switch (state)
         {
             case eGameState.eInWelcome:
-                UIController.Instance.OpenUIWelcome();
-                UIController.Instance.CloseUISetting();
-                UIController.Instance.CloseUIGameplay();
+                _UIController.OpenUIWelcome();
+                _UIController.CloseUISetting();
+                _UIController.CloseUIGameplay();
                 break;
             case eGameState.eInGameplay:
-                UIController.Instance.OpenUIGameplay();
-                UIController.Instance.CloseUIWelcome();
-                UIController.Instance.CloseUISetting();
+                _UIController.OpenUIGameplay();
+                _UIController.CloseUIWelcome();
+                _UIController.CloseUISetting();
                 break;
             case eGameState.eInSetting:
-                UIController.Instance.OpenUISetting();
-                UIController.Instance.CloseUIWelcome();
-                UIController.Instance.CloseUIGameplay();
+                _UIController.OpenUISetting();
+                _UIController.CloseUIWelcome();
+                _UIController.CloseUIGameplay();
                 break;
             default:
+                Debug.LogWarning("Game state has not set to possible one.");
                 break;
         }
     }
-    #endregion
-
-    #region Event Listener
-    public static MyGameStateEvent _OnGameStateChanged = new MyGameStateEvent();
-
-    public static void Remove_OnGameStateChanged(UnityAction<eGameState> action)
-    {
-        _OnGameStateChanged.RemoveListener(action);
-    }
-    public static void Add_OnGameStateChanged(UnityAction<eGameState> action)
-    {
-        Remove_OnGameStateChanged(action);
-        _OnGameStateChanged.AddListener(action);
-    }
-    #endregion
 }

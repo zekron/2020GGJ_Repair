@@ -97,6 +97,6 @@ public class SmoothFollow : MonoBehaviour
             cameraOffset.z * scale.z);
 
         if (_Background)
-            m_CameraThreshold = GameMgr.DEFAULT_WIDTH * scale.x * 0.01f;
+            m_CameraThreshold = StaticData.DEFAULT_WIDTH * scale.x * 0.01f;
     }
 }
