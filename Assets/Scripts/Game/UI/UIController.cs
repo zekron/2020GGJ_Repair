@@ -3,21 +3,9 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    private static UIController _instance = null;
     [SerializeField] private UIInGameMgr _gameplayManager;
     [SerializeField] private UISettingMgr _settingManager;
     [SerializeField] private UIWelcomeMgr _welcomeManager;
-    public static UIController Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<UIController>();
-            }
-            return _instance;
-        }
-    }
 
     public void OpenUIWelcome()
     {

@@ -37,7 +37,7 @@ public class UISettingMgr : MonoBehaviour
     {
         //transform.DOScale(0, 1)
         //    .OnComplete(() => GameMgr.instance.SetGameState(eGameState.eInGameplay));
-        GameMgr.instance.SetGameState(eGameState.eInGameplay);
+        GameMgr.Instance.GetGameStateMgr().SetGameState(eGameState.eInGameplay);
 
         RemoveSettingListener();
     }
@@ -47,7 +47,7 @@ public class UISettingMgr : MonoBehaviour
         transform.DOScale(0, 1)
             .OnComplete(() =>
             {
-                GameMgr.instance.SetGameState(eGameState.eInWelcome);
+                GameMgr.Instance.GetGameStateMgr().SetGameState(eGameState.eInWelcome);
                 CharacterAbilities.instance.RebirthCharacter();
                 CharacterPackage.instance.ClearItems();
             });
