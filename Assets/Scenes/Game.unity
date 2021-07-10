@@ -1120,7 +1120,7 @@ PrefabInstance:
     - target: {fileID: 7872119138408446705, guid: 65fe99cbaf138c34b92e2d5696ff210c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7872119138408446705, guid: 65fe99cbaf138c34b92e2d5696ff210c,
         type: 3}
@@ -7091,7 +7091,7 @@ PrefabInstance:
     - target: {fileID: 642359475181837181, guid: 6a8cba7ae9af99e40b8f861e8e918ffd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 642359475181837181, guid: 6a8cba7ae9af99e40b8f861e8e918ffd,
         type: 3}
@@ -8323,7 +8323,7 @@ PrefabInstance:
     - target: {fileID: 642359475181837181, guid: 6a8cba7ae9af99e40b8f861e8e918ffd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 642359475181837181, guid: 6a8cba7ae9af99e40b8f861e8e918ffd,
         type: 3}
@@ -8403,7 +8403,7 @@ PrefabInstance:
     - target: {fileID: 7872119138408446705, guid: 65fe99cbaf138c34b92e2d5696ff210c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 7872119138408446705, guid: 65fe99cbaf138c34b92e2d5696ff210c,
         type: 3}
@@ -10099,7 +10099,7 @@ PrefabInstance:
     - target: {fileID: 642359475181837181, guid: 6a8cba7ae9af99e40b8f861e8e918ffd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 642359475181837181, guid: 6a8cba7ae9af99e40b8f861e8e918ffd,
         type: 3}
@@ -41867,7 +41867,7 @@ PrefabInstance:
     - target: {fileID: 7872119138408446705, guid: 65fe99cbaf138c34b92e2d5696ff210c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 7872119138408446705, guid: 65fe99cbaf138c34b92e2d5696ff210c,
         type: 3}
@@ -42614,7 +42614,7 @@ PrefabInstance:
     - target: {fileID: 642359475181837181, guid: 6a8cba7ae9af99e40b8f861e8e918ffd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 642359475181837181, guid: 6a8cba7ae9af99e40b8f861e8e918ffd,
         type: 3}
@@ -44431,7 +44431,7 @@ PrefabInstance:
     - target: {fileID: 642359475181837181, guid: 6a8cba7ae9af99e40b8f861e8e918ffd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 642359475181837181, guid: 6a8cba7ae9af99e40b8f861e8e918ffd,
         type: 3}
@@ -45495,7 +45495,7 @@ PrefabInstance:
     - target: {fileID: 7872119138408446705, guid: 65fe99cbaf138c34b92e2d5696ff210c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 7872119138408446705, guid: 65fe99cbaf138c34b92e2d5696ff210c,
         type: 3}
@@ -48053,6 +48053,7 @@ GameObject:
   - component: {fileID: 1974972532}
   - component: {fileID: 1974972530}
   - component: {fileID: 1974972531}
+  - component: {fileID: 1974972533}
   m_Layer: 6
   m_Name: DestroyDetector
   m_TagString: Player
@@ -48121,6 +48122,27 @@ MonoBehaviour:
   _KeyTimeWalkBack: 113
   _KeyFetchGameObject: 101
   _HoldInHand: 0
+--- !u!50 &1974972533
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974972528}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1980305487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48436,7 +48458,7 @@ PrefabInstance:
     - target: {fileID: 7872119138408446705, guid: 65fe99cbaf138c34b92e2d5696ff210c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 7872119138408446705, guid: 65fe99cbaf138c34b92e2d5696ff210c,
         type: 3}

@@ -49,6 +49,6 @@ public class UIInGameMgr : MonoBehaviour
         _imageSetting.DOColor(Color.clear, 1)/*.OnComplete(() => GameMgr.instance.SetGameState(eGameState.eInSetting))*/;
         //_imageSetting.transform.DOScale(0, 1).OnComplete(() => _imageSetting.enabled = false);
 
-        GameMgr.Instance.GetGameStateMgr().SetGameState(eGameState.eInSetting);
+        GameMgr.Instance.GetGameStateMgr().SetGameState(GameState.InSetting);
     }
 }

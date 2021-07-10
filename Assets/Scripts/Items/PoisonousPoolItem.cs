@@ -1,8 +1,8 @@
-﻿using DG.Tweening;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ItemDetector))]
-public class TulipItem : Item, IAnimator, IFetched
+public class PoisonousPoolItem : Item, IAnimator, IOffensive
 {
     [SerializeField] private GameItemState[] _animatedStates;
     private Animator _animator;
@@ -16,7 +16,7 @@ public class TulipItem : Item, IAnimator, IFetched
     }
     private void OnValidate()
     {
-        _itemStatus.ItemType = GameItemType.Tulip;
+        _itemStatus.ItemType = GameItemType.PoisonousPool;
         _itemStatus.ItemState = GameItemState.StateFour;
     }
 
@@ -39,13 +39,8 @@ public class TulipItem : Item, IAnimator, IFetched
         return;
     }
 
-    public void Fetch()
+    public void Attack()
     {
-        CharacterAbilities.instance.FetchItemObject(gameObject);
-    }
-
-    public ItemStatus GetFetchedItemStatus()
-    {
-        return _itemStatus;
+        //TODO
     }
 }

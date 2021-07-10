@@ -10,39 +10,45 @@ public class AncientItem : Item
 
     private int m_KeyCount;
 
-    public override void OnStart()
+    private void Start()
     {
         m_KeyCount = GetComponent<AncientDetector>()._Keys.Count;
     }
 
+    private void OnValidate()
+    {
+        _itemStatus.ItemType = GameItemType.Ancient;
+        _itemStatus.ItemState = GameItemState.StateFour;
+    }
+
     public void ChangeSprite(int keyIndex, bool setFinal, float duration = StaticData.DestroyDuration)
     {
-        _CurSprite.DOComplete();
-        _NewSprite.DOComplete();
+        _curSprite.DOComplete();
+        _newSprite.DOComplete();
 
         if (setFinal)
         {
-            _NewSprite.sprite = _FinalAncientSprite;
+            _newSprite.sprite = _FinalAncientSprite;
         }
         else
         {
             m_KeyCount--;
-            _NewSprite.sprite = _UnLockedAncientSprites[m_KeyCount == 0 ? _UnLockedAncientSprites.Length - 1 : keyIndex];
-            _ObjectSprites = _BrokenSprites[keyIndex]._Sprites;
+            _newSprite.sprite = _UnLockedAncientSprites[m_KeyCount == 0 ? _UnLockedAncientSprites.Length - 1 : keyIndex];
+            _itemSprites = _BrokenSprites[keyIndex]._Sprites;
         }
 
-        _NewSprite.DOFade(1, duration)
+        _newSprite.DOFade(1, duration)
             .OnComplete(
             () =>
             {
-                _NewSprite.color = StaticData.ColorFadeOut;
+                _newSprite.color = StaticData.ColorFadeOut;
             });
-        _CurSprite.DOFade(0, duration)
+        _curSprite.DOFade(0, duration)
             .OnComplete(
             () =>
             {
-                _CurSprite.sprite = _NewSprite.sprite;
-                _CurSprite.color = StaticData.ColorFull;
+                _curSprite.sprite = _newSprite.sprite;
+                _curSprite.color = StaticData.ColorFull;
             });
     }
 }

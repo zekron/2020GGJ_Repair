@@ -33,14 +33,14 @@ public class CharacterHealth : MonoBehaviour
                _ListHeart[_ListHeart.Count - 1]._Heart.transform.localPosition + new Vector3(_Heart._Heart.sprite.bounds.size.x, 0, 0),
                Quaternion.identity,
                transform);
-            obj.sprite = _HeartSprites[(int)eHeartState.eEmpty];
+            obj.sprite = _HeartSprites[(int)GameHeartState.Empty];
         }
     }
     public int GetHeartNum()
     {
         int num = 0;
         for (int i = 0; i < _ListHeart.Count; i++)
-            num = _ListHeart[i]._State == eHeartState.eFull ? num + 1 : num;
+            num = _ListHeart[i]._State == GameHeartState.Full ? num + 1 : num;
         return num;
     }
 }

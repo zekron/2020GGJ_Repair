@@ -1,8 +1,6 @@
-﻿using DG.Tweening;
 using UnityEngine;
 
-[RequireComponent(typeof(ItemDetector))]
-public class TulipItem : Item, IAnimator, IFetched
+public class TombItem : Item, IAnimator, IFetched
 {
     [SerializeField] private GameItemState[] _animatedStates;
     private Animator _animator;
@@ -14,9 +12,10 @@ public class TulipItem : Item, IAnimator, IFetched
 
         _itemStateEvent.OnEventRaised += PlayAnimator;
     }
+
     private void OnValidate()
     {
-        _itemStatus.ItemType = GameItemType.Tulip;
+        _itemStatus.ItemType = GameItemType.Tomb;
         _itemStatus.ItemState = GameItemState.StateFour;
     }
 

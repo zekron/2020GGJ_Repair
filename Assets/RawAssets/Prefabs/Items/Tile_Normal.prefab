@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CanBeDetected: 0
   _IsInTimeWalkBack: 0
-  _ItemType: 6
+  _myItem: {fileID: 1934661742633508794}
 --- !u!114 &1934661742633508794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,15 +227,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05cecdbbf187bee489d1fa570dd7cf46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ObjectSprites:
+  _itemSprites:
   - {fileID: 21300000, guid: f66e6151594af0a48b2efacfbf8fb134, type: 3}
   - {fileID: 21300000, guid: 56b2962a13b761a44892d6ab5a2796c6, type: 3}
   - {fileID: 21300000, guid: 8d1974dcaadd22c42a1ca18862b48a0a, type: 3}
   - {fileID: 21300000, guid: 31f3f6e8f9ad27a4cb03f84d72ee2492, type: 3}
-  _CurSprite: {fileID: 7663745605989311658}
-  _NewSprite: {fileID: 7663745605027912034}
-  _AnimatedStates: 
-  _AnimatorSprite: {fileID: 0}
+  _curSprite: {fileID: 7663745605989311658}
+  _newSprite: {fileID: 7663745605027912034}
+  _detector: {fileID: 7663745606168415883}
+  _itemStatus:
+    _itemType: 6
+    _itemState: 3
+  _itemStateEvent: {fileID: 11400000, guid: e76f2d6f932cffc469b06673c9077758, type: 2}
 --- !u!61 &8994630505424853671
 BoxCollider2D:
   m_ObjectHideFlags: 0

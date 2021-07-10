@@ -2,23 +2,23 @@
 
 public class TileItem : Item
 {
-    public override void ChangeSprite(eItemState state, float duration = 0.2F)
+    public override void ChangeSprite(float duration = 0.2F)
     {
-        if (_ObjectSprites.Length <= 0) return;
+        if (_itemSprites.Length <= 0) return;
 
-        _CurSprite.DOComplete();
-        _NewSprite.DOComplete();
+        _curSprite.DOComplete();
+        _newSprite.DOComplete();
 
-        _NewSprite.sprite = _ObjectSprites[(int)state];
+        _newSprite.sprite = _itemSprites[(int)_itemStatus.ItemState];
 
-        _CurSprite.DOFade(0, duration)
+        _curSprite.DOFade(0, duration)
             .OnComplete(
             () =>
             {
-                _CurSprite.sprite = _NewSprite.sprite;
-                if (state > eItemState.eStateOne)
-                    _NewSprite.sprite = _ObjectSprites[(int)state - 1];
-                _CurSprite.color = StaticData.ColorFull;
+                _curSprite.sprite = _newSprite.sprite;
+                if (_itemStatus.ItemState > GameItemState.StateOne)
+                    _newSprite.sprite = _itemSprites[(int)_itemStatus.ItemState - 1];
+                _curSprite.color = StaticData.ColorFull;
             });
     }
 }

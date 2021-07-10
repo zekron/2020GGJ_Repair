@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class PackageItem : MonoBehaviour
 {
-    public eItemState _PackageItemState;
-    public eItemType _PackageItemType;
+    public GameItemState _PackageItemState;
+    public GameItemType _PackageItemType;
     public bool _IsHolding = false;
     public bool _IsEmpty = true;
 
@@ -14,10 +14,11 @@ public class PackageItem : MonoBehaviour
     private void Start()
     {
     }
-    public void SetPackageItemSprite(ItemDetector detector)
+    public void SetPackageItemSprite(IFetched fetchedItem)
     {
-        _PackageItemState = detector.CurItemState;
-        _PackageItemType = detector._ItemType;
+        ItemStatus item = fetchedItem.GetFetchedItemStatus();
+        _PackageItemState = item.ItemState;
+        _PackageItemType = item.ItemType;
         _ImagePackageItem.sprite = CharacterPackage.instance
             ._ItemSprite[(int)_PackageItemType][(int)_PackageItemState];
         _ImagePackageItem.DOFade(1, 1)

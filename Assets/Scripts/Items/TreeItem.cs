@@ -1,8 +1,8 @@
-﻿public class RoseItem : Item, IFetched
+public class TreeItem : Item, IFetched
 {
     private void OnValidate()
     {
-        _itemStatus.ItemType = GameItemType.Rose;
+        _itemStatus.ItemType = GameItemType.Tree;
         _itemStatus.ItemState = GameItemState.StateFour;
     }
 

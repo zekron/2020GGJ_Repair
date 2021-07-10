@@ -47,7 +47,7 @@ public class DemoScene : MonoBehaviour
     // the Update loop contains a very simple example of moving the character around and controlling the animation
     void Update()
     {
-        if (FindObjectOfType<GameMgr>() && GameMgr.Instance.GetGameStateMgr().GameState != eGameState.eInGameplay) return;
+        if (FindObjectOfType<GameMgr>() && GameMgr.Instance.GetGameStateMgr().GameState != GameState.InGameplay) return;
         if (_controller.isGrounded)
             _velocity.y = 0;
 

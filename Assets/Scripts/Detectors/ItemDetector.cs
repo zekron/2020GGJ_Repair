@@ -1,26 +1,19 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class ItemDetector : Detector
 {
-    public eItemType _ItemType;
+    [SerializeField] private Item _myItem;
 
-    private eItemState m_CurItemState = eItemState.eStateFour;
-    private float m_StayTime = 0;
-    private Item m_MyItem;
+    private float _stayTime = 0;
 
-    public eItemState CurItemState
+    private void OnEnable()
     {
-        get => m_CurItemState;
-        set
-        {
-            m_CurItemState = value;
-            _OnItemStateChanged.Invoke(m_CurItemState);
-        }
+        _myItem = GetComponent<Item>();
     }
     private void Start()
     {
-        m_MyItem = GetComponent<Item>();
         CharacterAbilities.Add_OnTimeLock(ResetItemState);
     }
 
@@ -43,19 +36,21 @@ public class ItemDetector : Detector
         {
             if (!_CanBeDetected || !StayDestroy) return;
 
-            m_StayTime -= Time.deltaTime;
+            _stayTime -= Time.deltaTime;
 
-            if (m_StayTime <= 0f)
+            if (_stayTime <= 0f)
             {
-                if (--CurItemState < eItemState.eStateOne)
+                ItemStatus itemStatus = _myItem.GetDetectedItemStatus();
+                if (itemStatus.ItemState - 1 < GameItemState.StateOne)
                 {
                     _CanBeDetected = false;
-                    CurItemState = eItemState.eStateOne;
-                    m_StayTime = 0;
+                    _myItem.SetItemState(GameItemState.StateOne);
+                    _stayTime = 0;
                     return;
                 }
-                m_MyItem.ChangeSprite(CurItemState);
-                m_StayTime = StaticData.DestroyDuration;
+                _myItem.SetItemState(itemStatus.ItemState - 1);
+                _myItem.ChangeSprite();
+                _stayTime = StaticData.DestroyDuration;
             }
         }
     }
@@ -66,8 +61,8 @@ public class ItemDetector : Detector
         {
             if (ExitDestroy)
             {
-                m_StayTime = 0;
-                if (CurItemState != eItemState.eStateFour)
+                _stayTime = 0;
+                if (_myItem.GetDetectedItemStatus().ItemState != GameItemState.StateFour)
                 {
                     //GetComponent<Item>().ChangeSprite(_CurItemState = ItemState.eStateFour);
                     //_OnDestroyDetectorTriggered.Invoke(_CurItemState = ItemState.eStateFour);
@@ -82,7 +77,8 @@ public class ItemDetector : Detector
         if (StayDestroy && tag == "Item")
         {
             //Debug.LogFormat("{0} StayDestroy.", name);
-            CharacterAbilities.instance.FetchItemObject(this.gameObject);
+            IFetched fetched = _myItem as IFetched;
+            fetched.Fetch();
         }
     }
 
@@ -90,20 +86,8 @@ public class ItemDetector : Detector
     {
         if (!_IsInTimeWalkBack) return;
 
-        CurItemState = eItemState.eStateOne;
-        m_MyItem.ChangeSprite(CurItemState);
+        _myItem.SetItemState(GameItemState.StateOne);
+        _myItem.ChangeSprite();
         _IsInTimeWalkBack = false;
-    }
-
-    public MyItemStateEvent _OnItemStateChanged = new MyItemStateEvent();
-
-    public void Remove_OnItemStateChanged(UnityAction<eItemState> action)
-    {
-        _OnItemStateChanged.RemoveListener(action);
-    }
-    public void Add_OnItemStateChanged(UnityAction<eItemState> action)
-    {
-        Remove_OnItemStateChanged(action);
-        _OnItemStateChanged.AddListener(action);
     }
 }

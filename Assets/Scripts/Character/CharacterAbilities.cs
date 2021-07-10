@@ -78,41 +78,85 @@ public class CharacterAbilities : MonoBehaviour
 
         for (int i = 0; i < m_TempStayDestroys.Count; i++)
         {
-            InteractableObject tempObject = m_TempStayDestroys[i].GetComponent<InteractableObject>();
-            ItemDetector itemDetector = m_TempStayDestroys[i].GetComponent<ItemDetector>();
-            AncientDetector ancientDetector = m_TempStayDestroys[i].GetComponent<AncientDetector>();
-            if (itemDetector)
+            Item item = m_TempStayDestroys[i].GetComponent<Item>();
+            ItemStatus itemStatus = item.GetDetectedItemStatus();
+
+            item.MyDetector._IsInTimeWalkBack = true;
+            switch (itemStatus.ItemType)
             {
-                itemDetector._IsInTimeWalkBack = true;
-                if (itemDetector.CurItemState < eItemState.eStateFour)
-                {
-                    itemDetector.CurItemState++;
-                    tempObject.ChangeSprite(itemDetector.CurItemState, 1f);
-                }
-                else
-                {
-                    m_TimeWalkBackLock = true;
-                    DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_TimeWalkBackLock = false);
-                    itemDetector.CurItemState = eItemState.eStateOne;
-                    tempObject.ChangeSprite(itemDetector.CurItemState, 1f);
-                }
+                case GameItemType.Tulip:
+                case GameItemType.Rose:
+                case GameItemType.Tree:
+                case GameItemType.Tomb:
+                case GameItemType.Candle:
+                case GameItemType.PoisonousPool:
+                case GameItemType.Tile:
+                    if (itemStatus.ItemState < GameItemState.StateFour)
+                    {
+                        item.SetItemState(itemStatus.ItemState + 1);
+                        item.ChangeSprite(1f);
+                    }
+                    else
+                    {
+                        m_TimeWalkBackLock = true;
+                        DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_TimeWalkBackLock = false);
+                        item.SetItemState(GameItemState.StateOne);
+                        item.ChangeSprite(1f);
+                    }
+                    break;
+                case GameItemType.Ancient:
+                    AncientDetector ancientDetector = m_TempStayDestroys[i].GetComponent<AncientDetector>();
+                    if (ancientDetector._CurAncientState < GameAncientState.StateFour)
+                    {
+                        ancientDetector._CurAncientState++;
+                        item.ChangeSprite(1f);
+                    }
+                    else if (ancientDetector._CurAncientState == GameAncientState.StateFour)
+                    {
+                        m_TimeWalkBackLock = true;
+                        DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_TimeWalkBackLock = false);
+                        ancientDetector._CurAncientState = GameAncientState.StateOne;
+                        item.ChangeSprite(1f);
+                    }
+                    break;
+                default:
+                    break;
             }
-            else if (ancientDetector)
-            {
-                ancientDetector._IsInTimeWalkBack = true;
-                if (ancientDetector._CurAncientState < eAncientState.eStateFour)
-                {
-                    ancientDetector._CurAncientState++;
-                    tempObject.ChangeSprite(ancientDetector._CurAncientState, 1f);
-                }
-                else if (ancientDetector._CurAncientState == eAncientState.eStateFour)
-                {
-                    m_TimeWalkBackLock = true;
-                    DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_TimeWalkBackLock = false);
-                    ancientDetector._CurAncientState = eAncientState.eStateOne;
-                    tempObject.ChangeSprite(ancientDetector._CurAncientState, 1f);
-                }
-            }
+
+            //ItemDetector itemDetector = m_TempStayDestroys[i].GetComponent<ItemDetector>();
+            //AncientDetector ancientDetector = m_TempStayDestroys[i].GetComponent<AncientDetector>();
+            //if (itemDetector)
+            //{
+            //    itemDetector._IsInTimeWalkBack = true;
+            //    if (itemDetector.CurItemState < GameItemState.StateFour)
+            //    {
+            //        itemDetector.CurItemState++;
+            //        item.ChangeSprite(itemDetector.CurItemState, 1f);
+            //    }
+            //    else
+            //    {
+            //        m_TimeWalkBackLock = true;
+            //        DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_TimeWalkBackLock = false);
+            //        itemDetector.CurItemState = GameItemState.StateOne;
+            //        item.ChangeSprite(itemDetector.CurItemState, 1f);
+            //    }
+            //}
+            //else if (ancientDetector)
+            //{
+            //    ancientDetector._IsInTimeWalkBack = true;
+            //    if (ancientDetector._CurAncientState < GameAncientState.StateFour)
+            //    {
+            //        ancientDetector._CurAncientState++;
+            //        item.ChangeSprite(ancientDetector._CurAncientState, 1f);
+            //    }
+            //    else if (ancientDetector._CurAncientState == GameAncientState.StateFour)
+            //    {
+            //        m_TimeWalkBackLock = true;
+            //        DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_TimeWalkBackLock = false);
+            //        ancientDetector._CurAncientState = GameAncientState.StateOne;
+            //        item.ChangeSprite(ancientDetector._CurAncientState, 1f);
+            //    }
+            //}
         }
     }
 
@@ -134,7 +178,7 @@ public class CharacterAbilities : MonoBehaviour
     {
         if (!m_FetchGameObjectFlag) return;
 
-        ItemDetector holdInHand = obj.GetComponent<ItemDetector>();
+        IFetched holdInHand = obj.GetComponent<IFetched>();
         CharacterPackage.instance.SaveItem(holdInHand, obj);
     }
 

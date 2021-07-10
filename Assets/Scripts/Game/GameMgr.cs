@@ -41,17 +41,17 @@ public class GameMgr : MonoBehaviour
     {
         Init();
     }
-    private void OnValidate()
+    private void OnEnable()
     {
         SetPackageMessage();
     }
     private void Init()
     {
-        SetPackageMessage();
+        //SetPackageMessage();
         SetScale();
         AddListener();
 
-        _gameStateMgr.SetGameState(eGameState.eInWelcome);
+        _gameStateMgr.SetGameState(GameState.InWelcome);
     }
 
     private void AddListener()
@@ -89,21 +89,21 @@ public class GameMgr : MonoBehaviour
 
     public GameStateMgr GetGameStateMgr() { return _gameStateMgr; }
 
-    void InGame(eGameState state)
+    void InGame(GameState state)
     {
         switch (state)
         {
-            case eGameState.eInWelcome:
+            case GameState.InWelcome:
                 _UIController.OpenUIWelcome();
                 _UIController.CloseUISetting();
                 _UIController.CloseUIGameplay();
                 break;
-            case eGameState.eInGameplay:
+            case GameState.InGameplay:
                 _UIController.OpenUIGameplay();
                 _UIController.CloseUIWelcome();
                 _UIController.CloseUISetting();
                 break;
-            case eGameState.eInSetting:
+            case GameState.InSetting:
                 _UIController.OpenUISetting();
                 _UIController.CloseUIWelcome();
                 _UIController.CloseUIGameplay();

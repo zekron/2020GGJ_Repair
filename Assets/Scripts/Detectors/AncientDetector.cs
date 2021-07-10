@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
 public class AncientDetector : Detector
 {
-    public eAncientState _CurAncientState;
+    public GameAncientState _CurAncientState;
     public GameObject _ShieldDoor;
     public ParticleSystem[] _CorrectParticles;
 
@@ -38,20 +39,20 @@ public class AncientDetector : Detector
         if (other.tag == "Player")
         {
             if (!_CanBeDetected || !StayDestroy) return;
-            if (_CurAncientState == eAncientState.eStateFive) return;
+            if (_CurAncientState == GameAncientState.StateFive) return;
 
             m_StayTime -= Time.deltaTime;
 
             if (m_StayTime <= 0f)
             {
-                if (--_CurAncientState < eAncientState.eStateOne)
+                if (--_CurAncientState < GameAncientState.StateOne)
                 {
                     _CanBeDetected = false;
-                    _CurAncientState = eAncientState.eStateOne;
+                    _CurAncientState = GameAncientState.StateOne;
                     m_StayTime = 0;
                     return;
                 }
-                m_MyAncient.ChangeSprite(_CurAncientState);
+                m_MyAncient.ChangeSprite();
                 m_StayTime = StaticData.DestroyDuration;
             }
         }
@@ -64,7 +65,7 @@ public class AncientDetector : Detector
             if (ExitDestroy)
             {
                 m_StayTime = 0;
-                if (_CurAncientState != eAncientState.eStateFour)
+                if (_CurAncientState != GameAncientState.StateFour)
                 {
                     //GetComponent<Item>().ChangeSprite(_CurItemState = ItemState.eStateFour);
                     //_OnDestroyDetectorTriggered.Invoke(_CurItemState = ItemState.eStateFour);
@@ -100,18 +101,18 @@ public class AncientDetector : Detector
         if (m_KeyNum > 0) return;
 
         m_MyAncient.ChangeSprite(_Keys.Count, true, 2);
-        _CurAncientState = eAncientState.eStateFive;
+        _CurAncientState = GameAncientState.StateFive;
         _ShieldDoor.SetActive(false);
         CharacterAbilities.instance.RefreshRebirthPoint(_RebirthPoint);
     }
 
     public void ResetAncientState()
     {
-        if (_CurAncientState == eAncientState.eStateFive) return;
+        if (_CurAncientState == GameAncientState.StateFive) return;
         if (!_IsInTimeWalkBack) return;
 
-        _CurAncientState = eAncientState.eStateOne;
-        m_MyAncient.ChangeSprite(_CurAncientState);
+        _CurAncientState = GameAncientState.StateOne;
+        m_MyAncient.ChangeSprite();
         _IsInTimeWalkBack = false;
     }
 }

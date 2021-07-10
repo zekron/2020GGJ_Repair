@@ -36,13 +36,13 @@ public class CharacterPackage : MonoBehaviour
             _ItemImages[i].SetEmpty();
         }
     }
-    public void SaveItem(ItemDetector detector, GameObject item)
+    public void SaveItem(IFetched fetchedItem, GameObject item)
     {
         for (int i = 0; i < _ItemImages.Length; i++)
         {
             if (!_ItemImages[i]._IsEmpty) continue;
 
-            _ItemImages[i].SetPackageItemSprite(detector);
+            _ItemImages[i].SetPackageItemSprite(fetchedItem);
             break;
         }
     }

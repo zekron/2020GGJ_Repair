@@ -1,41 +1,82 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
-public class Item : InteractableObject
+public abstract class Item : MonoBehaviour, IDetected
 {
-    public eItemState[] _AnimatedStates;
-    public SpriteRenderer _AnimatorSprite;
+    [SerializeField] protected Sprite[] _itemSprites;
+    [SerializeField] protected SpriteRenderer _curSprite;
+    [SerializeField] protected SpriteRenderer _newSprite;
 
-    private Animator m_Animator;
-    private ItemDetector m_Detector;
-    public override void OnStart()
+    [Header("Item Info")]
+    [SerializeField] protected Detector _detector;
+    [SerializeField] protected ItemStatus _itemStatus;
+
+    [Header("Event Channel")]
+    [SerializeField] protected ItemStateEventChannelSO _itemStateEvent;
+
+    public Detector MyDetector { get => _detector; }
+
+    private void Start()
     {
-        base.OnStart();
-        m_Detector = GetComponent<ItemDetector>();
-        if (_AnimatedStates.Length != 0)
-            m_Animator = _AnimatorSprite.GetComponent<Animator>();
+        _detector = GetComponent<Detector>();
 
-        m_Detector.Add_OnItemStateChanged(PlayItemAnimator);
-    }
-
-    void PlayItemAnimator(eItemState state)
-    {
-        if (_AnimatedStates.Length == 0) return;
-
-        for (int i = 0; i < _AnimatedStates.Length; i++)
+        int length = _itemSprites.Length;
+        if (length > 0)
         {
-            if (state == _AnimatedStates[i])
-            {
-                m_Animator.SetInteger("State", (int)state);
-                _AnimatorSprite.sprite = _CurSprite.sprite;
-                _AnimatorSprite.enabled = true;
-                _CurSprite.enabled = false;
-                return;
-            }
+            _curSprite.sprite = _itemSprites[length - 1];
+            _newSprite.sprite = _itemSprites[length - 2];
         }
-
-        _CurSprite.enabled = true;
-        m_Animator.SetInteger("State", (int)state);
-        _AnimatorSprite.enabled = false;
-        return;
     }
+
+    public virtual void ChangeSprite(float duration = 0.2F)
+    {
+        if (_itemSprites.Length <= 0) return;
+
+        _curSprite.DOComplete();
+        _newSprite.DOComplete();
+
+        _newSprite.sprite = _itemSprites[(int)_itemStatus.ItemState];
+
+        //_CurSprite.sprite = _NewSprite.sprite;
+        //if (state > ItemState.eStateOne)
+        //    _NewSprite.sprite = _ObjectSprites[(int)state - 1];
+
+        _newSprite.DOFade(1, duration)
+            .OnComplete(
+            () =>
+            {
+                _newSprite.color = StaticData.ColorFadeOut;
+            });
+        _curSprite.DOFade(0, duration)
+            .OnComplete(
+            () =>
+            {
+                _curSprite.sprite = _itemSprites[(int)_itemStatus.ItemState];
+                if (_itemStatus.ItemState > GameItemState.StateOne)
+                    _newSprite.sprite = _itemSprites[(int)_itemStatus.ItemState - 1];
+                _curSprite.color = StaticData.ColorFull;
+            });
+    }
+
+    public void SetItemState(GameItemState state)
+    {
+        if (state < GameItemState.StateOne) return;
+
+        _itemStatus.ItemState = state;
+        _itemStateEvent.RaiseEvent(_itemStatus.ItemState);
+    }
+    public ItemStatus GetDetectedItemStatus()
+    {
+        return _itemStatus;
+    }
+}
+
+[System.Serializable]
+public struct ItemStatus
+{
+    [SerializeField] private GameItemType _itemType;
+    [SerializeField] private GameItemState _itemState;
+
+    public GameItemType ItemType { get => _itemType; set => _itemType = value; }
+    public GameItemState ItemState { get => _itemState; set => _itemState = value; }
 }

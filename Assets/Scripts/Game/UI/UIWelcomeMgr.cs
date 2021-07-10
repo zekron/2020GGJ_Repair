@@ -54,7 +54,7 @@ public class UIWelcomeMgr : MonoBehaviour
         _imageTitle.DOFade(0, 1).OnComplete(() =>
         {
             _imageTitle.enabled = false;
-            GameMgr.Instance.GetGameStateMgr().SetGameState(eGameState.eInGameplay);
+            GameMgr.Instance.GetGameStateMgr().SetGameState(GameState.InGameplay);
         });
     }
 

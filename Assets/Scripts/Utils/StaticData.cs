@@ -30,9 +30,9 @@ public static class StaticData
 [Serializable]
 public class AncientKey
 {
-    public eAncientState _AncientKeyState;
-    public eItemState _ItemKeyState;
-    public eItemType _ItemKeyType;
+    public GameAncientState _AncientKeyState;
+    public GameItemState _ItemKeyState;
+    public GameItemType _ItemKeyType;
 }
 
 [Serializable]
@@ -45,55 +45,57 @@ public class BrokenAncientSprite
 public class Heart
 {
     public SpriteRenderer _Heart;
-    public eHeartState _State;
+    public GameHeartState _State;
 }
 #region Enum
-public enum eItemState
+public enum GameItemState
 {
-    eStateOne,
-    eStateTwo,
-    eStateThree,
-    eStateFour,
+    StateOne,
+    StateTwo,
+    StateThree,
+    StateFour,
+    StateFinished,
 }
-public enum eItemType
+public enum GameItemType
 {
-    eTulip,
-    eRose,
-    eTree,
-    eTomb,
-    eCandle,
-    ePoisonousPool,
-    eTile,
+    Tulip,
+    Rose,
+    Tree,
+    Tomb,
+    Candle,
+    PoisonousPool,
+    Tile,
+    Ancient,
 }
-public enum eAncientState
+public enum GameAncientState
 {
-    eStateOne,
-    eStateTwo,
-    eStateThree,
-    eStateFour,
-    eStateFive,
+    StateOne,
+    StateTwo,
+    StateThree,
+    StateFour,
+    StateFive,
 }
 public enum eAncientType
 {
     TulipAncient,
     RoseAncient,
 }
-public enum eGameState
+public enum GameState
 {
-    eNull,
-    eInWelcome,
-    eInGameplay,
-    eInSetting,
+    Null,
+    InWelcome,
+    InGameplay,
+    InSetting,
 }
-public enum eHeartState
+public enum GameHeartState
 {
-    eFull,
-    eEmpty,
+    Full,
+    Empty,
 }
 #endregion
 
 #region Event
 public class MyIntEvent : UnityEvent<int> { }
-public class MyItemStateEvent : UnityEvent<eItemState> { }
-public class MyGameStateEvent : UnityEvent<eGameState> { }
+public class MyItemStateEvent : UnityEvent<GameItemState> { }
+public class MyGameStateEvent : UnityEvent<GameState> { }
 #endregion

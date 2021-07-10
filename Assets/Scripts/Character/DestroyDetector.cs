@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
 public class DestroyDetector : MonoBehaviour
 {
     public static DestroyDetector instance = null;
@@ -14,18 +15,13 @@ public class DestroyDetector : MonoBehaviour
         instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.LogFormat("{0} enter here.", other.name);
-        if (other.tag == "Item" || other.tag == "Ancient" || other.tag == "Unavailable")
+        if (IsDestroyable(other))
         {
             //Debug.LogFormat("{0} enter here. {1}", other.name, Time.frameCount);
             other.GetComponent<Detector>().EnterDestroy = true;
+
             if (!_StayDestroys.Contains(other.gameObject))
             {
                 _StayDestroys.Add(other.gameObject);
@@ -39,7 +35,7 @@ public class DestroyDetector : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Item" || other.tag == "Ancient" || other.tag == "Unavailable")
+        if (IsDestroyable(other))
         {
             other.GetComponent<Detector>().StayDestroy = true;
             //if (!_StayDestroys.Contains(other.gameObject))
@@ -51,7 +47,7 @@ public class DestroyDetector : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Item" || other.tag == "Ancient" || other.tag == "Unavailable")
+        if (IsDestroyable(other))
         {
             //Debug.LogFormat("{0} exit here.", other.name);
             other.GetComponent<Detector>().ExitDestroy = true;
@@ -69,5 +65,12 @@ public class DestroyDetector : MonoBehaviour
 
         ParticleSystem.ShapeModule shape = _destroyParticle.shape;
         shape.radius *= scale.x;
+    }
+
+    private static bool IsDestroyable(Collider2D other)
+    {
+        return other.tag == "Item"
+            || other.tag == "Ancient"
+            || other.tag == "Unavailable";
     }
 }
