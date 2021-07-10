@@ -91,6 +91,7 @@ public class CharacterAbilities : MonoBehaviour
                 case GameItemType.Candle:
                 case GameItemType.PoisonousPool:
                 case GameItemType.Tile:
+                case GameItemType.Ancient:
                     if (itemStatus.ItemState < GameItemState.StateFour)
                     {
                         item.SetItemState(itemStatus.ItemState + 1);
@@ -104,21 +105,20 @@ public class CharacterAbilities : MonoBehaviour
                         item.ChangeSprite(1f);
                     }
                     break;
-                case GameItemType.Ancient:
-                    AncientDetector ancientDetector = m_TempStayDestroys[i].GetComponent<AncientDetector>();
-                    if (ancientDetector._CurAncientState < GameAncientState.StateFour)
-                    {
-                        ancientDetector._CurAncientState++;
-                        item.ChangeSprite(1f);
-                    }
-                    else if (ancientDetector._CurAncientState == GameAncientState.StateFour)
-                    {
-                        m_TimeWalkBackLock = true;
-                        DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_TimeWalkBackLock = false);
-                        ancientDetector._CurAncientState = GameAncientState.StateOne;
-                        item.ChangeSprite(1f);
-                    }
-                    break;
+                    //AncientDetector ancientDetector = m_TempStayDestroys[i].GetComponent<AncientDetector>();
+                    //if (ancientDetector._CurAncientState < GameAncientState.StateFour)
+                    //{
+                    //    ancientDetector._CurAncientState++;
+                    //    item.ChangeSprite(1f);
+                    //}
+                    //else if (ancientDetector._CurAncientState == GameAncientState.StateFour)
+                    //{
+                    //    m_TimeWalkBackLock = true;
+                    //    DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_TimeWalkBackLock = false);
+                    //    ancientDetector._CurAncientState = GameAncientState.StateOne;
+                    //    item.ChangeSprite(1f);
+                    //}
+                    //break;
                 default:
                     break;
             }
@@ -174,12 +174,11 @@ public class CharacterAbilities : MonoBehaviour
         });
     }
 
-    public void FetchItemObject(GameObject obj)
+    public void FetchItemObject(IFetched fetched)
     {
         if (!m_FetchGameObjectFlag) return;
 
-        IFetched holdInHand = obj.GetComponent<IFetched>();
-        CharacterPackage.instance.SaveItem(holdInHand, obj);
+        CharacterPackage.instance.SaveItem(fetched);
     }
 
     public void TryUnlockingAncient()

@@ -4910,7 +4910,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CanBeDetected: 0
   _IsInTimeWalkBack: 0
-  _CurAncientState: 3
   _ShieldDoor: {fileID: 8184603485137228985}
   _CorrectParticles:
   - {fileID: 167071310747642729}
@@ -9930,7 +9929,7 @@ GameObject:
   - component: {fileID: 8184603485137228989}
   - component: {fileID: 8184603485137228988}
   - component: {fileID: 8184603485137228987}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: HighPlatform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -41,7 +41,8 @@ public class TulipItem : Item, IAnimator, IFetched
 
     public void Fetch()
     {
-        CharacterAbilities.instance.FetchItemObject(gameObject);
+        Debug.LogFormat("{0} Fetch.", name);
+        CharacterAbilities.instance.FetchItemObject(this);
     }
 
     public ItemStatus GetFetchedItemStatus()

@@ -44,7 +44,6 @@ public class ItemDetector : Detector
                 if (itemStatus.ItemState - 1 < GameItemState.StateOne)
                 {
                     _CanBeDetected = false;
-                    _myItem.SetItemState(GameItemState.StateOne);
                     _stayTime = 0;
                     return;
                 }
@@ -73,10 +72,8 @@ public class ItemDetector : Detector
 
     private void OnMouseDown()
     {
-        //Debug.LogFormat("{0} OnMouseDown.", name);
         if (StayDestroy && tag == "Item")
         {
-            //Debug.LogFormat("{0} StayDestroy.", name);
             IFetched fetched = _myItem as IFetched;
             fetched.Fetch();
         }

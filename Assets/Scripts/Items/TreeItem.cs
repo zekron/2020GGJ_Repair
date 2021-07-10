@@ -8,7 +8,7 @@ public class TreeItem : Item, IFetched
 
     public void Fetch()
     {
-        CharacterAbilities.instance.FetchItemObject(gameObject);
+        CharacterAbilities.instance.FetchItemObject(this);
     }
 
     public ItemStatus GetFetchedItemStatus()

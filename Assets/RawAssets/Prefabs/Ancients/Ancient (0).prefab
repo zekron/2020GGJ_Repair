@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 165228869}
   - component: {fileID: 165228868}
   - component: {fileID: 165228867}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: HighPlatform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CanBeDetected: 0
   _IsInTimeWalkBack: 0
-  _CurAncientState: 3
   _ShieldDoor: {fileID: 165228865}
   _CorrectParticles:
   - {fileID: 4402359136749293750}

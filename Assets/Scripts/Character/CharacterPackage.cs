@@ -36,7 +36,7 @@ public class CharacterPackage : MonoBehaviour
             _ItemImages[i].SetEmpty();
         }
     }
-    public void SaveItem(IFetched fetchedItem, GameObject item)
+    public void SaveItem(IFetched fetchedItem)
     {
         for (int i = 0; i < _ItemImages.Length; i++)
         {

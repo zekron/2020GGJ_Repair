@@ -4,13 +4,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
 public class AncientDetector : Detector
 {
-    public GameAncientState _CurAncientState;
     public GameObject _ShieldDoor;
     public ParticleSystem[] _CorrectParticles;
 
     public List<AncientKey> _Keys;
     private Vector3 _RebirthPoint;
-    private AncientItem m_MyAncient;
+    private AncientItem _myAncient;
 
     private int m_KeyNum;
     private float m_StayTime = 0;
@@ -19,7 +18,7 @@ public class AncientDetector : Detector
     {
         m_KeyNum = _Keys.Count;
         _RebirthPoint = new Vector3(transform.position.x, transform.position.y + 10, 1);
-        m_MyAncient = GetComponent<AncientItem>();
+        _myAncient = GetComponent<AncientItem>();
 
         CharacterAbilities.Add_OnTimeLock(ResetAncientState);
     }
@@ -39,20 +38,22 @@ public class AncientDetector : Detector
         if (other.tag == "Player")
         {
             if (!_CanBeDetected || !StayDestroy) return;
-            if (_CurAncientState == GameAncientState.StateFive) return;
+
+            ItemStatus itemStatus = _myAncient.GetDetectedItemStatus();
+            if (itemStatus.ItemState == GameItemState.StateFinished) return;
 
             m_StayTime -= Time.deltaTime;
 
             if (m_StayTime <= 0f)
             {
-                if (--_CurAncientState < GameAncientState.StateOne)
+                if (itemStatus.ItemState - 1 < GameItemState.StateOne)
                 {
                     _CanBeDetected = false;
-                    _CurAncientState = GameAncientState.StateOne;
                     m_StayTime = 0;
                     return;
                 }
-                m_MyAncient.ChangeSprite();
+                _myAncient.SetItemState(itemStatus.ItemState - 1);
+                _myAncient.ChangeSprite();
                 m_StayTime = StaticData.DestroyDuration;
             }
         }
@@ -65,7 +66,7 @@ public class AncientDetector : Detector
             if (ExitDestroy)
             {
                 m_StayTime = 0;
-                if (_CurAncientState != GameAncientState.StateFour)
+                if (_myAncient.GetDetectedItemStatus().ItemState != GameItemState.StateFour)
                 {
                     //GetComponent<Item>().ChangeSprite(_CurItemState = ItemState.eStateFour);
                     //_OnDestroyDetectorTriggered.Invoke(_CurItemState = ItemState.eStateFour);
@@ -78,7 +79,7 @@ public class AncientDetector : Detector
     {
         for (int i = 0; i < _Keys.Count; i++)
         {
-            if (_Keys[i]._AncientKeyState == _CurAncientState
+            if (_Keys[i]._AncientKeyState == _myAncient.GetDetectedItemStatus().ItemState
                 && _Keys[i]._ItemKeyState == item._PackageItemState
                 && _Keys[i]._ItemKeyType == item._PackageItemType)
             {
@@ -86,7 +87,7 @@ public class AncientDetector : Detector
                 //_ItemKeyState.Remove(item._PackageItemState);
                 //_ItemKeyType.Remove(item._PackageItemType);
                 //_Keys.RemoveAt(i);
-                m_MyAncient.ChangeSprite(i, false, 1);
+                _myAncient.ChangeSprite(i, false, 1);
                 m_KeyNum--;
                 _CorrectParticles[i].Play();
                 SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Correct, 4);
@@ -100,19 +101,19 @@ public class AncientDetector : Detector
 
         if (m_KeyNum > 0) return;
 
-        m_MyAncient.ChangeSprite(_Keys.Count, true, 2);
-        _CurAncientState = GameAncientState.StateFive;
+        _myAncient.ChangeSprite(_Keys.Count, true, 2);
+        _myAncient.SetItemState(GameItemState.StateFinished);
         _ShieldDoor.SetActive(false);
         CharacterAbilities.instance.RefreshRebirthPoint(_RebirthPoint);
     }
 
     public void ResetAncientState()
     {
-        if (_CurAncientState == GameAncientState.StateFive) return;
+        if (_myAncient.GetDetectedItemStatus().ItemState == GameItemState.StateFinished) return;
         if (!_IsInTimeWalkBack) return;
 
-        _CurAncientState = GameAncientState.StateOne;
-        m_MyAncient.ChangeSprite();
+        _myAncient.SetItemState(GameItemState.StateOne);
+        _myAncient.ChangeSprite();
         _IsInTimeWalkBack = false;
     }
 }
