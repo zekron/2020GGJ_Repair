@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _CanBeDetected: 0
-  _InTimeWalkBack: 0
+  _IsInTimeWalkBack: 0
   _ItemType: 4
 --- !u!114 &919280347043158055
 MonoBehaviour:
