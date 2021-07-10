@@ -46349,7 +46349,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: PackageName - PackageVer - PackageTime
+  m_Text: Calamoto - TestVer - 2021/0710/01/1223
 --- !u!222 &1758455676
 CanvasRenderer:
   m_ObjectHideFlags: 0

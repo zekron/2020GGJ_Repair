@@ -41,7 +41,10 @@ public class GameMgr : MonoBehaviour
     {
         Init();
     }
-
+    private void OnValidate()
+    {
+        SetPackageMessage();
+    }
     private void Init()
     {
         SetPackageMessage();

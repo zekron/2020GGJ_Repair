@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5468280524583503590}
   - component: {fileID: 5158259337439902156}
   - component: {fileID: 8728542206781710480}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Particle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4828,7 +4828,7 @@ GameObject:
   - component: {fileID: 2625758597092414000}
   - component: {fileID: 2625758597092414001}
   - component: {fileID: 2625758597092414006}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: HighPlatform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4935,7 +4935,7 @@ GameObject:
   - component: {fileID: 1338220845974523110}
   - component: {fileID: 9161914383283071513}
   - component: {fileID: 8553831479996633317}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Particle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9750,7 +9750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8838356194129021499}
   - component: {fileID: 8838356194129021500}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: NewSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9832,7 +9832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8838356195048519667}
   - component: {fileID: 8838356195048519668}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: CurSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9917,7 +9917,7 @@ GameObject:
   - component: {fileID: 9066727590840205718}
   - component: {fileID: 8838356195269434838}
   - component: {fileID: 8838356195269434836}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Ancient (2)
   m_TagString: Ancient
   m_Icon: {fileID: 0}
@@ -9963,6 +9963,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0de228756006c5842a0a21e4207e6b5b, type: 3}
   _CurSprite: {fileID: 8838356195048519668}
   _NewSprite: {fileID: 8838356194129021500}
+  _AnimatedStates: 
+  _AnimatorSprite: {fileID: 0}
   _BrokenSprites:
   - _Sprites:
     - {fileID: 21300000, guid: 479f09887fc497e4c95decdc375b9834, type: 3}
@@ -9999,7 +10001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _CanBeDetected: 0
-  _InTimeWalkBack: 0
+  _IsInTimeWalkBack: 0
   _CurAncientState: 3
   _ShieldDoor: {fileID: 2625758597092414004}
   _CorrectParticles:
@@ -10056,7 +10058,7 @@ GameObject:
   - component: {fileID: 2334038586621995492}
   - component: {fileID: 17679023053569131}
   - component: {fileID: 5777471845500506208}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Particle (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

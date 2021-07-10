@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3987307320585408065}
   - component: {fileID: 167071310747642729}
   - component: {fileID: 5232682948166241022}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Particle (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4829,7 +4829,7 @@ GameObject:
   - component: {fileID: 2897609777504569115}
   - component: {fileID: 3408444438810205019}
   - component: {fileID: 3408444438810205017}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Ancient (1)
   m_TagString: Ancient
   m_Icon: {fileID: 0}
@@ -4874,6 +4874,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 258a5a01004acc44dac8ad54e4b9532f, type: 3}
   _CurSprite: {fileID: 3408444440734675321}
   _NewSprite: {fileID: 3408444439817309361}
+  _AnimatedStates: 
+  _AnimatorSprite: {fileID: 0}
   _BrokenSprites:
   - _Sprites:
     - {fileID: 21300000, guid: 1eae6ebb4a9678b44aeea34e50bcf2b1, type: 3}
@@ -4904,7 +4906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _CanBeDetected: 0
-  _InTimeWalkBack: 0
+  _IsInTimeWalkBack: 0
   _CurAncientState: 3
   _ShieldDoor: {fileID: 8184603485137228985}
   _CorrectParticles:
@@ -4956,7 +4958,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3408444439817309366}
   - component: {fileID: 3408444439817309361}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: NewSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5038,7 +5040,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3408444440734675326}
   - component: {fileID: 3408444440734675321}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: CurSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5121,7 +5123,7 @@ GameObject:
   - component: {fileID: 1194548653002632701}
   - component: {fileID: 9036482179262340706}
   - component: {fileID: 2708191906612536378}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Particle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9938,7 +9940,7 @@ GameObject:
   - component: {fileID: 8184603485137228989}
   - component: {fileID: 8184603485137228988}
   - component: {fileID: 8184603485137228987}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: HighPlatform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
