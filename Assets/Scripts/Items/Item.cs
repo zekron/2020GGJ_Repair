@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Item : InteractiveObject
+public class Item : InteractableObject
 {
     public eItemState[] _AnimatedStates;
     public SpriteRenderer _AnimatorSprite;

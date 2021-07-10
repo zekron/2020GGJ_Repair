@@ -78,12 +78,12 @@ public class CharacterAbilities : MonoBehaviour
 
         for (int i = 0; i < m_TempStayDestroys.Count; i++)
         {
-            InteractiveObject tempObject = m_TempStayDestroys[i].GetComponent<InteractiveObject>();
+            InteractableObject tempObject = m_TempStayDestroys[i].GetComponent<InteractableObject>();
             ItemDetector itemDetector = m_TempStayDestroys[i].GetComponent<ItemDetector>();
             AncientDetector ancientDetector = m_TempStayDestroys[i].GetComponent<AncientDetector>();
             if (itemDetector)
             {
-                itemDetector._InTimeWalkBack = true;
+                itemDetector._IsInTimeWalkBack = true;
                 if (itemDetector.CurItemState < eItemState.eStateFour)
                 {
                     itemDetector.CurItemState++;
@@ -99,7 +99,7 @@ public class CharacterAbilities : MonoBehaviour
             }
             else if (ancientDetector)
             {
-                ancientDetector._InTimeWalkBack = true;
+                ancientDetector._IsInTimeWalkBack = true;
                 if (ancientDetector._CurAncientState < eAncientState.eStateFour)
                 {
                     ancientDetector._CurAncientState++;

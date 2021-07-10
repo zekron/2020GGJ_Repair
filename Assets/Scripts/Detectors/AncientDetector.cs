@@ -9,7 +9,7 @@ public class AncientDetector : Detector
 
     public List<AncientKey> _Keys;
     private Vector3 _RebirthPoint;
-    private Ancient m_MyAncient;
+    private AncientItem m_MyAncient;
 
     private int m_KeyNum;
     private float m_StayTime = 0;
@@ -18,7 +18,7 @@ public class AncientDetector : Detector
     {
         m_KeyNum = _Keys.Count;
         _RebirthPoint = new Vector3(transform.position.x, transform.position.y + 10, 1);
-        m_MyAncient = GetComponent<Ancient>();
+        m_MyAncient = GetComponent<AncientItem>();
 
         CharacterAbilities.Add_OnTimeLock(ResetAncientState);
     }
@@ -85,7 +85,7 @@ public class AncientDetector : Detector
                 //_ItemKeyState.Remove(item._PackageItemState);
                 //_ItemKeyType.Remove(item._PackageItemType);
                 //_Keys.RemoveAt(i);
-                m_MyAncient.ChangeAncientSprite(i, false, 1);
+                m_MyAncient.ChangeSprite(i, false, 1);
                 m_KeyNum--;
                 _CorrectParticles[i].Play();
                 SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Correct, 4);
@@ -99,7 +99,7 @@ public class AncientDetector : Detector
 
         if (m_KeyNum > 0) return;
 
-        m_MyAncient.ChangeAncientSprite(_Keys.Count, true, 2);
+        m_MyAncient.ChangeSprite(_Keys.Count, true, 2);
         _CurAncientState = eAncientState.eStateFive;
         _ShieldDoor.SetActive(false);
         CharacterAbilities.instance.RefreshRebirthPoint(_RebirthPoint);
@@ -108,10 +108,10 @@ public class AncientDetector : Detector
     public void ResetAncientState()
     {
         if (_CurAncientState == eAncientState.eStateFive) return;
-        if (!_InTimeWalkBack) return;
+        if (!_IsInTimeWalkBack) return;
 
         _CurAncientState = eAncientState.eStateOne;
         m_MyAncient.ChangeSprite(_CurAncientState);
-        _InTimeWalkBack = false;
+        _IsInTimeWalkBack = false;
     }
 }

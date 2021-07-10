@@ -24,19 +24,19 @@ public class ItemDetector : Detector
         CharacterAbilities.Add_OnTimeLock(ResetItemState);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.LogFormat("{0} enter here.", other.name);
         if (other.tag == "Player")
         {
-            if (EnterDestroy && !_CanBeDetected)
+            //Debug.Log($"{name} {EnterDestroy} {_CanBeDetected} {Time.frameCount}");
+            if (/*EnterDestroy && */!_CanBeDetected)
             {
                 _CanBeDetected = true;
             }
             //Debug.LogFormat("{0} enter here.", other.name);
         }
     }
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         //Debug.LogFormat("{0} stay here.", other.name);
         if (other.tag == "Player")
@@ -59,7 +59,7 @@ public class ItemDetector : Detector
             }
         }
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         //Debug.LogFormat("{0} exit here.", other.name);
         if (other.tag == "Player")
@@ -88,11 +88,11 @@ public class ItemDetector : Detector
 
     public void ResetItemState()
     {
-        if (!_InTimeWalkBack) return;
+        if (!_IsInTimeWalkBack) return;
 
         CurItemState = eItemState.eStateOne;
         m_MyItem.ChangeSprite(CurItemState);
-        _InTimeWalkBack = false;
+        _IsInTimeWalkBack = false;
     }
 
     public MyItemStateEvent _OnItemStateChanged = new MyItemStateEvent();

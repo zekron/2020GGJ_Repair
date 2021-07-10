@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-public class InteractiveObject : MonoBehaviour
+public class InteractableObject : MonoBehaviour
 {
     public Sprite[] _ObjectSprites;
 

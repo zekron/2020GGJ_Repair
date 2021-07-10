@@ -6,8 +6,8 @@ public class DestroyDetector : MonoBehaviour
     public static DestroyDetector instance = null;
     public List<GameObject> _StayDestroys;
 
-    public SphereCollider _DestroyCollider;
-    public ParticleSystem _DestroyParticle;
+    [SerializeField] private CircleCollider2D _destroyCollider;
+    [SerializeField] private ParticleSystem _destroyParticle;
     // Start is called before the first frame update
     void Awake()
     {
@@ -19,13 +19,17 @@ public class DestroyDetector : MonoBehaviour
     {
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         //Debug.LogFormat("{0} enter here.", other.name);
         if (other.tag == "Item" || other.tag == "Ancient" || other.tag == "Unavailable")
         {
-            //Debug.LogFormat("{0} enter here.", other.name);
+            //Debug.LogFormat("{0} enter here. {1}", other.name, Time.frameCount);
             other.GetComponent<Detector>().EnterDestroy = true;
+            if (!_StayDestroys.Contains(other.gameObject))
+            {
+                _StayDestroys.Add(other.gameObject);
+            }
         }
         if (other.tag == "Border")
         {
@@ -33,19 +37,19 @@ public class DestroyDetector : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Item" || other.tag == "Ancient" || other.tag == "Unavailable")
         {
             other.GetComponent<Detector>().StayDestroy = true;
-            if (!_StayDestroys.Contains(other.gameObject))
-            {
-                _StayDestroys.Add(other.gameObject);
-            }
+            //if (!_StayDestroys.Contains(other.gameObject))
+            //{
+            //    _StayDestroys.Add(other.gameObject);
+            //}
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Item" || other.tag == "Ancient" || other.tag == "Unavailable")
         {
@@ -61,9 +65,9 @@ public class DestroyDetector : MonoBehaviour
 
     public void SetDestroyDetectorScale(Vector3 scale)
     {
-        _DestroyCollider.radius *= scale.x;
+        _destroyCollider.radius *= scale.x;
 
-        ParticleSystem.ShapeModule shape = _DestroyParticle.shape;
+        ParticleSystem.ShapeModule shape = _destroyParticle.shape;
         shape.radius *= scale.x;
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ancient : InteractiveObject
+public class AncientItem : Item
 {
     public List<BrokenAncientSprite> _BrokenSprites;
     public Sprite[] _UnLockedAncientSprites;
@@ -15,7 +15,7 @@ public class Ancient : InteractiveObject
         m_KeyCount = GetComponent<AncientDetector>()._Keys.Count;
     }
 
-    public void ChangeAncientSprite(int keyIndex, bool setFinal, float duration = StaticData.DestroyDuration)
+    public void ChangeSprite(int keyIndex, bool setFinal, float duration = StaticData.DestroyDuration)
     {
         _CurSprite.DOComplete();
         _NewSprite.DOComplete();

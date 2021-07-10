@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2161711026261900107}
   - component: {fileID: 2161711026261900108}
   - component: {fileID: 2161711026261900106}
-  - component: {fileID: 2161711026261900111}
-  - component: {fileID: 2161711026261900109}
-  m_Layer: 7
+  - component: {fileID: 3490169380315180119}
+  - component: {fileID: 8898730270289194309}
+  m_Layer: 9
   m_Name: Tomb
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -73,35 +73,53 @@ MonoBehaviour:
   _NewSprite: {fileID: 2161711027537177765}
   _AnimatedStates: 0000000003000000
   _AnimatorSprite: {fileID: 6513322227582739036}
---- !u!65 &2161711026261900111
-BoxCollider:
+--- !u!61 &3490169380315180119
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2161711026261900104}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.15, y: -0.3}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 6, z: 22}
-  m_Center: {x: -0.1, y: 0.1, z: 0}
---- !u!54 &2161711026261900109
-Rigidbody:
+  m_Size: {x: 3.3, y: 6.2}
+  m_EdgeRadius: 0
+--- !u!50 &8898730270289194309
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2161711026261900104}
-  serializedVersion: 2
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
   m_Mass: 1
-  m_Drag: 0
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_Constraints: 0
+  m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2161711027114709355
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2161711027114709354}
   - component: {fileID: 2161711027114709357}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: CurSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2161711027537177762}
   - component: {fileID: 2161711027537177765}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: NewSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +295,7 @@ GameObject:
   - component: {fileID: 2015420000858869582}
   - component: {fileID: 6513322227582739036}
   - component: {fileID: 630138402288575245}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
