@@ -22,18 +22,18 @@ public class AncientDetector : Detector
 
         CharacterAbilities.Add_OnTimeLock(ResetAncientState);
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            if (EnterDestroy && !_CanBeDetected)
+            if (/*EnterDestroy && */!_CanBeDetected)
             {
                 _CanBeDetected = true;
             }
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
@@ -57,7 +57,7 @@ public class AncientDetector : Detector
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
