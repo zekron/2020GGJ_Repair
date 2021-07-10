@@ -33,7 +33,7 @@ public class DemoScene : MonoBehaviour
 
     void onControllerCollider(RaycastHit2D hit)
     {
-        // bail out on plain old ground hits cause they arent very interesting
+        // bail out on plain old ground hits cause they are not very interesting
         if (hit.normal.y == 1f)
             return;
 
@@ -47,7 +47,7 @@ public class DemoScene : MonoBehaviour
     // the Update loop contains a very simple example of moving the character around and controlling the animation
     void Update()
     {
-        if (FindObjectOfType<GameMgr>() && GameMgr.instance.GameState != eGameState.eInGameplay) return;
+        if (FindObjectOfType<GameMgr>() && GameMgr.Instance.GetGameStateMgr().GameState != eGameState.eInGameplay) return;
         if (_controller.isGrounded)
             _velocity.y = 0;
 
