@@ -30,7 +30,7 @@ public class GameMgr : MonoBehaviour
     [SerializeField] private UIController _UIController;
 
     private Vector3 _MainTransScale = Vector3.one;
-    public static Vector3 _GameMgrScale = new Vector3(0.4f, 0.4f, 0.4f);
+    public static Vector3 _GameMgrScale = new Vector3(1, 1, 1);
 
     private void Awake()
     {
@@ -41,7 +41,7 @@ public class GameMgr : MonoBehaviour
     {
         Init();
     }
-    private void OnEnable()
+    private void OnValidate()
     {
         SetPackageMessage();
     }

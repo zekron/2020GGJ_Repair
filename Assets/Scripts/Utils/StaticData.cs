@@ -8,7 +8,7 @@ public static class StaticData
 {
     public static string PackageName = "Calamoto";
     public static string PackageVer = "TestVer";
-    public static string PackageTime = "2021/0711/01/0250";
+    public static string PackageTime = "2021/0711/02/1810";
 
     public static Color ColorFadeOut = new Color(1, 1, 1, 0);
     public static Color ColorFull = new Color(1, 1, 1, 1);
@@ -16,9 +16,10 @@ public static class StaticData
 
     public const float DestroyDuration = 0.2f;
 
-    public const int DEFAULT_WIDTH = 1920;
-    public const int DEFAULT_HEIGHT = 1080;
-    public const float DEFAULT_CAMERA_SIZE = 5.4f;
+    public const int DEFAULT_WIDTH = 3840;
+    public const int DEFAULT_HEIGHT = 2160;
+    public const float DEFAULT_CAMERA_SIZE = 10.8f;
+    public const float DEFAULT_CAMERA_SCALE = 1.25F;
 
 
     public static IList<T> Clone<T>(this IList<T> listToClone) where T : ICloneable
