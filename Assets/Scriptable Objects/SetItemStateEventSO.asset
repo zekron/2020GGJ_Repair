@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68e8a37fefc4c14ba9d600032363436, type: 3}
   m_Name: SetItemStateEventSO
   m_EditorClassIdentifier: 
-  Description: 
+  Description: Raised while ItemState has been changed.

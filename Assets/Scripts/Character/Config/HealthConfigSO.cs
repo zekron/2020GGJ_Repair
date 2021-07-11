@@ -1,0 +1,10 @@
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "HealthConfig", menuName = "Entity Config/Health Config")]
+public class HealthConfigSO : ScriptableObject
+{
+    [Tooltip("Initial critter health")]
+    [SerializeField]private int _maxHealth;
+
+    public int MaxHealth => _maxHealth;
+}

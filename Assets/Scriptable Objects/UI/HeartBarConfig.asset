@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 332cc02058f446e47951ded24735c04e, type: 3}
-  m_Name: SetGameStateEventSO
+  m_Script: {fileID: 11500000, guid: 9a83915dc4b13304fb377ac2afa48650, type: 3}
+  m_Name: HeartBarConfig
   m_EditorClassIdentifier: 
-  Description: Raised while GameState has been changed.
+  _healthBarSprites:
+  - {fileID: 21300000, guid: 714f26d87b9f17442813dabc8cf524d7, type: 3}
+  - {fileID: 21300000, guid: bc444bcc077e4434eab75eb084c4d187, type: 3}

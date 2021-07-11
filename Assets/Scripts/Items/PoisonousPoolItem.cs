@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoisonousPoolItem : Item, IAnimator, IOffensive
+public class PoisonousPoolItem : Item, IAnimator, IAggressive
 {
     [SerializeField] private GameItemState[] _animatedStates;
+    [SerializeField] private IntEventChannelSO _inflictDamageEvent;
     private Animator _animator;
 
     void Start()
@@ -42,5 +43,6 @@ public class PoisonousPoolItem : Item, IAnimator, IOffensive
     public void Attack()
     {
         //TODO
+        _inflictDamageEvent.RaiseEvent(1);
     }
 }

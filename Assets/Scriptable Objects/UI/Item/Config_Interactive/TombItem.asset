@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1ecec9ff7846f499b25f11b27d2475, type: 3}
+  m_Name: TombItem
+  m_EditorClassIdentifier: 
+  _itemType: 3
+  _itemSprites:
+  - {fileID: 21300000, guid: c6a17571aaf118f43b115ad4dd301922, type: 3}
+  - {fileID: 21300000, guid: b1fc0d263ab637d48968ab295e7f0683, type: 3}
+  - {fileID: 21300000, guid: fc469cd42e190bf488ac161b8559d672, type: 3}
+  - {fileID: 21300000, guid: fd3d73d4466848c4c9189ba5222cb662, type: 3}

@@ -10,18 +10,9 @@ public class CharacterPackage : MonoBehaviour
     public PackageItem _HoldingItem;
     public GameObject _Hands;
 
-    public Sprite[] _TulipSprites;
-    public Sprite[] _RoseSprites;
-    public Sprite[] _TreeSprites;
-    public Sprite[] _TombSprites;
-    public Sprite[] _CandleSprites;
-
-    public Sprite[][] _ItemSprite;
-
     void Start()
     {
         instance = this;
-        _ItemSprite = new Sprite[5][] { _TulipSprites, _RoseSprites, _TreeSprites, _TombSprites, _CandleSprites };
     }
 
     // Update is called once per frame

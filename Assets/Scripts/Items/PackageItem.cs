@@ -9,7 +9,8 @@ public class PackageItem : MonoBehaviour
     public bool _IsHolding = false;
     public bool _IsEmpty = true;
 
-    [SerializeField]public Image _ImagePackageItem;
+    [SerializeField] public Image _ImagePackageItem;
+    [SerializeField] private ItemConfigSO[] _itemSpritesArray;
 
     private void Start()
     {
@@ -19,8 +20,7 @@ public class PackageItem : MonoBehaviour
         ItemStatus item = fetchedItem.GetFetchedItemStatus();
         _PackageItemState = item.ItemState;
         _PackageItemType = item.ItemType;
-        _ImagePackageItem.sprite = CharacterPackage.instance
-            ._ItemSprite[(int)_PackageItemType][(int)_PackageItemState];
+        _ImagePackageItem.sprite = _itemSpritesArray[(int)_PackageItemType].ItemSprites[(int)_PackageItemState];
         _ImagePackageItem.DOFade(1, 1)
                 .OnComplete(() => CharacterAbilities.instance._HoldInHand = false);
         _IsEmpty = false;

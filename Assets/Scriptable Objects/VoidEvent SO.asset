@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 332cc02058f446e47951ded24735c04e, type: 3}
-  m_Name: SetGameStateEventSO
+  m_Script: {fileID: 11500000, guid: 82da0e33a26fedd4a9129d3b839ca597, type: 3}
+  m_Name: VoidEvent SO
   m_EditorClassIdentifier: 
-  Description: Raised while GameState has been changed.
+  Description: 

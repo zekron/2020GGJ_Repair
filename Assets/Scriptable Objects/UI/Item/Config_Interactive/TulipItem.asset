@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1ecec9ff7846f499b25f11b27d2475, type: 3}
+  m_Name: TulipItem
+  m_EditorClassIdentifier: 
+  _itemType: 0
+  _itemSprites:
+  - {fileID: 21300000, guid: 2dd120ffb4f1ca24dbc9b5194b4fa258, type: 3}
+  - {fileID: 21300000, guid: 8f81f29f5df0fc44aaff39e7d12b0a3b, type: 3}
+  - {fileID: 21300000, guid: ac0d1c0e73984614da01c484e7dcee70, type: 3}
+  - {fileID: 21300000, guid: e449cc9cd0e9d004faa2811edcf705ce, type: 3}
