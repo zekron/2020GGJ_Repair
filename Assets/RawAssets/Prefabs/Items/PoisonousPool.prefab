@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1104092631
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 33563f5dde281914599905d952db0e72, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
@@ -131,9 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd723edf29cb044e885bbe891531c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _CanBeDetected: 0
   _IsInTimeWalkBack: 0
-  _myItem: {fileID: 0}
+  _myItem: {fileID: 2194086453724911171}
 --- !u!114 &2194086453724911171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,12 +152,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: aa845c847aa75294b8710413b4be9f40, type: 3}
   _curSprite: {fileID: 6645010561777789523}
   _newSprite: {fileID: 2194086452852310444}
-  _detector: {fileID: 0}
+  _detector: {fileID: 2194086453724911173}
   _itemStatus:
     _itemType: 5
     _itemState: 3
   _itemStateEvent: {fileID: 11400000, guid: e76f2d6f932cffc469b06673c9077758, type: 2}
   _animatedStates: 00000000
+  _inflictDamageEvent: {fileID: 11400000, guid: 66c4b8252dba27e459003db4f9cade5c,
+    type: 2}
+  _attackConfigSO: {fileID: 11400000, guid: a8d17ae9f7421384e94eb389d35ee438, type: 2}
 --- !u!61 &6069785597728120948
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -244,7 +246,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1104092631
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: aa845c847aa75294b8710413b4be9f40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

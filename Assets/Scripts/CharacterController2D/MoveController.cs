@@ -1,10 +1,10 @@
 ﻿using Prime31;
 using UnityEngine;
 
-
-public class DemoScene : MonoBehaviour
+[RequireComponent(typeof(Animator),typeof(CharacterController2D))]
+public class MoveController : MonoBehaviour
 {
-    public static DemoScene instance = null;
+    public static MoveController instance = null;
     // movement config
     public float gravity = -25f;
     public float runSpeed = 8f;

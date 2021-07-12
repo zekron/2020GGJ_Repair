@@ -13,7 +13,7 @@ public class UIController : MonoBehaviour
     }
     public void CloseUIWelcome()
     {
-        _welcomeManager.gameObject.SetActive(false);
+        _welcomeManager.ClosePanel(()=> _welcomeManager.gameObject.SetActive(false));
     }
     public void OpenUIGameplay()
     {

@@ -9,7 +9,7 @@ public class Detector : MonoBehaviour
     /// <summary>
     /// 是否被瘟疫光环影响
     /// </summary>
-    public bool _CanBeDetected = false;
+    protected bool _CanBeDetected = false;
     /// <summary>
     /// 是否被回到过去影响
     /// </summary>
@@ -55,6 +55,5 @@ public class Detector : MonoBehaviour
             _exitDestroy = value;
         }
     }
-
     #endregion
 }

@@ -48,7 +48,7 @@ public class UISettingMgr : MonoBehaviour
             .OnComplete(() =>
             {
                 GameMgr.Instance.GetGameStateMgr().SetGameState(GameState.InWelcome);
-                CharacterAbilities.instance.RebirthCharacter();
+                //GameMgr.Instance.GameProtagonist.RebirthCharacter();
                 CharacterPackage.instance.ClearItems();
             });
 

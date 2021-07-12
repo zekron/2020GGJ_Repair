@@ -1,49 +1,45 @@
 using Prime31;
 using UnityEngine;
 
-public class SmoothFollow : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
-    public static SmoothFollow instance = null;
-
-    public Transform target;
-    [SerializeField] private Material _Background;
 
     public float smoothDampTime = 0.2f;
     [HideInInspector]
-    public new Transform transform;
+    public Transform _cameraTransform;
     public Vector3 cameraOffset;
     public bool useFixedUpdate = false;
     public bool _ForcedView = false;
 
+    [SerializeField] private Material _Background;
+
     private CharacterController2D _playerController;
+    private Transform _target;
     private Vector3 _smoothDampVelocity;
     private float m_CameraThreshold;
     private Vector3 m_DefaultTrans;
 
     void Awake()
     {
-        instance = this;
-        transform = gameObject.transform;
-        m_DefaultTrans = transform.position;
-        _playerController = target.GetComponent<CharacterController2D>();
+        _cameraTransform = gameObject.transform;
+        m_DefaultTrans = _cameraTransform.position;
     }
 
     private void Start()
     {
-        updateCameraPosition(true);
     }
 
 
     void LateUpdate()
     {
-        if (!useFixedUpdate)
+        if (_target && !useFixedUpdate)
             updateCameraPosition();
     }
 
 
     void FixedUpdate()
     {
-        if (useFixedUpdate)
+        if (_target && useFixedUpdate)
             updateCameraPosition();
     }
 
@@ -58,25 +54,25 @@ public class SmoothFollow : MonoBehaviour
 
         if (_ForcedView)
         {
-            transform.position = target.position - cameraOffset;
+            _cameraTransform.position = _target.position - cameraOffset;
         }
         else
         {
             if (_playerController == null)
             {
-                transform.position = Vector3.SmoothDamp(transform.position, target.position - cameraOffset, ref _smoothDampVelocity, smoothDampTime);
+                _cameraTransform.position = Vector3.SmoothDamp(_cameraTransform.position, _target.position - cameraOffset, ref _smoothDampVelocity, smoothDampTime);
                 return;
             }
 
             if (_playerController.velocity.x > 0)
             {
-                transform.position = Vector3.SmoothDamp(transform.position, target.position - cameraOffset, ref _smoothDampVelocity, smoothDampTime);
+                _cameraTransform.position = Vector3.SmoothDamp(_cameraTransform.position, _target.position - cameraOffset, ref _smoothDampVelocity, smoothDampTime);
             }
             else
             {
                 var leftOffset = cameraOffset;
                 leftOffset.x *= -1;
-                transform.position = Vector3.SmoothDamp(transform.position, target.position - leftOffset, ref _smoothDampVelocity, smoothDampTime);
+                _cameraTransform.position = Vector3.SmoothDamp(_cameraTransform.position, _target.position - leftOffset, ref _smoothDampVelocity, smoothDampTime);
             }
 
         }
@@ -85,10 +81,16 @@ public class SmoothFollow : MonoBehaviour
 
     void LoopBackground()
     {
-        Vector2 tempVec = new Vector2(((transform.position.x - m_DefaultTrans.x) / m_CameraThreshold) % 1, 0);
+        Vector2 tempVec = new Vector2(((_cameraTransform.position.x - m_DefaultTrans.x) / m_CameraThreshold) % 1, 0);
         _Background?.SetTextureOffset("_MainTex", tempVec);
     }
 
+    public void SetTarget(Transform target)
+    {
+        _target = target;
+        _playerController = _target.GetComponent<CharacterController2D>();
+        updateCameraPosition(true);
+    }
     public void SetCameraOffset(Vector3 scale)
     {
         cameraOffset = new Vector3(

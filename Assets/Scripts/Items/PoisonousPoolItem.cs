@@ -6,8 +6,11 @@ public class PoisonousPoolItem : Item, IAnimator, IAggressive
 {
     [SerializeField] private GameItemState[] _animatedStates;
     [SerializeField] private IntEventChannelSO _inflictDamageEvent;
+    [SerializeField] private AttackConfigSO _attackConfigSO;
+
     private Animator _animator;
 
+    public AttackConfigSO AttackConfig => _attackConfigSO;
     void Start()
     {
         if (_animatedStates.Length != 0)
@@ -40,9 +43,18 @@ public class PoisonousPoolItem : Item, IAnimator, IAggressive
         return;
     }
 
-    public void Attack()
+    public void Attack(Damageable damageable)
     {
         //TODO
-        _inflictDamageEvent.RaiseEvent(1);
+        if (CanAttack(_itemStatus.ItemState) && !damageable.GetHit)
+        {
+            //damageable.ReceiveAnAttack(_attackConfigSO.AttackStrength);
+            _inflictDamageEvent.RaiseEvent(_attackConfigSO.AttackStrength);
+        }
+    }
+
+    public bool CanAttack(GameItemState state)
+    {
+        return state != GameItemState.StateOne;
     }
 }

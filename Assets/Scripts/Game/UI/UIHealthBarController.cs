@@ -9,12 +9,17 @@ public class UIHealthBarController : MonoBehaviour
     [SerializeField] private IntEventChannelSO _inflictHealingEvent;
     [SerializeField] private UIHeart[] _heartArray;
 
-    private int _currentHealth;
+    private int _currentHealth = default;
 
     private void OnEnable()
     {
         _inflictDamageEvent.OnEventRaised += ReceiveDamage;
         _inflictHealingEvent.OnEventRaised += ReceiveHealing;
+    }
+    private void OnDisable()
+    {
+        _inflictDamageEvent.OnEventRaised -= ReceiveDamage;
+        _inflictHealingEvent.OnEventRaised -= ReceiveHealing;
     }
     private void ReceiveDamage(int index)
     {

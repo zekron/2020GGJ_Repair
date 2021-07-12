@@ -2,10 +2,8 @@
 using System;
 using UnityEngine;
 
-
 namespace Prime31
 {
-
     [RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D))]
     public class CharacterController2D : MonoBehaviour
     {
@@ -45,14 +43,13 @@ namespace Prime31
 
         #endregion
 
-
         #region events, properties and fields
         public bool ignoreOneWayPlatformsThisFrame;
 
         [SerializeField]
         [Range(0.001f, 0.3f)]
         float _skinWidth = 0.02f;
-        public float skinWidth
+        public float SkinWidth
         {
             get { return _skinWidth; }
             set
@@ -114,7 +111,7 @@ namespace Prime31
             transform = GetComponent<Transform>();
             boxCollider = GetComponent<BoxCollider2D>();
             rigidBody2D = GetComponent<Rigidbody2D>();
-            skinWidth = _skinWidth;
+            SkinWidth = _skinWidth;
             for (var i = 0; i < 32; i++)
             {
                 if ((triggerMask.value & 1 << i) == 0)
@@ -209,7 +206,7 @@ namespace Prime31
                     {
                         if (!collisionState.wasGroundedLastFrame)
                         {
-                            float flushDistance = Mathf.Sign(deltaMovement.x) * (_raycastHit.distance - skinWidth);
+                            float flushDistance = Mathf.Sign(deltaMovement.x) * (_raycastHit.distance - SkinWidth);
                             transform.Translate(new Vector2(flushDistance, 0));
                         }
                         break;
@@ -342,7 +339,7 @@ namespace Prime31
                 if (isMovingDownSlope)
                 {
                     var slopeModifier = slopeSpeedMultiplier.Evaluate(-angle);
-                    deltaMovement.y += _raycastHit.point.y - slopeRay.y - skinWidth;
+                    deltaMovement.y += _raycastHit.point.y - slopeRay.y - SkinWidth;
                     deltaMovement = new Vector3(0, deltaMovement.y, 0) +
                                     (Quaternion.AngleAxis(-angle, Vector3.forward) * new Vector3(deltaMovement.x * slopeModifier, 0, 0));
                     collisionState.movingDownSlope = true;

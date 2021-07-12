@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -24,13 +25,17 @@ public class GameMgr : MonoBehaviour
 
     [Header("Event")]
     [SerializeField] private GameStateEventChannelSO _gameStateEvent;
+    [SerializeField] private VoidEventChannelSO _startNewGameEvent;
 
-    [Header("Manager")]
+    [Header("Manager & Controller")]
     [SerializeField] private GameStateMgr _gameStateMgr;
     [SerializeField] private UIController _UIController;
+    [SerializeField] private CameraController _cameraController;
+    [SerializeField] private Protagonist _protagonist;
 
+    public Protagonist GameProtagonist => _protagonist;
     private Vector3 _MainTransScale = Vector3.one;
-    public static Vector3 _GameMgrScale = new Vector3(1, 1, 1);
+    public static Vector3 _GameMgrScale = Vector3.one;
 
     private void Awake()
     {
@@ -45,10 +50,9 @@ public class GameMgr : MonoBehaviour
     {
         SetPackageMessage();
     }
+
     private void Init()
     {
-        //SetPackageMessage();
-        SetScale();
         AddListener();
 
         _gameStateMgr.SetGameState(GameState.InWelcome);
@@ -57,12 +61,26 @@ public class GameMgr : MonoBehaviour
     private void AddListener()
     {
         _gameStateEvent.OnEventRaised += InGame;
+        _startNewGameEvent.OnEventRaised += InstantiateProtagonist;
     }
+
+    private void InstantiateProtagonist()
+    {
+        //avoid double instantiate
+        if (_protagonist.isActiveAndEnabled) return;
+
+        Protagonist temp = Instantiate<Protagonist>(_protagonist);
+        temp.Init(_cameraController, StaticData.DefaultRebirthVector);
+        _protagonist = temp;
+
+        SetScale();
+    }
+
     private void SetScale()
     {
-        SmoothFollow.instance.SetCameraOffset(_MainTransScale);
-        DestroyDetector.instance.SetDestroyDetectorScale(_GameMgrScale);
-        DemoScene.instance.SetCharacterConfigScale(_MainTransScale);
+        _protagonist.CamController.SetCameraOffset(_MainTransScale);
+        //DestroyDetector.instance.SetDestroyDetectorScale(_GameMgrScale);
+        //MoveController.instance.SetCharacterConfigScale(_MainTransScale);
     }
 
     void SetMainTransScale()

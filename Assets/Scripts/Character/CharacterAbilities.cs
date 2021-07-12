@@ -204,7 +204,7 @@ public class CharacterAbilities : MonoBehaviour
         transform.parent.position = m_CurRebitrhPoint;
     }
 
-    public void RefreshRebirthPoint(Vector3 newPoint)
+    public void SetRebirthPoint(Vector3 newPoint)
     {
         m_CurRebitrhPoint = newPoint;
     }

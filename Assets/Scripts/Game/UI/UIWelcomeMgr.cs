@@ -7,6 +7,7 @@ public class UIWelcomeMgr : MonoBehaviour
     public static UIWelcomeMgr instance = null;
 
     [SerializeField] private Image _imageBackground, _imageTitle, _imageStart, _imageExit;
+    [SerializeField] private VoidEventChannelSO _startGameEvent;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class UIWelcomeMgr : MonoBehaviour
     }
     private void OnDisable()
     {
+        RemoveWelcomeListener();
     }
 
     void AddWelcomeListener()
@@ -48,13 +50,19 @@ public class UIWelcomeMgr : MonoBehaviour
     {
         RemoveWelcomeListener();
 
+        GameMgr.Instance.GetGameStateMgr().SetGameState(GameState.InGameplay);
+
+        _startGameEvent.RaiseEvent();
+    }
+
+    public void ClosePanel(System.Action onCompleted)
+    {
         _imageStart.DOFade(0, 1).OnComplete(() => _imageStart.enabled = false);
         _imageExit.DOFade(0, 1).OnComplete(() => _imageExit.enabled = false);
         _imageBackground.DOFade(0, 1).OnComplete(() => _imageBackground.enabled = false);
         _imageTitle.DOFade(0, 1).OnComplete(() =>
         {
-            _imageTitle.enabled = false;
-            GameMgr.Instance.GetGameStateMgr().SetGameState(GameState.InGameplay);
+            onCompleted();
         });
     }
 

@@ -13,6 +13,7 @@ public static class StaticData
     public static Color ColorFadeOut = new Color(1, 1, 1, 0);
     public static Color ColorFull = new Color(1, 1, 1, 1);
     public static Vector3 HalfScale = new Vector3(0.5f, 0.5f, 1);
+    public static Vector3 DefaultRebirthVector = new Vector3(-50.8F, 15, 0);
 
     public const float DestroyDuration = 0.2f;
 
@@ -51,11 +52,16 @@ public class Heart
 #region Enum
 public enum GameItemState
 {
+    //BaseItem
     StateOne,
     StateTwo,
     StateThree,
     StateFour,
+
+    //AncientItem
     StateFinished,
+
+    //
 }
 public enum GameItemType
 {
@@ -64,7 +70,10 @@ public enum GameItemType
     Tree,
     Tomb,
     Candle,
+
     PoisonousPool,
+    Fire,
+
     Tile,
     Ancient,
 }

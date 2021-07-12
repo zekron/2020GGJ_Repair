@@ -104,7 +104,7 @@ public class AncientDetector : Detector
         _myAncient.ChangeSprite(_Keys.Count, true, 2);
         _myAncient.SetItemState(GameItemState.StateFinished);
         _ShieldDoor.SetActive(false);
-        CharacterAbilities.instance.RefreshRebirthPoint(_RebirthPoint);
+        CharacterAbilities.instance.SetRebirthPoint(_RebirthPoint);
     }
 
     public void ResetAncientState()

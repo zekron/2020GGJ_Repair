@@ -22,11 +22,17 @@ public class ItemDetector : Detector
         if (other.tag == "Player")
         {
             //Debug.Log($"{name} {EnterDestroy} {_CanBeDetected} {Time.frameCount}");
-            if (/*EnterDestroy && */!_CanBeDetected)
+            if (/*EnterDestroy &&*/ !_CanBeDetected)
             {
                 _CanBeDetected = true;
             }
-            //Debug.LogFormat("{0} enter here.", other.name);
+            if (other.TryGetComponent(out Damageable damageableComp))
+            {
+                ItemStatus tempStatus = _myItem.GetDetectedItemStatus();
+                //tempStatus.ItemType
+                IAggressive attacker = _myItem as IAggressive;
+                attacker?.Attack(damageableComp);
+            }
         }
     }
     private void OnTriggerStay2D(Collider2D other)
@@ -75,7 +81,7 @@ public class ItemDetector : Detector
         if (StayDestroy && tag == "Item")
         {
             IFetched fetched = _myItem as IFetched;
-            fetched.Fetch();
+            fetched?.Fetch();
         }
     }
 
