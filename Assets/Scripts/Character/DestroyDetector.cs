@@ -27,7 +27,7 @@ public class DestroyDetector : MonoBehaviour
                 _StayDestroys.Add(other.gameObject);
             }
         }
-        if (other.tag == "Border")
+        if (other.CompareTag("Border"))
         {
             CharacterAbilities.instance.RebirthCharacter();
         }
@@ -69,8 +69,8 @@ public class DestroyDetector : MonoBehaviour
 
     private static bool IsDestroyable(Collider2D other)
     {
-        return other.tag == "Item"
-            || other.tag == "Ancient"
-            || other.tag == "Unavailable";
+        return other.CompareTag("Item")
+            || other.CompareTag("Ancient")
+            || other.CompareTag("Unavailable");
     }
 }

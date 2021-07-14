@@ -192,6 +192,8 @@ MonoBehaviour:
   _cameraController: {fileID: 0}
   _abilities: {fileID: 3352139345376462587}
   _damageable: {fileID: 3352139343977104756}
+  _hands: {fileID: 3352139344787785688}
+  _carrying: {fileID: 3352139345451970905}
 --- !u!114 &3352139343977104757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthConfigSO: {fileID: 11400000, guid: 721cd60cbcff5dd4cb786ee7300e439a, type: 2}
-  _onDieEvnet: {fileID: 11400000, guid: 60853701736d6e34fb9c9f9ffe88ba19, type: 2}
+  _onDieEvent: {fileID: 11400000, guid: 60853701736d6e34fb9c9f9ffe88ba19, type: 2}
   _inflictDamageEvent: {fileID: 11400000, guid: 66c4b8252dba27e459003db4f9cade5c,
     type: 2}
   _inflictHealingEvent: {fileID: 11400000, guid: c3d724bf89d5abd4dbee0f8efc699ab8,
@@ -5299,7 +5301,7 @@ GameObject:
   - component: {fileID: 3352139345376462586}
   m_Layer: 6
   m_Name: DestroyDetector
-  m_TagString: Player
+  m_TagString: DestroyDetector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class Damageable : MonoBehaviour
 {
     [SerializeField] private HealthConfigSO _healthConfigSO;
-    [SerializeField] private VoidEventChannelSO _onDieEvnet;
+    [SerializeField] private VoidEventChannelSO _onDieEvent;
     [SerializeField] private IntEventChannelSO _inflictDamageEvent;
     [SerializeField] private IntEventChannelSO _inflictHealingEvent;
     private int _currentHealth = default;
@@ -32,7 +33,7 @@ public class Damageable : MonoBehaviour
         if (_currentHealth <= 0)
         {
             IsDead = true;
-            _onDieEvnet.RaiseEvent();
+            _onDieEvent.RaiseEvent();
         }
     }
 
@@ -41,5 +42,11 @@ public class Damageable : MonoBehaviour
         _currentHealth = _currentHealth + healing > _healthConfigSO.MaxHealth ?
             _healthConfigSO.MaxHealth : _currentHealth + healing;
         IsDead = false;
+    }
+    public void ResetGetHit(float time)
+    {
+        DOTween.Sequence()
+            .AppendInterval(time)
+            .AppendCallback(() => { GetHit = false; Debug.Log(GetHit); });
     }
 }

@@ -6,9 +6,7 @@ public class CharacterPackage : MonoBehaviour
     public static CharacterPackage instance = null;
     public PackageItem[] _ItemImages;
 
-    public SpriteRenderer _HoldingItemSprite;
     public PackageItem _HoldingItem;
-    public GameObject _Hands;
 
     void Start()
     {
@@ -41,32 +39,14 @@ public class CharacterPackage : MonoBehaviour
     public void HoldItem(PackageItem item)
     {
         _HoldingItem = item;
-        _HoldingItemSprite.DOComplete();
-        if (_HoldingItem)
-        {
-            _HoldingItemSprite.DOFade(1, 1).OnStart(() =>
-            {
-                _Hands.SetActive(_HoldingItem);
-                _HoldingItemSprite.sprite = item._ImagePackageItem.sprite;
-            });
-        }
-        else
-        {
-            _HoldingItemSprite.DOFade(0, 1).OnComplete(() =>
-            {
-                _Hands.SetActive(_HoldingItem);
-                _HoldingItemSprite.sprite = null;
-            });
-        }
+        GameMgr.Instance.GameProtagonist.SetHands(_HoldingItem ? _HoldingItem._ImagePackageItem.sprite : null);
     }
 
     public void UseItem()
     {
-        _HoldingItemSprite.sprite = null;
         _HoldingItem = null;
 
-        _HoldingItemSprite.DOComplete();
-        _HoldingItemSprite.DOFade(_HoldingItem ? 1 : 0, 1).OnComplete(() => _Hands.SetActive(_HoldingItem));
+        GameMgr.Instance.GameProtagonist.SetHands(_HoldingItem ? _HoldingItem._ImagePackageItem.sprite : null);
 
         for (int i = 0; i < _ItemImages.Length; i++)
         {

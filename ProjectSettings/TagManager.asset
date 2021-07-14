@@ -8,6 +8,7 @@ TagManager:
   - Item
   - Unavailable
   - Border
+  - DestroyDetector
   layers:
   - Default
   - TransparentFX

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class Protagonist : MonoBehaviour
     [Header("Component")]
     [SerializeField] private CharacterAbilities _abilities;
     [SerializeField] private Damageable _damageable;
+    [SerializeField] private GameObject _hands;
+    [SerializeField] private SpriteRenderer _carrying;
 
     private Vector3 _rebirthVector;
     public CameraController CamController => _cameraController;
@@ -35,5 +38,24 @@ public class Protagonist : MonoBehaviour
         _abilities.RebirthCharacter();
 
         _inflictHealingEvent.RaiseEvent(3);
+    }
+    public void SetHands(Sprite sprite)
+    {
+        _carrying.sprite = sprite;
+        _carrying.DOComplete();
+        if (sprite)
+        {
+            _carrying.DOFade(1, 1).OnStart(() =>
+            {
+                _hands.SetActive(sprite);
+            });
+        }
+        else
+        {
+            _carrying.DOFade(0, 1).OnComplete(() =>
+            {
+                _hands.SetActive(sprite);
+            });
+        }
     }
 }

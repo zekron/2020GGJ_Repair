@@ -9,7 +9,7 @@ public class Detector : MonoBehaviour
     /// <summary>
     /// 是否被瘟疫光环影响
     /// </summary>
-    protected bool _CanBeDetected = false;
+    [SerializeField]protected bool _CanBeDetected = false;
     /// <summary>
     /// 是否被回到过去影响
     /// </summary>

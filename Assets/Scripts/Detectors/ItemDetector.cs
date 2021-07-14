@@ -19,17 +19,18 @@ public class ItemDetector : Detector
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("DestroyDetector"))
         {
-            //Debug.Log($"{name} {EnterDestroy} {_CanBeDetected} {Time.frameCount}");
             if (/*EnterDestroy &&*/ !_CanBeDetected)
             {
                 _CanBeDetected = true;
             }
+        }
+        if (other.CompareTag("Player"))
+        {
+            //Debug.Log($"{name} {other.name} {_CanBeDetected}");
             if (other.TryGetComponent(out Damageable damageableComp))
             {
-                ItemStatus tempStatus = _myItem.GetDetectedItemStatus();
-                //tempStatus.ItemType
                 IAggressive attacker = _myItem as IAggressive;
                 attacker?.Attack(damageableComp);
             }
@@ -38,7 +39,8 @@ public class ItemDetector : Detector
     private void OnTriggerStay2D(Collider2D other)
     {
         //Debug.LogFormat("{0} stay here.", other.name);
-        if (other.tag == "Player")
+
+        if (other.CompareTag("DestroyDetector"))
         {
             if (!_CanBeDetected || !StayDestroy) return;
 
@@ -58,11 +60,19 @@ public class ItemDetector : Detector
                 _stayTime = StaticData.DestroyDuration;
             }
         }
+        if (other.CompareTag("Player"))
+        {
+            if (other.TryGetComponent(out Damageable damageableComp) && !damageableComp.GetHit)
+            {
+                IAggressive attacker = _myItem as IAggressive;
+                attacker?.Attack(damageableComp);
+            }
+        }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
         //Debug.LogFormat("{0} exit here.", other.name);
-        if (other.tag == "Player")
+        if (other.CompareTag("DestroyDetector"))
         {
             if (ExitDestroy)
             {
@@ -78,7 +88,7 @@ public class ItemDetector : Detector
 
     private void OnMouseDown()
     {
-        if (StayDestroy && tag == "Item")
+        if (StayDestroy && CompareTag("Item"))
         {
             IFetched fetched = _myItem as IFetched;
             fetched?.Fetch();

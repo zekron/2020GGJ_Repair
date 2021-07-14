@@ -150,11 +150,11 @@ MonoBehaviour:
   _IsHolding: 0
   _IsEmpty: 1
   _ImagePackageItem: {fileID: 6840287425268386366}
-  _itemSprite:
+  _itemSpritesArray:
   - {fileID: 11400000, guid: 59ebbc87345c70e42ae20f9753cc0a8c, type: 2}
   - {fileID: 11400000, guid: 3f22ec4424bab194498a283e20673e57, type: 2}
-  - {fileID: 11400000, guid: ea4c55f953c7eca44abdabe6945a3091, type: 2}
   - {fileID: 11400000, guid: c72b4258a155f9549b4d7c620a017bce, type: 2}
+  - {fileID: 11400000, guid: ea4c55f953c7eca44abdabe6945a3091, type: 2}
   - {fileID: 11400000, guid: ed35a6e58cf990f4baeec8cd4802491b, type: 2}
 --- !u!1 &6840287426130930144
 GameObject:

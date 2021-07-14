@@ -9,14 +9,19 @@ public class UIController : MonoBehaviour
 
     public void OpenUIWelcome()
     {
+        _welcomeManager.transform.DOComplete(true);
         _welcomeManager.gameObject.SetActive(true);
+        _welcomeManager.transform.DOScale(1, 1);
     }
     public void CloseUIWelcome()
     {
-        _welcomeManager.ClosePanel(()=> _welcomeManager.gameObject.SetActive(false));
+        _welcomeManager.transform.DOScale(0, 1)
+            .OnComplete(() => _welcomeManager.gameObject.SetActive(false));
+        //_welcomeManager.ClosePanel(()=> _welcomeManager.gameObject.SetActive(false));
     }
     public void OpenUIGameplay()
     {
+        _gameplayManager.transform.DOComplete(true);
         _gameplayManager.gameObject.SetActive(true);
         _gameplayManager.transform.DOScale(1, 1);
     }

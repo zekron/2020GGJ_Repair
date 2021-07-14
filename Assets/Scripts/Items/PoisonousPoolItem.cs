@@ -46,15 +46,18 @@ public class PoisonousPoolItem : Item, IAnimator, IAggressive
     public void Attack(Damageable damageable)
     {
         //TODO
-        if (CanAttack(_itemStatus.ItemState) && !damageable.GetHit)
+        Debug.Log(damageable.GetHit);
+        if (CanAttack(_itemStatus.ItemState, damageable))
         {
             //damageable.ReceiveAnAttack(_attackConfigSO.AttackStrength);
             _inflictDamageEvent.RaiseEvent(_attackConfigSO.AttackStrength);
+
+            damageable.ResetGetHit(_attackConfigSO.AttackReloadDuration);
         }
     }
 
-    public bool CanAttack(GameItemState state)
+    public bool CanAttack(GameItemState state, Damageable damageable)
     {
-        return state != GameItemState.StateOne;
+        return state == GameItemState.StateOne && !damageable.GetHit;
     }
 }

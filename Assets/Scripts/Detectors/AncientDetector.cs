@@ -24,7 +24,7 @@ public class AncientDetector : Detector
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("DestroyDetector"))
         {
             if (/*EnterDestroy && */!_CanBeDetected)
             {
@@ -35,7 +35,7 @@ public class AncientDetector : Detector
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("DestroyDetector"))
         {
             if (!_CanBeDetected || !StayDestroy) return;
 
@@ -61,7 +61,7 @@ public class AncientDetector : Detector
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("DestroyDetector"))
         {
             if (ExitDestroy)
             {
