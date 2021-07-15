@@ -33,6 +33,12 @@ public class ItemDetector : Detector
             {
                 IAggressive attacker = _myItem as IAggressive;
                 attacker?.Attack(damageableComp);
+                if (_myItem is HeartItem)
+                {
+                    HeartItem item = _myItem as HeartItem;
+                    item.ChangeSprite();
+                    item.Heal(damageableComp);
+                }
             }
         }
     }

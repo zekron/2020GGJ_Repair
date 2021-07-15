@@ -47,6 +47,6 @@ public class Damageable : MonoBehaviour
     {
         DOTween.Sequence()
             .AppendInterval(time)
-            .AppendCallback(() => { GetHit = false; Debug.Log(GetHit); });
+            .AppendCallback(() =>  GetHit = false);
     }
 }

@@ -21,7 +21,7 @@ public abstract class Item : MonoBehaviour, IDetected
         _detector = GetComponent<Detector>();
 
         int length = _itemSprites.Length;
-        if (length > 0)
+        if (length > 1)
         {
             _curSprite.sprite = _itemSprites[length - 1];
             _newSprite.sprite = _itemSprites[length - 2];

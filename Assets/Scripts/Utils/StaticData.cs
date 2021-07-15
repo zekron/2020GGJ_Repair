@@ -52,6 +52,9 @@ public class Heart
 #region Enum
 public enum GameItemState
 {
+    //Fire
+    StateDefault,
+
     //BaseItem
     StateOne,
     StateTwo,
@@ -73,6 +76,8 @@ public enum GameItemType
 
     PoisonousPool,
     Fire,
+
+    Heart,
 
     Tile,
     Ancient,

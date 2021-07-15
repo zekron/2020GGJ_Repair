@@ -6,6 +6,7 @@ using UnityEngine;
 public class Protagonist : MonoBehaviour
 {
     [Header("Events")]
+    [SerializeField] private IntEventChannelSO _inflictDamageEvent;
     [SerializeField] private IntEventChannelSO _inflictHealingEvent;
 
     [Header("Controller")]
@@ -37,6 +38,7 @@ public class Protagonist : MonoBehaviour
         _abilities.SetRebirthPoint(_rebirthVector = rebirthVector);
         _abilities.RebirthCharacter();
 
+        _inflictDamageEvent.OnEventRaised += ReceiveDamage;
         _inflictHealingEvent.RaiseEvent(3);
     }
     public void SetHands(Sprite sprite)
@@ -57,5 +59,9 @@ public class Protagonist : MonoBehaviour
                 _hands.SetActive(sprite);
             });
         }
+    }
+    void ReceiveDamage(int damage)
+    {
+        GetComponent<SpriteRenderer>().DOFade(0, 0.2f).OnComplete(() => GetComponent<SpriteRenderer>().DOFade(1, 0.2f)).SetLoops(2);
     }
 }

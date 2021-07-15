@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoisonousPoolItem : Item, IAnimator, IAggressive
+public class FireItem : Item, IAnimator, IAggressive
 {
     [SerializeField] private IntEventChannelSO _inflictDamageEvent;
     [SerializeField] private AttackConfigSO _attackConfigSO;
@@ -18,10 +18,14 @@ public class PoisonousPoolItem : Item, IAnimator, IAggressive
     }
     private void OnValidate()
     {
-        _itemStatus.ItemType = GameItemType.PoisonousPool;
-        _itemStatus.ItemState = GameItemState.StateFour;
+        _itemStatus.ItemType = GameItemType.Fire;
+        _itemStatus.ItemState = GameItemState.StateOne;
     }
 
+    public override void ChangeSprite(float duration = 0.2F)
+    {
+        return;
+    }
     public void PlayAnimator(GameItemState state)
     {
         if (_animatedStates.Length == 0) return;

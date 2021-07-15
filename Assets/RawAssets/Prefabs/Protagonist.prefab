@@ -185,6 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f25772b5f3cfe489271471e5245107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inflictDamageEvent: {fileID: 11400000, guid: 66c4b8252dba27e459003db4f9cade5c,
+    type: 2}
   _inflictHealingEvent: {fileID: 11400000, guid: c3d724bf89d5abd4dbee0f8efc699ab8,
     type: 2}
   _characterController: {fileID: 3352139343977104757}
