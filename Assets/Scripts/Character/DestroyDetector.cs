@@ -29,7 +29,6 @@ public class DestroyDetector : MonoBehaviour
         }
         if (other.CompareTag("Border"))
         {
-            Debug.Log("aaa");
             CharacterAbilities.instance.RebirthCharacter();
         }
     }
