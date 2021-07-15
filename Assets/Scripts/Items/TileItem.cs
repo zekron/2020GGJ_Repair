@@ -2,6 +2,11 @@
 
 public class TileItem : Item
 {
+    private void OnValidate()
+    {
+        _itemStatus.ItemType = GameItemType.Tile;
+        _itemStatus.ItemState = GameItemState.StateFour;
+    }
     public override void ChangeSprite(float duration = 0.2F)
     {
         if (_itemSprites.Length <= 0) return;

@@ -8,7 +8,7 @@ public static class StaticData
 {
     public static string PackageName = "Calamoto";
     public static string PackageVer = "TestVer";
-    public static string PackageTime = "2021/0715/02/2000";
+    public static string PackageTime = "2021/0715/03/2030";
 
     public static Color ColorFadeOut = new Color(1, 1, 1, 0);
     public static Color ColorFull = new Color(1, 1, 1, 1);
