@@ -3,23 +3,18 @@ using UnityEngine;
 
 public class UISettingMgr : MonoBehaviour
 {
-    public static UISettingMgr instance = null;
-
-
     private void Awake()
     {
-        instance = this;
     }
     private void OnEnable()
     {
-        EnterSetting();
     }
     private void OnDisable()
     {
     }
 
     #region ButtonEvent
-    void EnterSetting()
+    public void EnterSetting()
     {
         TouchMgr.instance.AddListener(TouchMgr.instance._ExitSettingBtn, ExitToGame);
         TouchMgr.instance.AddListener(TouchMgr.instance._ExitGameBtn, ExitToMenu);

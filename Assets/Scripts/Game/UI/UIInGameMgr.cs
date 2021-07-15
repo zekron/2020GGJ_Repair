@@ -11,15 +11,9 @@ public class UIInGameMgr : MonoBehaviour
 
     private void OnEnable()
     {
-        AddGameplayListener();
         _canEnterSetting = false;
     }
-    private void OnDisable()
-    {
-        RemoveGameplayListener();
-        _canEnterSetting = false;
-    }
-    void AddGameplayListener()
+    public void AddGameplayListener()
     {
         TouchMgr.instance.AddListener(TouchMgr.instance._EnterSettingBtn, EnterSetting);
     }
@@ -45,6 +39,8 @@ public class UIInGameMgr : MonoBehaviour
             return;
         }
 
+        RemoveGameplayListener();
+        _canEnterSetting = false;
         m_ReturnTween.Complete(false);
         _imageSetting.DOColor(Color.clear, 1)/*.OnComplete(() => GameMgr.instance.SetGameState(eGameState.eInSetting))*/;
         //_imageSetting.transform.DOScale(0, 1).OnComplete(() => _imageSetting.enabled = false);
