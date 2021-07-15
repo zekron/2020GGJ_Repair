@@ -92,7 +92,8 @@ public class CharacterAbilities : MonoBehaviour
                 case GameItemType.PoisonousPool:
                 case GameItemType.Tile:
                 case GameItemType.Ancient:
-                    if (itemStatus.ItemState < GameItemState.StateFour)
+                    if (itemStatus.ItemState == GameItemState.StateFinished) continue;
+                    else if (itemStatus.ItemState < GameItemState.StateFour)
                     {
                         item.SetItemState(itemStatus.ItemState + 1);
                         item.ChangeSprite(1f);
@@ -105,20 +106,6 @@ public class CharacterAbilities : MonoBehaviour
                         item.ChangeSprite(1f);
                     }
                     break;
-                    //AncientDetector ancientDetector = m_TempStayDestroys[i].GetComponent<AncientDetector>();
-                    //if (ancientDetector._CurAncientState < GameAncientState.StateFour)
-                    //{
-                    //    ancientDetector._CurAncientState++;
-                    //    item.ChangeSprite(1f);
-                    //}
-                    //else if (ancientDetector._CurAncientState == GameAncientState.StateFour)
-                    //{
-                    //    m_TimeWalkBackLock = true;
-                    //    DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_TimeWalkBackLock = false);
-                    //    ancientDetector._CurAncientState = GameAncientState.StateOne;
-                    //    item.ChangeSprite(1f);
-                    //}
-                    //break;
                 default:
                     break;
             }
