@@ -53,8 +53,8 @@ public class PoisonousPoolItem : Item, IAnimator, IAggressive
         }
     }
 
-    public bool CanAttack(GameItemState state, Damageable damageable)
+    public bool CanAttack(GameItemState state, Damageable damageableTemp)
     {
-        return state == GameItemState.StateOne && !damageable.GetHit && !damageable.IsDead;
+        return state == GameItemState.StateOne && !damageableTemp.GetHit && !damageableTemp.IsDead;
     }
 }

@@ -60,6 +60,9 @@ MonoBehaviour:
     _itemType: 1
     _itemState: 3
   _itemStateEvent: {fileID: 11400000, guid: e76f2d6f932cffc469b06673c9077758, type: 2}
+  _inflictDamageEvent: {fileID: 11400000, guid: 66c4b8252dba27e459003db4f9cade5c,
+    type: 2}
+  _attackConfigSO: {fileID: 11400000, guid: a8d17ae9f7421384e94eb389d35ee438, type: 2}
 --- !u!114 &642359475181837178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +91,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.2}
+  m_Offset: {x: 0, y: -0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -99,7 +102,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 3}
+  m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
 --- !u!50 &8715005227917829770
 Rigidbody2D:
@@ -160,7 +163,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1161327151
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 56c5a5cffec88a1408efa07cd1998545, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -242,7 +245,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1161327151
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: fb77964f4bc514946a1ae08eb907b748, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
