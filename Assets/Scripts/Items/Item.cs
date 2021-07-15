@@ -53,7 +53,7 @@ public abstract class Item : MonoBehaviour, IDetected
             {
                 _curSprite.sprite = _itemSprites[(int)_itemStatus.ItemState];
                 if (_itemStatus.ItemState > GameItemState.StateOne)
-                    _newSprite.sprite = _itemSprites[(int)_itemStatus.ItemState - 1];
+                    _newSprite.sprite = _itemSprites[(int)_itemStatus.ItemState];
                 _curSprite.color = StaticData.ColorFull;
             });
     }

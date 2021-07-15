@@ -156,12 +156,12 @@ MonoBehaviour:
   _detector: {fileID: 2194086453724911173}
   _itemStatus:
     _itemType: 5
-    _itemState: 4
+    _itemState: 3
   _itemStateEvent: {fileID: 11400000, guid: e76f2d6f932cffc469b06673c9077758, type: 2}
   _inflictDamageEvent: {fileID: 11400000, guid: 66c4b8252dba27e459003db4f9cade5c,
     type: 2}
   _attackConfigSO: {fileID: 11400000, guid: a8d17ae9f7421384e94eb389d35ee438, type: 2}
-  _animatedStates: 01000000
+  _animatedStates: 00000000
 --- !u!61 &6069785597728120948
 BoxCollider2D:
   m_ObjectHideFlags: 0

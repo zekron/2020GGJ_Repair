@@ -41,7 +41,6 @@ public class TulipItem : Item, IAnimator, IFetched
 
     public void Fetch()
     {
-        Debug.LogFormat("{0} Fetch.", name);
         CharacterAbilities.instance.FetchItemObject(this);
     }
 

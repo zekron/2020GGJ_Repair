@@ -53,10 +53,10 @@ public class Heart
 public enum GameItemState
 {
     //Fire
-    StateDefault,
+    StateDefault = -1,
 
     //BaseItem
-    StateOne,
+    StateOne = 0,
     StateTwo,
     StateThree,
     StateFour,

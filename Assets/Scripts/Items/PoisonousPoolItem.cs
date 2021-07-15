@@ -43,8 +43,7 @@ public class PoisonousPoolItem : Item, IAnimator, IAggressive
 
     public void Attack(Damageable damageable)
     {
-        //TODO
-        Debug.Log(damageable.GetHit);
+        //Debug.Log(damageable.GetHit);
         if (CanAttack(_itemStatus.ItemState, damageable))
         {
             //damageable.ReceiveAnAttack(_attackConfigSO.AttackStrength);

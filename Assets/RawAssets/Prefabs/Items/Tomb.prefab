@@ -74,9 +74,9 @@ MonoBehaviour:
   _detector: {fileID: 2161711026261900108}
   _itemStatus:
     _itemType: 3
-    _itemState: 4
+    _itemState: 3
   _itemStateEvent: {fileID: 11400000, guid: e76f2d6f932cffc469b06673c9077758, type: 2}
-  _animatedStates: 0100000004000000
+  _animatedStates: 0000000003000000
 --- !u!212 &8298840639208447443
 SpriteRenderer:
   m_ObjectHideFlags: 0

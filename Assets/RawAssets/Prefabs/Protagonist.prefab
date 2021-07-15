@@ -215,7 +215,7 @@ MonoBehaviour:
     m_Bits: 384
   triggerMask:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 896
   oneWayPlatformMask:
     serializedVersion: 2
     m_Bits: 0
@@ -272,7 +272,7 @@ MonoBehaviour:
   runSpeed: 10
   groundDamping: 60
   inAirDamping: 6
-  jumpHeight: 5
+  jumpHeight: 6
 --- !u!114 &3352139343977104756
 MonoBehaviour:
   m_ObjectHideFlags: 0

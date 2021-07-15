@@ -156,9 +156,9 @@ MonoBehaviour:
   _detector: {fileID: 5611753193559154896}
   _itemStatus:
     _itemType: 0
-    _itemState: 4
+    _itemState: 3
   _itemStateEvent: {fileID: 11400000, guid: e76f2d6f932cffc469b06673c9077758, type: 2}
-  _animatedStates: 01000000
+  _animatedStates: 00000000
 --- !u!61 &1958685919177603907
 BoxCollider2D:
   m_ObjectHideFlags: 0
