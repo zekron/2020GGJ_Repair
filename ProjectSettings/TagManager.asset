@@ -20,7 +20,7 @@ TagManager:
   - Ground
   - Border
   - Interactable
-  - Invisible UI
+  - Invisible
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Invisible
+    uniqueID: 1609199561
+    locked: 0
   - name: Background
     uniqueID: 4269869193
     locked: 0

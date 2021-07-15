@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BasicHealingConfig
   m_EditorClassIdentifier: 
   Description: 
-  _healingStrength: 0
+  _healingStrength: 1
