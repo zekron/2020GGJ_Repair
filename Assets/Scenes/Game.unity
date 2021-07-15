@@ -1149,7 +1149,7 @@ GameObject:
   - component: {fileID: 90144178}
   - component: {fileID: 90144179}
   - component: {fileID: 90144180}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Package
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2260,7 +2260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 259358219}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2332,7 +2332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 282920926}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2371,7 +2371,7 @@ GameObject:
   - component: {fileID: 284176334}
   - component: {fileID: 284176333}
   - component: {fileID: 284176335}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: ExitBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2490,7 +2490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 296656852}
   - component: {fileID: 296656853}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Panel_InGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2723,7 +2723,7 @@ GameObject:
   - component: {fileID: 318356898}
   - component: {fileID: 318356900}
   - component: {fileID: 318356899}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3015,7 +3015,7 @@ GameObject:
   - component: {fileID: 348172301}
   - component: {fileID: 348172303}
   - component: {fileID: 348172302}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3599,7 +3599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397904259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.2, z: -0.2}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 672879293}
@@ -5094,7 +5094,7 @@ GameObject:
   - component: {fileID: 582824969}
   - component: {fileID: 582824970}
   - component: {fileID: 582824971}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5745,7 +5745,7 @@ GameObject:
   - component: {fileID: 664092212}
   - component: {fileID: 664092214}
   - component: {fileID: 664092213}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5836,7 +5836,7 @@ GameObject:
   - component: {fileID: 678481761}
   - component: {fileID: 678481760}
   - component: {fileID: 678481759}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5910,7 +5910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 685752205}
   - component: {fileID: 685752206}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: FXSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6002,7 +6002,7 @@ GameObject:
   - component: {fileID: 690583433}
   - component: {fileID: 690583432}
   - component: {fileID: 690583431}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: BackBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6371,7 +6371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 737444584}
   - component: {fileID: 737444583}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: FXToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35568,7 +35568,7 @@ GameObject:
   - component: {fileID: 1061888937}
   - component: {fileID: 1061888936}
   - component: {fileID: 1061888935}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36047,7 +36047,7 @@ GameObject:
   - component: {fileID: 1136947657}
   - component: {fileID: 1136947658}
   - component: {fileID: 1136947656}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Button_EnterSetting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36271,6 +36271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Heart (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936594594596206861, guid: 361eaf808d1ab2d4e9b342f35f0f0b45,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 361eaf808d1ab2d4e9b342f35f0f0b45, type: 3}
@@ -36686,7 +36691,7 @@ GameObject:
   - component: {fileID: 1219458014}
   - component: {fileID: 1219458016}
   - component: {fileID: 1219458015}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36975,7 +36980,7 @@ GameObject:
   - component: {fileID: 1250401467}
   - component: {fileID: 1250401469}
   - component: {fileID: 1250401468}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37350,7 +37355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1323139466}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37513,7 +37518,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374592978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0.3}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4541093153897330496}
@@ -37825,7 +37830,7 @@ GameObject:
   - component: {fileID: 1474506059}
   - component: {fileID: 1474506061}
   - component: {fileID: 1474506060}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37913,7 +37918,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482017911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5493976620194011881}
@@ -37996,7 +38001,7 @@ GameObject:
   - component: {fileID: 1502932756}
   - component: {fileID: 1502932758}
   - component: {fileID: 1502932757}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39394,7 +39399,7 @@ GameObject:
   - component: {fileID: 1654933899}
   - component: {fileID: 1654933901}
   - component: {fileID: 1654933900}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39679,7 +39684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1677336148}
   - component: {fileID: 1677336149}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Panel_Setting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40245,7 +40250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1722533044}
   - component: {fileID: 1722533045}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: BGMSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40416,7 +40421,7 @@ GameObject:
   - component: {fileID: 1732601622}
   - component: {fileID: 1732601624}
   - component: {fileID: 1732601623}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: RawImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40916,7 +40921,7 @@ GameObject:
   - component: {fileID: 1778897491}
   - component: {fileID: 1778897493}
   - component: {fileID: 1778897492}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40991,7 +40996,7 @@ GameObject:
   - component: {fileID: 1784295443}
   - component: {fileID: 1784295444}
   - component: {fileID: 1784295445}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41066,7 +41071,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1793602470}
   - component: {fileID: 1793602471}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: BGMToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41259,6 +41264,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heart (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5936594594596206861, guid: 361eaf808d1ab2d4e9b342f35f0f0b45,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 361eaf808d1ab2d4e9b342f35f0f0b45, type: 3}
 --- !u!224 &1795220427 stripped
@@ -41397,7 +41407,7 @@ GameObject:
   - component: {fileID: 1832198696}
   - component: {fileID: 1832198698}
   - component: {fileID: 1832198697}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41474,7 +41484,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1838385501}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: UIElements
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41592,7 +41602,7 @@ GameObject:
   - component: {fileID: 1868904094}
   - component: {fileID: 1868904096}
   - component: {fileID: 1868904095}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41747,7 +41757,7 @@ GameObject:
   - component: {fileID: 1878386218}
   - component: {fileID: 1878386217}
   - component: {fileID: 1878386216}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Button_Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41939,7 +41949,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1883895376}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41977,7 +41987,7 @@ GameObject:
   - component: {fileID: 1913550292}
   - component: {fileID: 1913550294}
   - component: {fileID: 1913550293}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42263,7 +42273,7 @@ GameObject:
   - component: {fileID: 1934114444}
   - component: {fileID: 1934114443}
   - component: {fileID: 1934114442}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Button_Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43540,10 +43550,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 90144178}
     m_Modifications:
+    - target: {fileID: 6840287425268386364, guid: 9faad68701eb0e14bba867102bce299a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6840287426130930144, guid: 9faad68701eb0e14bba867102bce299a,
         type: 3}
       propertyPath: m_Name
       value: PackageItem (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840287426130930144, guid: 9faad68701eb0e14bba867102bce299a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6840287426130930147, guid: 9faad68701eb0e14bba867102bce299a,
         type: 3}
@@ -43687,7 +43707,7 @@ GameObject:
   - component: {fileID: 2054323690}
   - component: {fileID: 2054323692}
   - component: {fileID: 2054323691}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43792,10 +43812,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 90144178}
     m_Modifications:
+    - target: {fileID: 6840287425268386364, guid: 9faad68701eb0e14bba867102bce299a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6840287426130930144, guid: 9faad68701eb0e14bba867102bce299a,
         type: 3}
       propertyPath: m_Name
       value: PackageItem (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840287426130930144, guid: 9faad68701eb0e14bba867102bce299a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6840287426130930147, guid: 9faad68701eb0e14bba867102bce299a,
         type: 3}
@@ -44697,7 +44727,7 @@ GameObject:
   - component: {fileID: 2111649566}
   - component: {fileID: 2111649568}
   - component: {fileID: 2111649567}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44954,7 +44984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2129898656}
   - component: {fileID: 2129898657}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Panel_Welcome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45669,6 +45699,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heart (0)
       objectReference: {fileID: 0}
+    - target: {fileID: 5936594594596206861, guid: 361eaf808d1ab2d4e9b342f35f0f0b45,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 361eaf808d1ab2d4e9b342f35f0f0b45, type: 3}
 --- !u!114 &5936594595185619076 stripped
@@ -45846,10 +45881,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 90144178}
     m_Modifications:
+    - target: {fileID: 6840287425268386364, guid: 9faad68701eb0e14bba867102bce299a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6840287426130930144, guid: 9faad68701eb0e14bba867102bce299a,
         type: 3}
       propertyPath: m_Name
       value: PackageItem (0)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840287426130930144, guid: 9faad68701eb0e14bba867102bce299a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6840287426130930147, guid: 9faad68701eb0e14bba867102bce299a,
         type: 3}
