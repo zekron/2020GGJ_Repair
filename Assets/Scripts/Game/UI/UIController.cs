@@ -12,7 +12,7 @@ public class UIController : MonoBehaviour
     public void OpenUIWelcome()
     {
         _welcomeManager.transform.DOComplete(true);
-        _welcomeManager.AddWelcomeListener();
+        _welcomeManager.EnterWelcomeDialog();
         _welcomeManager.gameObject.layer = VISIBLE_UI_LAYER;
         _welcomeManager.transform.DOScale(1, 1);
     }

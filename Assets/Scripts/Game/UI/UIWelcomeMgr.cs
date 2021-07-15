@@ -12,12 +12,8 @@ public class UIWelcomeMgr : MonoBehaviour
     {
         instance = this;
     }
-    private void OnEnable()
-    {
-        EnterWelcomeDialog();
-    }
 
-    public void AddWelcomeListener()
+    void AddWelcomeListener()
     {
         TouchMgr.instance.AddListener(TouchMgr.instance._StartBtn, StartGame);
         TouchMgr.instance.AddListener(TouchMgr.instance._ExitBtn, QuitGame);
@@ -30,10 +26,12 @@ public class UIWelcomeMgr : MonoBehaviour
     }
 
     #region Button Events
-    void EnterWelcomeDialog()
+   public void EnterWelcomeDialog()
     {
         if (!SoundMgr.instance.IsPlaying(0, 0))
             SoundMgr.instance.PlayBGM(SoundMgr.instance._BGM._MainBGM, 0);
+
+        AddWelcomeListener();
     }
     void StartGame()
     {
