@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "AttackConfig", menuName = "Entity Config/Attack Config")]
-public class AttackConfigSO : ScriptableObject
+public class AttackConfigSO : EventChannelBaseSO
 {
 	[Tooltip("Character attack strength")]
 	[SerializeField] private int _attackStrength;

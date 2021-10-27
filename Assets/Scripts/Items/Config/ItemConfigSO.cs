@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ItemConfig", menuName = "Entity Config/Item Config")]
-public class ItemConfigSO : ScriptableObject
+public class ItemConfigSO : EventChannelBaseSO
 {
     [Tooltip("Initial item type")]
     [SerializeField] private GameItemType _itemType;
