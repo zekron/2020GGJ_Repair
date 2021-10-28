@@ -793,11 +793,11 @@ MonoBehaviour:
   filter: {fileID: 48529160}
   renderer: {fileID: 48529161}
   triangleCount: 5
-  A: {fileID: 1136730265}
-  B: {fileID: 2114503600}
   LeftAngle: 20
   RightAngle: 30
   Radius: 5
+  A: {fileID: 1136730265}
+  B: {fileID: 2114503600}
 --- !u!4 &1363714118
 Transform:
   m_ObjectHideFlags: 0
