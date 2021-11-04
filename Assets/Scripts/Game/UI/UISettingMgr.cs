@@ -70,7 +70,7 @@ public class UISettingMgr : MonoBehaviour
     }
     void SetFXVolume(float value)
     {
-        SoundMgr.instance.SetBGMVolume(value / 100);
+        SoundMgr.instance.SetFXVolume(value / 100);
     }
     void SetFXMute(bool value)
     {
