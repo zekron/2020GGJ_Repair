@@ -189,6 +189,7 @@ MonoBehaviour:
     type: 2}
   _inflictHealingEvent: {fileID: 11400000, guid: c3d724bf89d5abd4dbee0f8efc699ab8,
     type: 2}
+  _inputEvents: {fileID: 11400000, guid: ada43935be98f6c4db3d4ddbd4e8844c, type: 2}
   _characterController: {fileID: 3352139343977104757}
   _moveController: {fileID: 3352139343977104758}
   _cameraController: {fileID: 0}
@@ -273,6 +274,8 @@ MonoBehaviour:
   groundDamping: 60
   inAirDamping: 6
   jumpHeight: 6
+  normalizedHorizontalSpeed: 0
+  inputEvents: {fileID: 11400000, guid: ada43935be98f6c4db3d4ddbd4e8844c, type: 2}
 --- !u!114 &3352139343977104756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5335,9 +5338,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2115f947e38adca4ebbe17dcb8e62930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _HoldInHand: 0
   _KeyTimeWalkBack: 113
   _KeyFetchGameObject: 101
-  _HoldInHand: 0
+  inputEvents: {fileID: 11400000, guid: ada43935be98f6c4db3d4ddbd4e8844c, type: 2}
 --- !u!114 &3352139345376462589
 MonoBehaviour:
   m_ObjectHideFlags: 0

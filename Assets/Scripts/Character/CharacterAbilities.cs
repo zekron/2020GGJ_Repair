@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,16 +8,33 @@ public class CharacterAbilities : MonoBehaviour
 {
     public static CharacterAbilities instance = null;
 
-    public KeyCode _KeyTimeWalkBack = KeyCode.Q;
-    public KeyCode _KeyFetchGameObject = KeyCode.W;
     public bool _HoldInHand = false;
+
+    [SerializeField] private InGameInputEventSO inputEvents;
 
     private Vector3 m_CurRebitrhPoint;
     private List<GameObject> m_TempStayDestroys = new List<GameObject>();
-    private bool m_HoldTimeFlag = false;
-    private bool m_TimeWalkBackLock = false;
-    private bool m_FetchGameObjectFlag = false;
-    private float m_HoldTime = 0f;
+    /// <summary>
+    /// 键是否在被长按
+    /// </summary>
+    private bool m_KeyHoldingFlag = false;
+    /// <summary>
+    /// 技能是否在冷却
+    /// </summary>
+    private bool m_CanTimeWalkBack = true;
+    private bool m_FetchItemFlag = false;
+    /// <summary>
+    /// 长按计时器
+    /// </summary>
+    private float m_HoldingTimer = 0f;
+    private float m_HoldingInterval = 1f;
+
+    private void Awake()
+    {
+        inputEvents.OnFetchEvent += SetFetchItemFlag;
+        inputEvents.OnTimeWalkbackEvent += CheckTimeWalkback;
+        inputEvents.OnStopTimeWalkbackEvent += StopTimeWalkback;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +47,17 @@ public class CharacterAbilities : MonoBehaviour
     void Update()
     {
         #region TimeWalkBack
-        if (m_HoldTimeFlag && !m_TimeWalkBackLock)
+        if (m_KeyHoldingFlag && m_CanTimeWalkBack)
+        {
+            m_HoldingTimer += Time.deltaTime;
+        }
+        if (m_HoldingTimer > m_HoldingInterval)
+        {
+            TimeWalkBack();
+            m_HoldingTimer -= m_HoldingInterval;
+        }
+        /*
+         if (m_HoldTimeFlag && !m_TimeWalkBackLock)
         {
             m_HoldTime += Time.deltaTime;
         }
@@ -57,18 +85,31 @@ public class CharacterAbilities : MonoBehaviour
 
             DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_TimeWalkBackLock = false);
         }
+        */
         #endregion
+    }
 
-        #region FetchGameObject
-        if (Input.GetKey(_KeyFetchGameObject))
-        {
-            m_FetchGameObjectFlag = true;
-        }
-        if (Input.GetKeyUp(_KeyFetchGameObject))
-        {
-            m_FetchGameObjectFlag = false;
-        }
-        #endregion
+    private void CheckTimeWalkback()
+    {
+        if (!m_CanTimeWalkBack) return;
+
+        m_KeyHoldingFlag = true;
+        if (!SoundMgr.instance.IsPlaying(1, 2))
+            SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._SkillTimeWalkBack, 2);
+
+        TimeWalkBack();
+        m_HoldingTimer = 0;
+    }
+
+    private void StopTimeWalkback()
+    {
+        if (!m_KeyHoldingFlag) return;
+
+        m_KeyHoldingFlag = false;
+        m_HoldingTimer = 0;
+        TimeLock();
+
+        DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_CanTimeWalkBack = true);
     }
 
     void TimeWalkBack()
@@ -100,8 +141,8 @@ public class CharacterAbilities : MonoBehaviour
                     }
                     else
                     {
-                        m_TimeWalkBackLock = true;
-                        DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_TimeWalkBackLock = false);
+                        m_CanTimeWalkBack = false;
+                        DOTween.Sequence().AppendInterval(3).AppendCallback(() => m_CanTimeWalkBack = true);
                         item.SetItemState(GameItemState.StateOne);
                         item.ChangeSprite(1f);
                     }
@@ -110,6 +151,7 @@ public class CharacterAbilities : MonoBehaviour
                     break;
             }
 
+            #region Obsolete
             //ItemDetector itemDetector = m_TempStayDestroys[i].GetComponent<ItemDetector>();
             //AncientDetector ancientDetector = m_TempStayDestroys[i].GetComponent<AncientDetector>();
             //if (itemDetector)
@@ -144,12 +186,13 @@ public class CharacterAbilities : MonoBehaviour
             //        item.ChangeSprite(ancientDetector._CurAncientState, 1f);
             //    }
             //}
+            #endregion
         }
     }
 
     void TimeLock()
     {
-        m_TimeWalkBackLock = true;
+        m_CanTimeWalkBack = false;
         if (m_TempStayDestroys.Count <= 0) return;
 
         SoundMgr.instance.StopEff(2);
@@ -161,9 +204,14 @@ public class CharacterAbilities : MonoBehaviour
         });
     }
 
+    private void SetFetchItemFlag(bool flag)
+    {
+        m_FetchItemFlag = flag;
+    }
+
     public void FetchItemObject(IFetched fetched)
     {
-        if (!m_FetchGameObjectFlag) return;
+        if (!m_FetchItemFlag) return;
 
         CharacterPackage.instance.SaveItem(fetched);
     }
