@@ -97,14 +97,12 @@ public class CharacterAbilities : MonoBehaviour
         if (!SoundMgr.instance.IsPlaying(1, 2))
             SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._SkillTimeWalkBack, 2);
 
-        TimeWalkBack();
+        //TimeWalkBack();
         m_HoldingTimer = 0;
     }
 
     private void StopTimeWalkback()
     {
-        if (!m_KeyHoldingFlag) return;
-
         m_KeyHoldingFlag = false;
         m_HoldingTimer = 0;
         TimeLock();

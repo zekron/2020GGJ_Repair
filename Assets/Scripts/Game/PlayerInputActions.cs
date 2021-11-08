@@ -213,7 +213,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""b615473a-628b-4288-80ee-73d88d217386"",
                     ""path"": ""<Keyboard>/q"",
-                    ""interactions"": ""Hold(duration=1)"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""TimeWalkback"",
