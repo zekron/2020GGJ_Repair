@@ -250,16 +250,16 @@ MonoBehaviour:
   _detector: {fileID: 6459267136744694499}
   _itemStatus:
     _itemType: 9
-    _itemState: 4
+    _itemState: 3
   _itemStateEvent: {fileID: 11400000, guid: e76f2d6f932cffc469b06673c9077758, type: 2}
   _BrokenSprites:
-  - _Sprites:
+  - _KeyCode: 1
+    _Sprites:
     - {fileID: 21300000, guid: ed0e1925c2519d644a2c101f4bac8c76, type: 3}
     - {fileID: 21300000, guid: b81a912f6b60f8c4585489bbe3dccda5, type: 3}
     - {fileID: 21300000, guid: 08a1f472acb6f7b41a34036426b95bd8, type: 3}
     - {fileID: 21300000, guid: 76a43466a87d3a344864c11830cf0d44, type: 3}
-  _UnLockedAncientSprites:
-  - {fileID: 21300000, guid: 76a43466a87d3a344864c11830cf0d44, type: 3}
+  _UnlockedAncientSprites: []
   _FinalAncientSprite: {fileID: 21300000, guid: 8eef6cf6fff9074468d07e5094f78642,
     type: 3}
 --- !u!114 &6459267136744694499

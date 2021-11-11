@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AncientItem : Item
 {
-    public List<BrokenAncientSprite> _BrokenSprites;
-    public Sprite[] _UnLockedAncientSprites;
-    public Sprite _FinalAncientSprite;
+    [SerializeField] private List<BrokenAncientSprite> _BrokenSprites;
+    [SerializeField] private Sprite[] _UnlockedAncientSprites;
+    [SerializeField] private Sprite _FinalAncientSprite;
 
     private int m_KeyCount;
 
@@ -33,7 +33,7 @@ public class AncientItem : Item
         else
         {
             m_KeyCount--;
-            _newSprite.sprite = _UnLockedAncientSprites[m_KeyCount == 0 ? _UnLockedAncientSprites.Length - 1 : keyIndex];
+            _newSprite.sprite = _UnlockedAncientSprites[m_KeyCount == 0 ? _UnlockedAncientSprites.Length - 1 : keyIndex];
             _itemSprites = _BrokenSprites[keyIndex]._Sprites;
         }
 

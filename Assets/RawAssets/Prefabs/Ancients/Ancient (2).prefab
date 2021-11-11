@@ -9884,29 +9884,46 @@ MonoBehaviour:
   _detector: {fileID: 9066727590840205718}
   _itemStatus:
     _itemType: 9
-    _itemState: 4
+    _itemState: 3
   _itemStateEvent: {fileID: 11400000, guid: e76f2d6f932cffc469b06673c9077758, type: 2}
   _BrokenSprites:
-  - _Sprites:
+  - _KeyCode: 1
+    _Sprites:
     - {fileID: 21300000, guid: 479f09887fc497e4c95decdc375b9834, type: 3}
     - {fileID: 21300000, guid: fd67e30741b5b8a4ab0d4d5d48bd7a64, type: 3}
     - {fileID: 21300000, guid: 1acd27a2a9c141c468d9b049233d6a9a, type: 3}
     - {fileID: 21300000, guid: 1dc12f31ade26d443b7f6d889d4c7a57, type: 3}
-  - _Sprites:
+  - _KeyCode: 2
+    _Sprites:
     - {fileID: 21300000, guid: 479f09887fc497e4c95decdc375b9834, type: 3}
     - {fileID: 21300000, guid: fd67e30741b5b8a4ab0d4d5d48bd7a64, type: 3}
     - {fileID: 21300000, guid: 0fe4b1b1cc2ea9043b387cf6d49c4491, type: 3}
     - {fileID: 21300000, guid: 39b6c635ee9b6d4489b1a60b832ff3a4, type: 3}
-  - _Sprites:
+  - _KeyCode: 4
+    _Sprites:
     - {fileID: 21300000, guid: 479f09887fc497e4c95decdc375b9834, type: 3}
     - {fileID: 21300000, guid: fd67e30741b5b8a4ab0d4d5d48bd7a64, type: 3}
     - {fileID: 21300000, guid: 24861dc45fad4df4e8697f6474dee9fb, type: 3}
     - {fileID: 21300000, guid: ec5b19c8a0dad6544932e52d6b7ec5bb, type: 3}
-  _UnLockedAncientSprites:
-  - {fileID: 21300000, guid: 1acd27a2a9c141c468d9b049233d6a9a, type: 3}
-  - {fileID: 21300000, guid: 0fe4b1b1cc2ea9043b387cf6d49c4491, type: 3}
-  - {fileID: 21300000, guid: 24861dc45fad4df4e8697f6474dee9fb, type: 3}
-  - {fileID: 21300000, guid: b6c422daaea0fd241abc772018c5c030, type: 3}
+  - _KeyCode: 3
+    _Sprites:
+    - {fileID: 21300000, guid: 479f09887fc497e4c95decdc375b9834, type: 3}
+    - {fileID: 21300000, guid: fd67e30741b5b8a4ab0d4d5d48bd7a64, type: 3}
+    - {fileID: 21300000, guid: 1cf11fee7ae70624087bb3e4b2c6a828, type: 3}
+    - {fileID: 21300000, guid: 8f0907f6fe241194e851f5c4856cc257, type: 3}
+  - _KeyCode: 5
+    _Sprites:
+    - {fileID: 21300000, guid: 479f09887fc497e4c95decdc375b9834, type: 3}
+    - {fileID: 21300000, guid: fd67e30741b5b8a4ab0d4d5d48bd7a64, type: 3}
+    - {fileID: 21300000, guid: 55dcb68247ea0a240bc5d3a4215d87ef, type: 3}
+    - {fileID: 21300000, guid: c9f67b6a36d3ed84fbaa2c1dbf5d7f54, type: 3}
+  - _KeyCode: 6
+    _Sprites:
+    - {fileID: 21300000, guid: 479f09887fc497e4c95decdc375b9834, type: 3}
+    - {fileID: 21300000, guid: fd67e30741b5b8a4ab0d4d5d48bd7a64, type: 3}
+    - {fileID: 21300000, guid: b48c82f0a363c6e4c936326894d56f91, type: 3}
+    - {fileID: 21300000, guid: 36e733148b747da41acd1a8ee5a7acf8, type: 3}
+  _UnlockedAncientSprites: []
   _FinalAncientSprite: {fileID: 21300000, guid: a4f48ff100346c842956fd08d4d90aab,
     type: 3}
 --- !u!114 &9066727590840205718

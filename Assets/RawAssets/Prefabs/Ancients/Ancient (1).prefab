@@ -4877,23 +4877,22 @@ MonoBehaviour:
   _detector: {fileID: 2897609777504569115}
   _itemStatus:
     _itemType: 9
-    _itemState: 4
+    _itemState: 3
   _itemStateEvent: {fileID: 11400000, guid: e76f2d6f932cffc469b06673c9077758, type: 2}
   _BrokenSprites:
-  - _Sprites:
+  - _KeyCode: 1
+    _Sprites:
     - {fileID: 21300000, guid: 1eae6ebb4a9678b44aeea34e50bcf2b1, type: 3}
     - {fileID: 21300000, guid: a7ca6ccfd826e6b4989db9f9de88816b, type: 3}
     - {fileID: 21300000, guid: a943c3f9db37bb8488f97c5135ad64da, type: 3}
     - {fileID: 21300000, guid: 1c7c1b7c75e7598489bae3da03f526e6, type: 3}
-  - _Sprites:
+  - _KeyCode: 2
+    _Sprites:
     - {fileID: 21300000, guid: 1eae6ebb4a9678b44aeea34e50bcf2b1, type: 3}
     - {fileID: 21300000, guid: 67c549f5860fdb24697dbdf0a99d44b4, type: 3}
     - {fileID: 21300000, guid: fd9732f59eeeccc47842c5d1f23a8142, type: 3}
     - {fileID: 21300000, guid: de26b72b1fff60945ae7c5494b634aba, type: 3}
-  _UnLockedAncientSprites:
-  - {fileID: 21300000, guid: a7ca6ccfd826e6b4989db9f9de88816b, type: 3}
-  - {fileID: 21300000, guid: fd9732f59eeeccc47842c5d1f23a8142, type: 3}
-  - {fileID: 21300000, guid: 6b00d6840e10eee41878512bc7feead7, type: 3}
+  _UnlockedAncientSprites: []
   _FinalAncientSprite: {fileID: 21300000, guid: feb0d73efe0866743b705d608a6c5926,
     type: 3}
 --- !u!114 &2897609777504569115

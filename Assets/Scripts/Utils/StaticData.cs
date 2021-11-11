@@ -40,6 +40,7 @@ public class AncientKey
 [Serializable]
 public class BrokenAncientSprite
 {
+    public byte _KeyCode;
     public Sprite[] _Sprites;
 }
 
