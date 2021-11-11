@@ -7,7 +7,7 @@ public class AncientDetector : Detector
     public GameObject _ShieldDoor;
     public ParticleSystem[] _CorrectParticles;
 
-    public List<AncientKey> _Keys;
+    public List<AncientLock> _Locks;
     private Vector3 _RebirthPoint;
     private AncientItem _myAncient;
 
@@ -16,7 +16,7 @@ public class AncientDetector : Detector
 
     private void Start()
     {
-        m_KeyNum = _Keys.Count;
+        m_KeyNum = _Locks.Count;
         _RebirthPoint = new Vector3(transform.position.x, transform.position.y + 10, 1);
         _myAncient = GetComponent<AncientItem>();
 
@@ -75,25 +75,25 @@ public class AncientDetector : Detector
         }
     }
 
-    public void UnLockDoor(PackageItem item)
+    public void UnlockDoor(PackageItem item)
     {
-        for (int i = 0; i < _Keys.Count; i++)
+        for (int i = 0; i < _Locks.Count; i++)
         {
-            if (_Keys[i]._AncientKeyState == _myAncient.GetDetectedItemStatus().ItemState
-                && _Keys[i]._ItemKeyState == item._PackageItemState
-                && _Keys[i]._ItemKeyType == item._PackageItemType)
+            if (_Locks[i]._AncientKeyState == _myAncient.GetDetectedItemStatus().ItemState
+                && _Locks[i]._ItemKeyState == item._PackageItemState
+                && _Locks[i]._ItemKeyType == item._PackageItemType)
             {
                 //_AncientKeyState.Remove(_CurAncientState);
                 //_ItemKeyState.Remove(item._PackageItemState);
                 //_ItemKeyType.Remove(item._PackageItemType);
                 //_Keys.RemoveAt(i);
-                _myAncient.ChangeSprite(i, false, 1);
+                _myAncient.ChangeSprite(i, 1);
                 m_KeyNum--;
                 _CorrectParticles[i].Play();
                 SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Correct, 4);
                 break;
             }
-            else if (i == _Keys.Count - 1)
+            else if (i == _Locks.Count - 1)
             {
                 SoundMgr.instance.PlayEff(SoundMgr.instance._Effect._Incorrect, 4);
             }
@@ -101,7 +101,7 @@ public class AncientDetector : Detector
 
         if (m_KeyNum > 0) return;
 
-        _myAncient.ChangeSprite(_Keys.Count, true, 2);
+        _myAncient.ChangeSprite(_Locks.Count, 2);
         _myAncient.SetItemState(GameItemState.StateFinished);
         _ShieldDoor.SetActive(false);
         CharacterAbilities.instance.SetRebirthPoint(_RebirthPoint);

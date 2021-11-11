@@ -9923,7 +9923,6 @@ MonoBehaviour:
     - {fileID: 21300000, guid: fd67e30741b5b8a4ab0d4d5d48bd7a64, type: 3}
     - {fileID: 21300000, guid: b48c82f0a363c6e4c936326894d56f91, type: 3}
     - {fileID: 21300000, guid: 36e733148b747da41acd1a8ee5a7acf8, type: 3}
-  _UnlockedAncientSprites: []
   _FinalAncientSprite: {fileID: 21300000, guid: a4f48ff100346c842956fd08d4d90aab,
     type: 3}
 --- !u!114 &9066727590840205718
@@ -9945,15 +9944,15 @@ MonoBehaviour:
   - {fileID: 17679023053569131}
   - {fileID: 5158259337439902156}
   - {fileID: 9161914383283071513}
-  _Keys:
+  _Locks:
   - _AncientKeyState: 2
-    _ItemKeyState: 3
+    _ItemKeyState: 0
     _ItemKeyType: 2
   - _AncientKeyState: 2
-    _ItemKeyState: 3
+    _ItemKeyState: 2
     _ItemKeyType: 3
   - _AncientKeyState: 2
-    _ItemKeyState: 2
+    _ItemKeyState: 3
     _ItemKeyType: 4
 --- !u!61 &797777592160204089
 BoxCollider2D:

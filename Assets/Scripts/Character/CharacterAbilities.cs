@@ -227,7 +227,7 @@ public class CharacterAbilities : MonoBehaviour
             AncientDetector ancientDetector = m_TempStayDestroys[i].GetComponent<AncientDetector>();
             if (ancientDetector != null)
             {
-                ancientDetector.UnLockDoor(holdInHand);
+                ancientDetector.UnlockDoor(holdInHand);
                 break;
             }
         }

@@ -30,7 +30,7 @@ public static class StaticData
 }
 
 [Serializable]
-public class AncientKey
+public class AncientLock
 {
     public GameItemState _AncientKeyState;
     public GameItemState _ItemKeyState;
