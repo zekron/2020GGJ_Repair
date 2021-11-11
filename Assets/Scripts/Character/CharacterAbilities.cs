@@ -103,6 +103,8 @@ public class CharacterAbilities : MonoBehaviour
 
     private void StopTimeWalkback()
     {
+        if (!m_KeyHoldingFlag) return;
+
         m_KeyHoldingFlag = false;
         m_HoldingTimer = 0;
         TimeLock();

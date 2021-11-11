@@ -97,7 +97,6 @@ public class MoveController : MonoBehaviour
     {
         if (GameMgr.Instance.GetGameStateMgr().GameState != GameState.InGameplay) return;
         Vector2 moveAmount = moveInput * runSpeed;
-        Debug.Log($"({moveInput.x}, {moveInput.y})");
         normalizedHorizontalSpeed = moveInput.x;
 
         if (_controller.isGrounded && moveAmount.y > 0)

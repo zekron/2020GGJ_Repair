@@ -56,14 +56,12 @@ public class InGameInputEventSO : EventChannelBaseSO, PlayerInputActions.IInGame
         }
         if (context.phase == InputActionPhase.Canceled)
         {
-            Debug.LogError(context.phase);
             OnStopTimeWalkbackEvent.Invoke();
         }
     }
 
     public void OnFetch(InputAction.CallbackContext context)
     {
-        Debug.LogError(context.phase);
         if (context.phase == InputActionPhase.Performed)
         {
             OnFetchEvent.Invoke(context.performed);
