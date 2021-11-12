@@ -1,8 +1,9 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(BoxCollider), typeof(SpriteRenderer))]
-public class MyButton : MonoBehaviour
+[RequireComponent(typeof(BoxCollider2D), typeof(SpriteRenderer))]
+public class MyButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     Action m_ButtonAction;
     public SpriteRenderer sprite;
@@ -21,8 +22,12 @@ public class MyButton : MonoBehaviour
         m_ButtonAction -= action;
     }
 
-    private void OnMouseDown()
+    public void OnPointerUp(PointerEventData eventData)
     {
-        m_ButtonAction.Invoke();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log(name);
     }
 }

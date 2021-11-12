@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 public class Protagonist : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class Protagonist : MonoBehaviour
     private void Start()
     {
         _inputEvents.EnableInGameInput();
+        EnhancedTouchSupport.Enable();
     }
 
     private void SetCameraController(CameraController controller)
