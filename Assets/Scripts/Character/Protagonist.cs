@@ -8,6 +8,7 @@ public class Protagonist : MonoBehaviour
     [Header("Events")]
     [SerializeField] private IntEventChannelSO _inflictDamageEvent;
     [SerializeField] private IntEventChannelSO _inflictHealingEvent;
+    [SerializeField] private InGameInputEventSO _inputEvents;
 
     [Header("Controller")]
     [SerializeField] private Prime31.CharacterController2D _characterController;
@@ -23,15 +24,22 @@ public class Protagonist : MonoBehaviour
     private Vector3 _rebirthVector;
     public CameraController CamController => _cameraController;
 
-    private void OnEnable()
+    private void Start()
     {
-        //DontDestroyOnLoad(gameObject);
+        _inputEvents.EnableInGameInput();
     }
+
     private void SetCameraController(CameraController controller)
     {
         _cameraController = controller;
         _cameraController.SetTarget(transform);
     }
+
+    void ReceiveDamage(int damage)
+    {
+        GetComponent<SpriteRenderer>().DOFade(0, 0.2f).OnComplete(() => GetComponent<SpriteRenderer>().DOFade(1, 0.2f)).SetLoops(2);
+    }
+
     public void Init(CameraController controller, Vector3 rebirthVector)
     {
         SetCameraController(controller);
@@ -41,6 +49,7 @@ public class Protagonist : MonoBehaviour
         _inflictDamageEvent.OnEventRaised += ReceiveDamage;
         _inflictHealingEvent.RaiseEvent(3);
     }
+
     public void SetHands(Sprite sprite)
     {
         _carrying.sprite = sprite;
@@ -59,9 +68,5 @@ public class Protagonist : MonoBehaviour
                 _hands.SetActive(sprite);
             });
         }
-    }
-    void ReceiveDamage(int damage)
-    {
-        GetComponent<SpriteRenderer>().DOFade(0, 0.2f).OnComplete(() => GetComponent<SpriteRenderer>().DOFade(1, 0.2f)).SetLoops(2);
     }
 }

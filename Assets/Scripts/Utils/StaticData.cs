@@ -30,7 +30,7 @@ public static class StaticData
 }
 
 [Serializable]
-public class AncientKey
+public class AncientLock
 {
     public GameItemState _AncientKeyState;
     public GameItemState _ItemKeyState;
@@ -40,6 +40,7 @@ public class AncientKey
 [Serializable]
 public class BrokenAncientSprite
 {
+    public byte _KeyCode;
     public Sprite[] _Sprites;
 }
 

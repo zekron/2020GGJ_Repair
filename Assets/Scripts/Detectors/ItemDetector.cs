@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
-public class ItemDetector : Detector
+public class ItemDetector : Detector, IPointerClickHandler
 {
     [SerializeField] private Item _myItem;
 
@@ -92,15 +93,6 @@ public class ItemDetector : Detector
         }
     }
 
-    private void OnMouseDown()
-    {
-        if (StayDestroy && CompareTag("Item"))
-        {
-            IFetched fetched = _myItem as IFetched;
-            fetched?.Fetch();
-        }
-    }
-
     public void ResetItemState()
     {
         if (!_IsInTimeWalkBack) return;
@@ -108,5 +100,14 @@ public class ItemDetector : Detector
         _myItem.SetItemState(GameItemState.StateOne);
         _myItem.ChangeSprite();
         _IsInTimeWalkBack = false;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (StayDestroy && CompareTag("Item"))
+        {
+            IFetched fetched = _myItem as IFetched;
+            fetched?.Fetch();
+        }
     }
 }

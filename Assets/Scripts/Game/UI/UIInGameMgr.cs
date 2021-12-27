@@ -5,12 +5,18 @@ using UnityEngine.UI;
 public class UIInGameMgr : MonoBehaviour
 {
     [SerializeField] private Image _imageSetting;
+    [SerializeField] private GameObject _panelTouchScreen;
 
     private Tween m_ReturnTween;
     private bool _canEnterSetting = false;
 
-    private void OnEnable()
+    private void Awake()
     {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        _panelTouchScreen.SetActive(true);
+#else
+        _panelTouchScreen.SetActive(false);
+#endif
         _canEnterSetting = false;
     }
     public void AddGameplayListener()
